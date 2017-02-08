@@ -18,7 +18,7 @@ var browserSyncWatchFiles = [
 // browser-sync options
 // see: https://www.browsersync.io/docs/options/
 var browserSyncOptions = {
-    proxy: "localhost/wordpress/",
+    proxy: "localhost:8888/icpa18/",
     notify: false
 };
 
@@ -141,8 +141,8 @@ gulp.task('browser-sync', function() {
 gulp.task('watch-bs', ['browser-sync', 'watch', 'cssnano', 'scripts'], function () { });
 
 
-// Run: 
-// gulp scripts. 
+// Run:
+// gulp scripts.
 // Uglifies and concat all JS files into one
 gulp.task('scripts', function() {
     var scripts = [
@@ -181,7 +181,7 @@ gulp.task('copy-assets', ['clean-source'], function() {
 // Copy all Bootstrap JS files
     var stream = gulp.src(basePaths.node + 'bootstrap/dist/js/**/*.js')
        .pipe(gulp.dest(basePaths.dev + '/js/bootstrap4'));
-  
+
 
 // Copy all Bootstrap SCSS files
     gulp.src(basePaths.node + 'bootstrap/scss/**/*.scss')
@@ -227,4 +227,3 @@ gulp.task('dist', function() {
     gulp.src(['**/*','!bower_components','!bower_components/**','!node_modules','!node_modules/**','!src','!src/**','!dist','!dist/**', '*'])
     .pipe(gulp.dest('dist/'))
 });
-
