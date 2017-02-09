@@ -17,6 +17,37 @@
 // Core CSS
 @import "../../src/sass/bootstrap4/reboot";
 @import "../../src/sass/bootstrap4/type";
+
+// }
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    // &.display-1, &.display-2, &.display-3, &.display-4 {
+        font-family: $font-family-display;
+    // }
+}
+
+.display-1 {
+    &.display-responsive {
+        @include media-breakpoint-up(xs) {
+            font-size: 1.75rem;
+        }
+        @include media-breakpoint-up(sm) {
+            font-size: 2rem;
+        }
+        @include media-breakpoint-up(md) {
+            font-size: 2.25rem;
+        }
+        @include media-breakpoint-up(lg) {
+            font-size: 2.5rem;
+        }
+        @include media-breakpoint-up(xl) {
+            font-size: 3rem;
+        }
+    }
+}
+
+
+
 @import "../../src/sass/bootstrap4/images";
 @import "../../src/sass/bootstrap4/code";
 @import "../../src/sass/bootstrap4/grid";
@@ -24,6 +55,20 @@
 @import "../../src/sass/bootstrap4/forms";
 @import "../../src/sass/bootstrap4/buttons";
 
+.btn {
+    border-radius: 2rem;
+    font-family: $font-family-sans-serif-bold;
+}
+
+.btn-lg {
+    border-radius: 2rem;
+}
+
+.btn-link {
+    &:hover {
+        text-decoration: none;
+    }
+}
 // Components
 @import "../../src/sass/bootstrap4/transitions";
 @import "../../src/sass/bootstrap4/dropdown";
@@ -52,4 +97,3 @@
 
 // Utility classes
 @import "../../src/sass/bootstrap4/utilities";
-

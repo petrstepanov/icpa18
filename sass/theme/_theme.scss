@@ -1,1 +1,145 @@
 // This is an empty scss file for your custom styles - Please add your super duper awesome mega design styles here
+
+// Basics
+
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
+ul.spaced {
+    li {
+        line-height: 1.85rem;
+    }
+}
+
+// Jumbotron
+
+.jumbotron {
+    &.icpa-18 {
+        background-image: url('../img/orlando-banner.jpg');
+        background-position: center center;
+        background-size: cover;
+        color: white;
+
+        h1 {
+            color: white;
+        }
+
+        .btn {
+            &.btn-warning {
+                color: $font-color;
+            }
+        }
+
+        hr {
+            border-top-color: rgba(255, 255, 255, 0.2);
+        }
+
+        p {
+            opacity: 0.7;
+        }
+
+        .btn-link {
+            color: $brand-warning;
+        }
+
+
+        .grey {
+            color: rgba(255,255,255, 0.2);
+            font-family: $font-family-sans-serif;
+        }
+
+        .red {
+            font-family: $font-family-sans-serif;
+            color: $brand-danger;
+        }
+    }
+
+    .responsive-top-margin {
+        margin-top: 1em;
+
+        @include media-breakpoint-up(md) {
+            margin-top: 2em;
+        }
+
+        @include media-breakpoint-up(lg) {
+            margin-top: 3em;
+        }
+    }
+}
+
+.container-wrapper {
+    .container {
+        padding-top: $jumbotron-padding;
+        padding-bottom: $jumbotron-padding;
+    }
+
+    // margin-bottom: $jumbotron-padding;
+
+    @include media-breakpoint-up(sm) {
+        .container {
+            padding-top: ($jumbotron-padding * 2);
+            padding-bottom: ($jumbotron-padding * 2);
+        }
+    }
+
+    &.container-wrapper-primary {
+        background-color: $brand-primary-darker;
+        color: white;
+
+        a {
+            color: $brand-warning;
+        }
+    }
+
+    &.e {
+        .container {
+            position: relative;
+
+            &:before {
+                @include media-breakpoint-up(sm){
+                    content:"";
+                }
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: -3.5rem;
+                left: 0;
+                background-image: url('../img/e.svg');
+                background-position: center right;
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+}
+
+// Responsive Font Size
+
+html {
+  font-size: 12px;
+}
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 16px; //20px; //28px;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  html {
+    font-size: 18px; //20px; //28px;
+  }
+}
