@@ -12,6 +12,14 @@ ul.spaced {
     }
 }
 
+h2 {
+    font-size: $font-size-37;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
 // Jumbotron
 
 .jumbotron {
@@ -36,7 +44,7 @@ ul.spaced {
         }
 
         p {
-            opacity: 0.7;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .btn-link {
@@ -48,24 +56,19 @@ ul.spaced {
             color: rgba(255,255,255, 0.2);
             font-family: $font-family-sans-serif;
         }
-
-        .red {
-            font-family: $font-family-sans-serif;
-            color: $brand-danger;
-        }
     }
 
-    .responsive-top-margin {
-        margin-top: 1em;
-
-        @include media-breakpoint-up(md) {
-            margin-top: 2em;
-        }
-
-        @include media-breakpoint-up(lg) {
-            margin-top: 3em;
-        }
-    }
+    // .responsive-top-margin {
+    //     margin-top: 1em;
+    //
+    //     @include media-breakpoint-up(md) {
+    //         margin-top: 2em;
+    //     }
+    //
+    //     @include media-breakpoint-up(lg) {
+    //         margin-top: 3em;
+    //     }
+    // }
 }
 
 .container-wrapper {
@@ -83,9 +86,26 @@ ul.spaced {
         }
     }
 
-    &.container-wrapper-primary {
+    &.container-wrapper-primary-darker {
         background-color: $brand-primary-darker;
         color: white;
+
+        a {
+            color: $brand-warning;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        .dark {
+            color: $font-color-dark;
+        }
+    }
+
+    &.container-wrapper-primary-darkest {
+        background-color: yellow; // $brand-primary-darkest;
+        color: $font-color-dark;
 
         a {
             color: $brand-warning;
@@ -97,7 +117,7 @@ ul.spaced {
             position: relative;
 
             &:before {
-                @include media-breakpoint-up(sm){
+                @include media-breakpoint-up(md){
                     content:"";
                 }
                 position: absolute;
@@ -110,6 +130,32 @@ ul.spaced {
                 background-size: contain;
                 background-repeat: no-repeat;
             }
+        }
+    }
+}
+
+.media.media-committee {
+    color: #999999;
+    font-size: 0.75rem;
+
+    img {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 2rem;
+
+        @include media-breakpoint-up(md){
+            width: 6rem;
+            height: 6rem;
+            border-radius: 3rem;
+        }
+    }
+
+    h5 {
+        font-family: $font-family-sans-serif-bold;
+        margin-top: 0.4rem;
+
+        @include media-breakpoint-up(md){
+            margin-top: 0.8rem;
         }
     }
 }
@@ -142,4 +188,29 @@ html {
   html {
     font-size: 18px; //20px; //28px;
   }
+}
+
+// Line Height
+
+@each $size, $lengths in $spacers {
+    $length-x: map-get($lengths, x);
+    .lh-#{$size} { line-height: $length-x !important; }
+}
+
+// Minor Things
+
+dl, dt {
+    font-weight: normal;
+}
+
+.red {
+    color: $brand-danger !important;
+}
+
+.table {
+    thead {
+        text-transform: uppercase;
+        font-size: $font-size-12;
+        font-family: $font-family-sans-serif-bold;
+    }
 }
