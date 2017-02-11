@@ -87,7 +87,7 @@ h5 {
     }
 
     &.container-wrapper-primary-darker {
-        background-color: $brand-primary-darker;
+        background-color: darken($brand-primary, 18%);
         color: white;
 
         a {
@@ -104,7 +104,7 @@ h5 {
     }
 
     &.container-wrapper-primary-darkest {
-        background-color: yellow; // $brand-primary-darkest;
+        background-color: darken($brand-primary, 22%);
         color: $font-color-dark;
 
         a {
@@ -157,6 +157,15 @@ h5 {
         @include media-breakpoint-up(md){
             margin-top: 0.8rem;
         }
+    }
+}
+
+// Footer
+
+.footer {
+    .bgsu-logo {
+        width: 100%;
+        opacity: 0.5;
     }
 }
 

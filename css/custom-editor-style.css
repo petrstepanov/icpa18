@@ -6993,18 +6993,18 @@ h5 {
     padding-bottom: 3rem; } }
 
 .container-wrapper.container-wrapper-primary-darker {
-  background-color: #415a77;
+  background-color: #4c5f78;
   color: white; }
   .container-wrapper.container-wrapper-primary-darker a {
     color: #f5d989; }
   .container-wrapper.container-wrapper-primary-darker h2 {
     color: white; }
   .container-wrapper.container-wrapper-primary-darker .dark {
-    color: #1a2b36; }
+    color: #182733; }
 
 .container-wrapper.container-wrapper-primary-darkest {
-  background-color: #374c64;
-  color: #1a2b36; }
+  background-color: #44566c;
+  color: #182733; }
   .container-wrapper.container-wrapper-primary-darkest a {
     color: #f5d989; }
 
@@ -7042,6 +7042,10 @@ h5 {
     @media (min-width: 768px) {
       .media.media-committee h5 {
         margin-top: 0.8rem; } }
+
+.footer .bgsu-logo {
+  width: 100%;
+  opacity: 0.5; }
 
 html {
   font-size: 12px; }
