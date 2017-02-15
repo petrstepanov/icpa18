@@ -28,14 +28,18 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<p>The event will be held in <strong>Orlando</strong>, "The City Beautiful", Florida, USA in <strong>October 2018</strong>.</p>
 			</div>
 		</div>
-		<!-- <div class="responsive-top-margin">
-			<a class="btn btn-warning" href="#" role="button">Register for ICPA-18</a>
-			<a class="btn btn-link btn-sm disabled ml-3 mr-1"><span class="grey">— OR —</span></a>
-			<a class="btn btn-link" href="#">Login<span class="hidden-xs-down"> to your account</span></a>
-		</div> -->
-		<div class="mt-2 mt-md-4">
-			<p class="red"><strong>Registration opens Nov 2017</strong></p>
+		<div class="responsive-top-margin">
+			<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#registerModal">
+				Register for ICPA-18
+			</button>
+			<span class="btn btn-link btn-sm disabled ml-3 mr-1 grey hidden-xs-down">— OR —</span>
+			<button type="button" class="btn btn-link ml-3 ml-sm-0" data-toggle="modal" data-target="#loginModal">
+				Login<span class="hidden-xs-down"> to your account</span>
+			</button>
 		</div>
+		<!-- <div class="mt-2 mt-md-4">
+			<p class="red"><strong>Registration opens Nov 2017</strong></p>
+		</div> -->
 	</div>
 </div>
 
@@ -270,14 +274,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 						</tr>
 					</tbody>
 				</table>
-				<!-- <div class="responsive-top-margin">
-					<a class="btn btn-warning" href="#" role="button">Register for ICPA-18</a>
-					<a class="btn btn-link btn-sm disabled ml-3 mr-1"><span class="grey">— OR —</span></a>
-					<a class="btn btn-link" href="#">Login<span class="hidden-xs-down"> to your account</span></a>
-				</div> -->
-				<div class="mt-2 mt-md-4">
-					<p class="red"><strong>Registration opens Nov 2017</strong></p>
+				<div class="responsive-top-margin mb-4 mb-sm-5 mb-md-0">
+					<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#registerModal">
+						Register for ICPA-18
+					</button>
 				</div>
+				<!-- <div class="mt-2 mt-md-4">
+					<p class="red"><strong>Registration opens Nov 2017</strong></p>
+				</div> -->
 			</div>
 			<div class="col-md-5">
 				<h2 class="mb-3">Correspondence</h2>
@@ -297,6 +301,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 </div>
 
 <?php
+
+define('__ROOT__', get_template_directory());
+
+require_once(__ROOT__.'/modals/modal-register.php');
+require_once(__ROOT__.'/modals/modal-login.php');
+require_once(__ROOT__.'/modals/modal-forgot-password.php');
 
 get_footer('icpa');
 

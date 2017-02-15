@@ -12,6 +12,15 @@
 
 // Reset and dependencies
 @import "../../src/sass/bootstrap4/normalize";
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: $font-family-sans-serif;
+}
+
 @import "../../src/sass/bootstrap4/print";
 
 // Core CSS
@@ -26,8 +35,20 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     // }
 }
 
+a {
+    color: $brand-primary-darker;
+
+    &:focus, &:hover {
+        color: darken($brand-primary-darker, 10%);
+    }
+}
+
 h3, .h3 {
-    font-family: $font-family-sans-serif;
+    font-size: $font-size-28;
+}
+
+h4, .h4 {
+    font-size: $font-size-21;
 }
 
 .display-1 {
@@ -57,6 +78,17 @@ h3, .h3 {
 @import "../../src/sass/bootstrap4/grid";
 @import "../../src/sass/bootstrap4/tables";
 @import "../../src/sass/bootstrap4/forms";
+
+.col-form-label {
+    padding-top: 0.6rem;
+}
+
+.form-group {
+    @include media-breakpoint-down(md) {
+        margin-bottom: 0.8rem;
+    }
+}
+
 @import "../../src/sass/bootstrap4/buttons";
 
 .btn {
@@ -64,6 +96,47 @@ h3, .h3 {
     font-family: $font-family-sans-serif-bold;
 
 
+}
+
+.btn-primary {
+    &.active, &:active {
+        border-color: $brand-primary;
+    }
+}
+
+.btn-group.btn-group-input {
+    .btn {
+        border-radius: 0.375em;
+        font-family: $font-family-sans-serif;
+        padding: .6rem 1.75rem;
+    }
+
+    .btn-primary {
+        background-color: white;
+        color: $brand-primary-darker;
+
+        &.active {
+            background-color: $brand-primary;
+            color: white;
+        }
+    }
+
+    .btn+.btn {
+        margin-left: 0;
+    }
+
+    &>.btn:first-child:not(:last-child):not(.dropdown-toggle){
+        border-right-width: 0;
+    }
+
+    &>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle){
+        border-left-width: 0;
+        border-right-width: 0;
+    }
+
+    &>.btn:last-child:not(:first-child){
+        border-left-width: 0;
+    }
 }
 
 .btn-lg {
@@ -84,6 +157,12 @@ h3, .h3 {
     }
 }
 
+.btn-primary, .btn-secondary, .btn-success, .btn-info, .btn-warning, .btn-danger, .btn-link {
+    &.focus, &:focus {
+        box-shadow: none;
+    }
+}
+
 .btn-link {
     color: $font-color;
 
@@ -97,6 +176,11 @@ h3, .h3 {
 @import "../../src/sass/bootstrap4/button-group";
 @import "../../src/sass/bootstrap4/input-group";
 @import "../../src/sass/bootstrap4/custom-forms";
+
+.custom-select {
+    min-width: 100%;
+}
+
 @import "../../src/sass/bootstrap4/nav";
 @import "../../src/sass/bootstrap4/navbar";
 @import "../../src/sass/bootstrap4/card";
@@ -113,6 +197,12 @@ h3, .h3 {
 
 // Components w/ JavaScript
 @import "../../src/sass/bootstrap4/modal";
+
+.modal-footer {
+    padding-top: 0;
+    padding-bottom: 2.5rem;
+}
+
 @import "../../src/sass/bootstrap4/tooltip";
 @import "../../src/sass/bootstrap4/popover";
 @import "../../src/sass/bootstrap4/carousel";

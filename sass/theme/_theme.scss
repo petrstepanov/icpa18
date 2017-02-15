@@ -57,22 +57,22 @@ i {
 
 
         .grey {
-            color: rgba(255,255,255, 0.2);
+            color: rgba(255,255,255, 0.4);
             font-family: $font-family-sans-serif;
         }
     }
 
-    // .responsive-top-margin {
-    //     margin-top: 1em;
-    //
-    //     @include media-breakpoint-up(md) {
-    //         margin-top: 2em;
-    //     }
-    //
-    //     @include media-breakpoint-up(lg) {
-    //         margin-top: 3em;
-    //     }
-    // }
+    .responsive-top-margin {
+        margin-top: 1em;
+
+        @include media-breakpoint-up(md) {
+            margin-top: 2em;
+        }
+
+        @include media-breakpoint-up(lg) {
+            margin-top: 3em;
+        }
+    }
 }
 
 .container-wrapper {
@@ -82,6 +82,11 @@ i {
     }
 
     // margin-bottom: $jumbotron-padding;
+
+    .grey {
+        color: rgba(255,255,255, 0.2);
+        font-family: $font-family-sans-serif;
+    }
 
     @include media-breakpoint-up(sm) {
         .container {
@@ -95,6 +100,10 @@ i {
         color: white;
 
         a {
+            color: $brand-warning;
+        }
+
+        .btn-link {
             color: $brand-warning;
         }
 
@@ -125,7 +134,7 @@ i {
                     content:"";
                 }
                 position: absolute;
-                right: 0;
+                right: 15px;
                 top: 0;
                 bottom: -3.5rem;
                 left: 0;
@@ -223,7 +232,6 @@ i {
             bottom: 0;
             width: $menu-width;
             background-color: $gray-lighter;
-            padding: $menu-padding*0.8 $menu-padding;
             @include translate ($menu-width, 0);
             @include transition(all $duration-fast ease-out);
 
@@ -232,13 +240,20 @@ i {
                 @include translate ($menu-width-md, 0);
             }
 
+            .scroll-panel {
+                padding: $menu-padding*0.75 $menu-padding;
+                padding-bottom: 0;
+            }
+
             .section-account {
                 background-color: white;
-                margin-top: -$menu-padding*0.8;
+                margin-top: -$menu-padding*0.75;
                 margin-left: -$menu-padding;
                 margin-right: -$menu-padding;
                 margin-bottom: 0;
                 padding: $menu-padding;
+                padding-top: $menu-padding*0.75;
+                padding-bottom: $menu-padding*0.75;
 
                 .username {
                     font-size: $font-size-28;
@@ -248,11 +263,25 @@ i {
                     font-size: $font-size-12;
                     font-style: italic;
                 }
+            }
 
-                .navigation {
-                    font-family: $font-family-display;
-                    font-size: $font-size-28;
-                }
+            .section-danger, .section-success{
+                margin-left: -$menu-padding;
+                margin-right: -$menu-padding;
+                padding: 1.85rem $menu-padding;
+                background-color: $brand-danger;
+                color: white;
+                font-size: $font-size-12;
+            }
+
+            .section-success {
+                background-color: $brand-success;
+                color: darken($brand-success, 40%);
+            }
+
+            .section-navigation {
+                font-family: $font-family-display;
+                font-size: $font-size-28;
             }
         }
     }
@@ -330,4 +359,13 @@ dl, dt {
         font-size: $font-size-12;
         font-family: $font-family-sans-serif-bold;
     }
+}
+
+.scroll-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
 }

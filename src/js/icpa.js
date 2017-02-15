@@ -8,6 +8,10 @@ var UiController = (function($) {
         console.log(string);
     };
 
+    var isFunction = function(functionToCheck) {
+        var getType = {};
+        return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+    }
 
     var openMenu = function(){
         if (menuAnimationInProgress === false){
@@ -26,7 +30,7 @@ var UiController = (function($) {
         }
     };
 
-    var closeMenu = function(){
+    var closeMenu = function(callback){
         if (menuAnimationInProgress === false){
             if($('.header').hasClass('menu-opened')){
                 log('closing menu...');
@@ -35,18 +39,24 @@ var UiController = (function($) {
                     function(e) {
                         $(this).hide();
                         menuAnimationInProgress = false;
-                        log('opening menu...');
+                        log('closing menu... done');
+                        // Execute callback if passed
+                        if (isFunction(callback)){
+                            setTimeout(function(){
+                                callback();
+                            }, 10);
+                        }
                     });
                 $('.header').removeClass('menu-opened');
             }
         }
     };
 
-    var init = function(){
+    var initMenuToggle = function(){
         // Menu opening and closing trigger
         $('.js--open-menu-button').click(function(event){
             event.stopPropagation();
-            // var self = this;
+            event.preventDefault();
             if($('.header').hasClass('menu-opened')){
                 // If menu is opened
                 closeMenu();
@@ -66,6 +76,49 @@ var UiController = (function($) {
             event.stopPropagation();
             closeMenu();
         });
+    };
+
+    var initRegistrationDialogOpen = function(){
+        // Open registration dialog from the menu
+        $('.js--menu-register-button').click(function(event){
+            event.preventDefault();
+            // First close the menu
+            closeMenu(function(){
+                // When closed, show registration modal
+                $('#registerModal').modal('show');
+            });
+        });
+    };
+
+    var initLoginDialogOpen = function(){
+        // Open login dialog from the menu
+        $('.js--menu-login-button').click(function(event){
+            event.preventDefault();
+            // First close the menu
+            closeMenu(function(){
+                // When closed, show login modal
+                $('#loginModal').modal('show');
+            });
+        });
+    };
+
+    var initForgotPasswordDialogOpen = function(){
+        // Open login dialog from the menu
+        $('.js--forgot-password-button').click(function(event){
+            event.preventDefault();
+            // First close the login modal
+            $('#loginModal').modal('hide');
+            setTimeout(function(){
+                $('#forgotPasswordModal').modal('show');
+            }, 500);
+        });
+    };
+
+    var init = function(){
+        initMenuToggle();
+        initRegistrationDialogOpen();
+        initLoginDialogOpen();
+        initForgotPasswordDialogOpen();
     };
 
     // Public API
