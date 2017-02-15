@@ -20,6 +20,10 @@ h5 {
     font-size: 1rem;
 }
 
+i {
+    font-family: $font-family-sans-serif-italic;
+}
+
 // Jumbotron
 
 .jumbotron {
@@ -156,6 +160,110 @@ h5 {
 
         @include media-breakpoint-up(md){
             margin-top: 0.8rem;
+        }
+    }
+}
+
+// Menu
+
+.header {
+    height: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: 1000;
+
+    .open-menu-button {
+        position: absolute;
+        right: 15px;
+        top: 4.5rem;
+        border-radius: 50%;
+        width: $menu-icon-size;
+        height: $menu-icon-size;
+        line-height: $menu-icon-size*0.95;
+        background-color: rgba(0,0,0,0.2);
+        color: $brand-primary;
+        text-align: center;
+        // transition: opacity $duration-normal ease-out;
+
+        @include media-breakpoint-down(lg){
+            top: 4.3rem;
+        }
+
+        @include media-breakpoint-down(sm){
+            top: 5.3rem;
+        }
+
+        @include media-breakpoint-down(xs){
+            top: 2.8rem;
+        }
+
+        [class^="icomoon-"], [class*=" icomoon-"] {
+            font-size: 1.5625rem;
+            vertical-align: middle;
+        }
+    }
+
+    .menu-glass-panel {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: none;
+        background-color: rgba(0,0,0,0);
+        @include transition(background-color $duration-fast ease-out);
+        z-index: 1010;
+
+        .menu {
+            color: $brand-primary-darker;
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: $menu-width;
+            background-color: $gray-lighter;
+            padding: $menu-padding*0.8 $menu-padding;
+            @include translate ($menu-width, 0);
+            @include transition(all $duration-fast ease-out);
+
+            @include media-breakpoint-up(md){
+                width: $menu-width-md;
+                @include translate ($menu-width-md, 0);
+            }
+
+            .section-account {
+                background-color: white;
+                margin-top: -$menu-padding*0.8;
+                margin-left: -$menu-padding;
+                margin-right: -$menu-padding;
+                margin-bottom: 0;
+                padding: $menu-padding;
+
+                .username {
+                    font-size: $font-size-28;
+                }
+
+                .organization {
+                    font-size: $font-size-12;
+                    font-style: italic;
+                }
+
+                .navigation {
+                    font-family: $font-family-display;
+                    font-size: $font-size-28;
+                }
+            }
+        }
+    }
+
+    &.menu-opened {
+        .menu-glass-panel {
+            background-color: rgba($brand-primary, 0.8);
+        }
+
+        .menu {
+            @include translate (0, 0);
         }
     }
 }

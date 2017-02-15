@@ -90,6 +90,36 @@ $link-hover-decoration: none;
 
 }
 
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?exw595');
+  src:  url('../fonts/icomoon.eot?exw595#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?exw595') format('truetype'),
+    url('../fonts/icomoon.woff?exw595') format('woff'),
+    url('../fonts/icomoon.svg?exw595#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icomoon-"], [class*=" icomoon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icomoon-menu:before {
+  content: "\e900";
+}
+
 $font-size-9:   0.5625em; //9/16rem;
 $font-size-12:  0.7500em; //12/16rem;
 $font-size-16:  1.0000em; //16/16rem;
@@ -106,6 +136,7 @@ $display4-size: 1.75em; // default: 3.5rem;
 
 $font-family-sans-serif: 'noto_sansregular', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 $font-family-sans-serif-bold: 'noto_sansbold', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-sans-serif-italic: 'noto_sansitalic', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 $font-family-display: 'cgothicbold', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
 b, strong {
@@ -129,3 +160,60 @@ $jumbotron-padding:              1.5rem;
 
 $spacer:   1.6rem;
 $border-width: 2px;
+
+// Right menu
+
+$menu-icon-size: 3.5em;
+$menu-width: 85%;
+$menu-width-md: 22rem;
+$menu-padding: 4em;
+
+// Speed
+
+$duration-fast:   200ms;
+$duration-normal: 400ms;
+$duration-slow:   600ms;
+
+// Mixins
+
+@mixin transform($transforms) {
+	-webkit-transform: $transforms;
+	-moz-transform: $transforms;
+	-ms-transform: $transforms;
+	transform: $transforms;
+}
+
+@mixin translate ($x, $y) {
+   @include transform(translate($x, $y));
+}
+
+@mixin transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+@mixin transition-property($property...) {
+    -moz-transition-property:    $property;
+    -o-transition-property:      $property;
+    -webkit-transition-property: $property;
+    transition-property:         $property;
+}
+@mixin transition-duration($duration...) {
+    -moz-transition-property:    $duration;
+    -o-transition-property:      $duration;
+    -webkit-transition-property: $duration;
+    transition-property:         $duration;
+}
+@mixin transition-timing-function($timing...) {
+    -moz-transition-timing-function:    $timing;
+    -o-transition-timing-function:      $timing;
+    -webkit-transition-timing-function: $timing;
+    transition-timing-function:         $timing;
+}
+@mixin transition-delay($delay...) {
+    -moz-transition-delay:    $delay;
+    -o-transition-delay:      $delay;
+    -webkit-transition-delay: $delay;
+    transition-delay:         $delay;
+}
