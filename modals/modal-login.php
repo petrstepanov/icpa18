@@ -15,7 +15,7 @@
                             <div class="form-group row">
                                 <label for="input-email" class="col-12 col-lg-3 col-form-label"><?php _e( 'Username or email', 'understrap' ); ?></label>
                                 <div class="col-12 col-lg-9">
-                                    <input class="form-control" type="email" name="user_login" id="user_login">
+                                    <input class="form-control" type="text" name="user_login" id="user_login">
                                 </div>
                             </div>
                             <div class="form-group row">
