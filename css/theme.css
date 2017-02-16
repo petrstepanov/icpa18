@@ -4573,6 +4573,9 @@ button.close {
   padding-top: 0;
   padding-bottom: 2.5rem; }
 
+.close {
+  color: #e0e1dd; }
+
 .tooltip {
   position: absolute;
   z-index: 1070;
@@ -7063,7 +7066,7 @@ i {
   font-family: "noto_sansitalic", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
 
 .jumbotron.icpa-18 {
-  background-image: url("../img/orlando-banner.jpg");
+  background-image: url("../img/orlando-eola.jpg");
   background-position: center center;
   background-size: cover;
   color: white; }
@@ -7074,21 +7077,14 @@ i {
   .jumbotron.icpa-18 hr {
     border-top-color: rgba(255, 255, 255, 0.2); }
   .jumbotron.icpa-18 p {
-    color: rgba(255, 255, 255, 0.7); }
+    color: rgba(255, 255, 255, 0.9);
+    font-family: "noto_sansbold", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6rem; }
   .jumbotron.icpa-18 .btn-link {
     color: #f5d989; }
   .jumbotron.icpa-18 .grey {
     color: rgba(255, 255, 255, 0.4);
     font-family: "noto_sansregular", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
-
-.jumbotron .responsive-top-margin {
-  margin-top: 1em; }
-  @media (min-width: 768px) {
-    .jumbotron .responsive-top-margin {
-      margin-top: 2em; } }
-  @media (min-width: 992px) {
-    .jumbotron .responsive-top-margin {
-      margin-top: 3em; } }
 
 .container-wrapper .container {
   padding-top: 1.5rem;
@@ -7104,7 +7100,7 @@ i {
     padding-bottom: 3rem; } }
 
 .container-wrapper.container-wrapper-primary-darker {
-  background-color: #4c5f78;
+  background-color: #415a77;
   color: white; }
   .container-wrapper.container-wrapper-primary-darker a {
     color: #f5d989; }
@@ -7127,7 +7123,7 @@ i {
     position: absolute;
     right: 15px;
     top: 0;
-    bottom: -3.5rem;
+    bottom: -2.5rem;
     left: 0;
     background-image: url("../img/e.svg");
     background-position: center right;
@@ -7165,20 +7161,23 @@ i {
   .header .open-menu-button {
     position: absolute;
     right: 15px;
-    top: 4.5rem;
+    top: 5rem;
     border-radius: 50%;
     width: 3.5rem;
     height: 3.5rem;
     line-height: 3.325rem;
-    background-color: rgba(0, 0, 0, 0.2);
-    color: #778da9;
+    background-color: #415a77;
+    color: #e0e1dd;
     text-align: center; }
     @media (max-width: 1199px) {
       .header .open-menu-button {
-        top: 4.3rem; } }
+        top: 4.6rem; } }
+    @media (max-width: 991px) {
+      .header .open-menu-button {
+        top: 3.65rem; } }
     @media (max-width: 767px) {
       .header .open-menu-button {
-        top: 5.3rem; } }
+        top: 5.5rem; } }
     @media (max-width: 575px) {
       .header .open-menu-button {
         top: 2.8rem; } }
@@ -7262,19 +7261,19 @@ html {
 
 @media (min-width: 576px) {
   html {
-    font-size: 14px; } }
+    font-size: 13px; } }
 
 @media (min-width: 768px) {
   html {
-    font-size: 16px; } }
+    font-size: 14px; } }
 
 @media (min-width: 992px) {
   html {
-    font-size: 16px; } }
+    font-size: 15px; } }
 
 @media (min-width: 1200px) {
   html {
-    font-size: 18px; } }
+    font-size: 16px; } }
 
 .lh-0 {
   line-height: 0 !important; }

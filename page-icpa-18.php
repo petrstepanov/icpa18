@@ -21,14 +21,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<h1 class="display-1 display-responsive mb-0">18th International Conference on Positron Annihilation</h1>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-lg-9">
-				<hr class="my-4" />
+		<div class="row mb-3 mb-md-4 mb-lg-5">
+			<div class="col-12 col-md-10 col-lg-9">
+				<hr class="mt-4 mb-5" />
 				<p>We’re throwing our biggest ever event in the US to mark the ICPA-18. You’ll hear talks on top notch material research topics, say hello to colleagues in person with plenty of time to relax, have a drink and meet like-minded people.</p>
 				<p>The event will be held in <strong>Orlando</strong>, "The City Beautiful", Florida, USA in <strong>October 2018</strong>.</p>
 			</div>
 		</div>
-		<div class="responsive-top-margin">
+		<div class="mb-3">
 			<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#registerModal">
 				Register for ICPA-18
 			</button>

@@ -203,6 +203,10 @@ h4, .h4 {
     padding-bottom: 2.5rem;
 }
 
+.close {
+    color: $gray-lighter;
+}
+
 @import "../../src/sass/bootstrap4/tooltip";
 @import "../../src/sass/bootstrap4/popover";
 @import "../../src/sass/bootstrap4/carousel";

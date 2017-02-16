@@ -28,7 +28,7 @@ i {
 
 .jumbotron {
     &.icpa-18 {
-        background-image: url('../img/orlando-banner.jpg');
+        background-image: url('../img/orlando-eola.jpg');
         background-position: center center;
         background-size: cover;
         color: white;
@@ -48,7 +48,9 @@ i {
         }
 
         p {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.9);
+            font-family: $font-family-sans-serif-bold;
+            line-height: 1.6rem;
         }
 
         .btn-link {
@@ -59,18 +61,6 @@ i {
         .grey {
             color: rgba(255,255,255, 0.4);
             font-family: $font-family-sans-serif;
-        }
-    }
-
-    .responsive-top-margin {
-        margin-top: 1em;
-
-        @include media-breakpoint-up(md) {
-            margin-top: 2em;
-        }
-
-        @include media-breakpoint-up(lg) {
-            margin-top: 3em;
         }
     }
 }
@@ -96,7 +86,7 @@ i {
     }
 
     &.container-wrapper-primary-darker {
-        background-color: darken($brand-primary, 18%);
+        background-color: $brand-primary-darker;
         color: white;
 
         a {
@@ -136,7 +126,7 @@ i {
                 position: absolute;
                 right: 15px;
                 top: 0;
-                bottom: -3.5rem;
+                bottom: -2.5rem;
                 left: 0;
                 background-image: url('../img/e.svg');
                 background-position: center right;
@@ -185,22 +175,26 @@ i {
     .open-menu-button {
         position: absolute;
         right: 15px;
-        top: 4.5rem;
+        top: 5rem;
         border-radius: 50%;
         width: $menu-icon-size;
         height: $menu-icon-size;
         line-height: $menu-icon-size*0.95;
-        background-color: rgba(0,0,0,0.2);
-        color: $brand-primary;
+        background-color: $brand-primary-darker; //rgba(0,0,0,0.2);
+        color: $gray-lighter; //$brand-primary;
         text-align: center;
         // transition: opacity $duration-normal ease-out;
 
         @include media-breakpoint-down(lg){
-            top: 4.3rem;
+            top: 4.6rem;
+        }
+
+        @include media-breakpoint-down(md){
+            top: 3.65rem;
         }
 
         @include media-breakpoint-down(sm){
-            top: 5.3rem;
+            top: 5.5rem;
         }
 
         @include media-breakpoint-down(xs){
@@ -314,25 +308,25 @@ html {
 
 @include media-breakpoint-up(sm) {
   html {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 
 @include media-breakpoint-up(md) {
   html {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
 @include media-breakpoint-up(lg) {
   html {
-    font-size: 16px; //20px; //28px;
+    font-size: 15px; //20px; //28px;
   }
 }
 
 @include media-breakpoint-up(xl) {
   html {
-    font-size: 18px; //20px; //28px;
+    font-size: 16px; //20px; //28px;
   }
 }
 
