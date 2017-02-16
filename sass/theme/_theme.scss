@@ -24,6 +24,12 @@ i {
     font-family: $font-family-sans-serif-italic;
 }
 
+
+b, strong, .strong {
+    font-family: $font-family-sans-serif-bold;
+    font-weight: normal;
+}
+
 // Jumbotron
 
 .jumbotron {

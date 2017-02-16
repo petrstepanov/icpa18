@@ -1,0 +1,60 @@
+.someOtherTheme {
+    overflow: hidden;
+    position: relative;
+    border-radius: 0.375rem;
+    margin-bottom: 1.25rem;
+    min-height: auto !important;
+    width: 23rem !important;
+
+    .noty_type {
+        text-transform: uppercase;
+        color: rgba(0, 0, 0, 0.5);
+        margin: 1.5rem 1.75rem 1.2em 1.75rem;
+        letter-spacing: 0.1rem;
+        font-size: $font-size-12;
+        font-family: $font-family-sans-serif-bold;
+    }
+
+    &.noty_container_type_alert .noty-type {
+        color: rgba(0, 0, 0, 0.2);
+    }
+
+
+    &.noty_container_type_alert {
+        background-color: #333333;
+        color: rgba(255,255,255,0.5);
+    }
+
+    &.noty_container_type_information {
+        background-color: $gray-lighter;
+        color: rgba(0,0,0,0.7);
+    }
+
+    &.noty_container_type_error {
+        background-color: $brand-danger;
+        color: rgba(255,255,255,0.7);
+    }
+
+    &.noty_container_type_warning {
+        background-color: $brand-warning;
+        color: rgba(255,255,255,0.7);
+    }
+
+    &.noty_container_type_success {
+        background-color: $brand-success;
+        color: rgba(255,255,255,0.7);
+    }
+
+    .noty_message {
+        margin: 0 1.75rem 1.4rem 1.75rem;
+
+        a {
+            color: inherit;
+            text-decoration: underline;
+
+            &:hover {
+                color: inherit;
+            }
+        }
+    }
+}

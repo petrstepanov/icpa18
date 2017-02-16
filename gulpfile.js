@@ -93,7 +93,7 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./css'))
         .pipe(rename('custom-editor-style.css'))
         .pipe(gulp.dest('./css'));
-    return stream;        
+    return stream;
 });
 
 
@@ -156,8 +156,8 @@ gulp.task('scripts', function() {
         basePaths.dev + 'js/skip-link-focus-fix.js',
 
         // Custom Scripts
-        basePaths.dev + 'js/icpa.js',
         basePaths.dev + 'js/jquery.noty.packaged.js',
+        basePaths.dev + 'js/icpa.js'        
     ];
   gulp.src(scripts)
     .pipe(concat('theme.min.js'))

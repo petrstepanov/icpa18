@@ -36,9 +36,6 @@ function login_user(){
 	// TODO: check , false - last parameter
 	$user = wp_signon( array('user_login' => $user_login, 'user_password' => $user_password, 'remember' => true), false );
 
-	print_r ($user);
-	die();
-
 	// Check if Wordperss returned an error during the registration
 	if (is_wp_error($user)){
 		$responce = array('error' => true, 'message'=> $user->get_error_message());

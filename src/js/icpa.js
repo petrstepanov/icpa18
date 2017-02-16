@@ -11,7 +11,7 @@ var UiController = (function($) {
     var isFunction = function(functionToCheck) {
         var getType = {};
         return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
-    }
+    };
 
     var openMenu = function(){
         if (menuAnimationInProgress === false){
@@ -102,15 +102,20 @@ var UiController = (function($) {
         });
     };
 
+    var closeLoginDialogAndOpenForgotPassword = function(){
+        // First close the login modal
+        $('#loginModal').modal('hide');
+        // Open forgot password in a few
+        setTimeout(function(){
+            $('#forgotPasswordModal').modal('show');
+        }, 500);
+    };
+
     var initForgotPasswordDialogOpen = function(){
         // Open login dialog from the menu
         $('.js--forgot-password-button').click(function(event){
             event.preventDefault();
-            // First close the login modal
-            $('#loginModal').modal('hide');
-            setTimeout(function(){
-                $('#forgotPasswordModal').modal('show');
-            }, 500);
+            closeLoginDialogAndOpenForgotPassword();
         });
     };
 
@@ -123,11 +128,54 @@ var UiController = (function($) {
 
     // Public API
     return {
-        init: init
+        init: init,
+        closeLoginDialogAndOpenForgotPassword: closeLoginDialogAndOpenForgotPassword
 //        openMenu: openMenu,
 //        closeMenu: closeMenu
     };
 })(jQuery);
+
+var NotificationCenter = (function($, noty){
+
+    var themeName = 'someOtherTheme';
+
+    var alert = function(text, type){
+
+        // Remove Wordpress error prefix
+        text = text.replace("<strong>ERROR</strong>: ", "");
+
+        var n = noty({
+            text:           text,
+            type:           type,
+            dismissQueue:   true,
+            layout:         'topLeft',
+            theme:          themeName,
+            closeWith:      ['click'],
+            maxVisible:     10,
+            template:       '<p class="noty_type">' + type + '</p><p class="noty_message"><span class="noty_text"></span></p>',
+            timeout:        5000,
+            animation: {
+                open:   'animated fadeInUp',
+                close:  'animated fadeOutUp',
+                easing: 'swing',
+                speed:  300
+            },
+            callback: {
+                onShow: function(){
+                    $('.someOtherTheme:last-child').find('[href$="lostpassword"]').attr("href", "#").click(function(event){
+                        event.preventDefault();
+                        UiController.closeLoginDialogAndOpenForgotPassword();
+                    });
+                }
+            }
+        });
+        console.log('html: ' + n.options.id);
+    };
+
+    return {
+        alert: alert
+    };
+})(jQuery, noty);
 
 jQuery( document ).ready(function() {
     UiController.init();

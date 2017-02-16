@@ -139,10 +139,6 @@ $font-family-sans-serif-bold: 'noto_sansbold', -apple-system, system-ui, BlinkMa
 $font-family-sans-serif-italic: 'noto_sansitalic', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 $font-family-display: 'cgothicbold', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
-b, strong {
-    font-family: $font-family-sans-serif-bold;
-}
-
 $headings-color: $font-color;
 $hr-border-color: $font-color; // rgba($black,.1) !default;
 
