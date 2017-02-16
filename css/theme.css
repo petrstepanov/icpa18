@@ -4574,7 +4574,8 @@ button.close {
   padding-bottom: 2.5rem; }
 
 .close {
-  color: #e0e1dd; }
+  color: #e0e1dd;
+  opacity: 1; }
 
 .tooltip {
   position: absolute;
@@ -7067,6 +7068,7 @@ i {
 
 .jumbotron.icpa-18 {
   background-image: url("../img/orlando-eola.jpg");
+  background-attachment: fixed;
   background-position: center center;
   background-size: cover;
   color: white; }
@@ -7112,7 +7114,7 @@ i {
     color: #182733; }
 
 .container-wrapper.container-wrapper-primary-darkest {
-  background-color: #44566c;
+  background-color: #3a5069;
   color: #182733; }
   .container-wrapper.container-wrapper-primary-darkest a {
     color: #f5d989; }

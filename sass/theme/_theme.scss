@@ -29,6 +29,7 @@ i {
 .jumbotron {
     &.icpa-18 {
         background-image: url('../img/orlando-eola.jpg');
+        background-attachment: fixed;
         background-position: center center;
         background-size: cover;
         color: white;
@@ -107,7 +108,7 @@ i {
     }
 
     &.container-wrapper-primary-darkest {
-        background-color: darken($brand-primary, 22%);
+        background-color: rgba(58, 80, 105, 1);
         color: $font-color-dark;
 
         a {
