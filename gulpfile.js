@@ -93,7 +93,7 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./css'))
         .pipe(rename('custom-editor-style.css'))
         .pipe(gulp.dest('./css'));
-    return stream;
+    return stream;        
 });
 
 
@@ -156,7 +156,8 @@ gulp.task('scripts', function() {
         basePaths.dev + 'js/skip-link-focus-fix.js',
 
         // Custom Scripts
-        basePaths.dev + 'js/icpa.js'
+        basePaths.dev + 'js/icpa.js',
+        basePaths.dev + 'js/jquery.noty.packaged.js',
     ];
   gulp.src(scripts)
     .pipe(concat('theme.min.js'))
@@ -216,9 +217,19 @@ gulp.task('copy-assets', ['clean-source'], function() {
     gulp.src(basePaths.node + 'tether/dist/js/*.js')
         .pipe(gulp.dest(basePaths.dev + '/js'));
 
+// Petr Stepanov: we don't really need tether css files according to Bootstrap docs
 // Copy Tether CSS files
-    gulp.src(basePaths.node + 'tether/dist/css/*.css')
+// gulp.src(basePaths.node + 'tether/dist/css/*.css')
+//     .pipe(gulp.dest(basePaths.dev + '/css'));
+
+// Copy Noty JS files
+    gulp.src(basePaths.node + 'noty/js/noty/packaged/jquery.noty.packaged.js')
+        .pipe(gulp.dest(basePaths.dev + '/js'));
+
+// Copy Animate.CSS files
+    gulp.src(basePaths.node + 'animate.css/animate.css')
         .pipe(gulp.dest(basePaths.dev + '/css'));
+
     return stream;
 });
 

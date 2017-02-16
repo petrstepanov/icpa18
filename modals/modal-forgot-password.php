@@ -10,14 +10,14 @@
             </div>
             <div class="modal-body">
                 <div class="form-group row">
-                    <label for="input-email" class="col-12 col-lg-3 col-form-label">Email</label>
+                    <label for="input-email" class="col-12 col-lg-3 col-form-label">Username or email</label>
                     <div class="col-12 col-lg-9">
                         <input class="form-control" type="email" id="input-email">
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-warning">Send email with instructions</button>
+                <button type="button" class="btn btn-warning">Get new password</button>
             </div>
         </div>
     </div>

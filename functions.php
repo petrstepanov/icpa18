@@ -71,3 +71,13 @@ require get_template_directory() . '/inc/woocommerce.php';
  * Load Editor functions.
  */
 require get_template_directory() . '/inc/editor.php';
+
+/**
+ * Ajax registration.
+ */
+require get_template_directory() . '/inc/ajax-login.php';
+
+/**
+ * ChromePHP https://github.com/ccampbell/chromephp
+ */
+// require get_template_directory() . '/inc/chrome-php.php';
