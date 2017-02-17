@@ -20,13 +20,13 @@ function login_user(){
 
 	// Validate POST parameter values. Actually Wordpress will do it itself in case if we don't
 	if (empty($user_login)){
-		$responce = array('error' => true, 'message'=> __('Login field is empty', 'understrap'));
+		$responce = array('error' => true, 'message'=> __('Please fill out the <strong>Username or Email</strong> field', 'understrap'));
 		echo json_encode($responce);
 		die();
 	}
 
 	if (empty($user_password)){
-		$responce = array('error' => true, 'message'=> __('Password field is empty', 'understrap'));
+		$responce = array('error' => true, 'message'=> __('Please fill out the <strong>Password</strong> field', 'understrap'));
 		echo json_encode($responce);
 		die();
 	}
@@ -45,7 +45,7 @@ function login_user(){
 
 	// Successful responce
 	$responce = array('error' => false, 'message'=> __('Logged in successfully', 'understrap'));
-	echo json_encode();
+	echo json_encode($responce);
 	die();
 }
 
@@ -74,7 +74,7 @@ if ( ! function_exists( 'login_user_scripts' ) ) {
 		wp_enqueue_script( 'ajax-login-user', get_template_directory_uri() . '/src/js/login-user.js', array( 'jquery' ), $the_theme->get( 'Version' ), true );
 
 		// Declare javascript variable 'ajaxurl' with namespace 'ajaxnamespace' to be used with the 'ajax-login-user' script
-		wp_localize_script('ajax-login-user', 'ajaxnamespace', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
+		wp_localize_script('ajax-login-user', 'namespace', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'redirecturl' => home_url('/account')));
 	}
 } // endif function_exists( 'login_user_scripts' ).
 

@@ -7310,6 +7310,26 @@ var UiController = (function($) {
         }
     };
 
+    var closeLoginModalAndOpenForgotPassword = function(){
+        // First close the login modal
+        $('#loginModal').modal('hide');
+        // Open forgot password in a few
+        setTimeout(function(){
+            $('#forgotPasswordModal').modal('show');
+        }, 500);
+    };
+
+    var closeLoginModal = function(callback){
+        // If callback passed execute it on modal close
+        if (isFunction(callback)){
+            $('#loginModal').on('hidden.bs.modal', function () {
+                callback();
+            });
+        }
+        // First close the login modal
+        $('#loginModal').modal('hide');
+    };
+
     var initMenuToggle = function(){
         // Menu opening and closing trigger
         $('.js--open-menu-button').click(function(event){
@@ -7360,20 +7380,11 @@ var UiController = (function($) {
         });
     };
 
-    var closeLoginDialogAndOpenForgotPassword = function(){
-        // First close the login modal
-        $('#loginModal').modal('hide');
-        // Open forgot password in a few
-        setTimeout(function(){
-            $('#forgotPasswordModal').modal('show');
-        }, 500);
-    };
-
     var initForgotPasswordDialogOpen = function(){
         // Open login dialog from the menu
         $('.js--forgot-password-button').click(function(event){
             event.preventDefault();
-            closeLoginDialogAndOpenForgotPassword();
+            closeLoginModalAndOpenForgotPassword();
         });
     };
 
@@ -7387,9 +7398,8 @@ var UiController = (function($) {
     // Public API
     return {
         init: init,
-        closeLoginDialogAndOpenForgotPassword: closeLoginDialogAndOpenForgotPassword
-//        openMenu: openMenu,
-//        closeMenu: closeMenu
+        closeLoginModalAndOpenForgotPassword: closeLoginModalAndOpenForgotPassword,
+        closeLoginModal: closeLoginModal
     };
 })(jQuery);
 
@@ -7422,7 +7432,7 @@ var NotificationCenter = (function($, noty){
                 onShow: function(){
                     $('.someOtherTheme:last-child').find('[href$="lostpassword"]').attr("href", "#").click(function(event){
                         event.preventDefault();
-                        UiController.closeLoginDialogAndOpenForgotPassword();
+                        UiController.closeLoginModalAndOpenForgotPassword();
                     });
                 }
             }
