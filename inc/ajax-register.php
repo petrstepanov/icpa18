@@ -108,7 +108,7 @@ function register_user(){
         'first_name'            => $first_name,
         'last_name'             => $last_name,
         'description'           => $description,
-        'show_admin_bar_front'  => false
+        'show_admin_bar_front'  => 'false'
     );
 
 	// Insert new user instance into database
