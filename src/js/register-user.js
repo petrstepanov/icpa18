@@ -1,6 +1,6 @@
 (function($) {
 
-    $('#ajax_login_form').submit(function(event) {
+    $('#ajax_register_form').submit(function(event) {
 
         // Stop regular form submission
         event.preventDefault();
@@ -11,7 +11,7 @@
         $submit.prop('disabled', true);
 
         // Send the data using post (ajaxnamespace.ajaxurl injected by Wordpress)
-        var posting = $.post(loginnamespace.ajaxurl, $form.serialize());
+        var posting = $.post(registernamespace.ajaxurl, $form.serialize());
 
         posting.done(function(jsonString) {
             var data = JSON.parse(jsonString);
@@ -19,9 +19,9 @@
                 NotificationCenter.alert(data.message, 'error');
             } else {
                 // If success responce - close registration modal
-                UiController.closeLoginModal(function() {
-                    // And redirect to Account page
-                    window.location = loginnamespace.redirecturl;
+                UiController.closeRegisterModal(function() {
+                    // And show sussess notification
+                    NotificationCenter.alert(data.message, 'success');
                 });
             }
         });

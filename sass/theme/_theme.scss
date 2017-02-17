@@ -20,11 +20,13 @@ h5 {
     font-size: 1rem;
 }
 
-i {
+// Custom italic font - override defaults
+i, .i {
     font-family: $font-family-sans-serif-italic;
+    font-style: normal;
 }
 
-
+// Custom bold font - override defaults
 b, strong, .strong {
     font-family: $font-family-sans-serif-bold;
     font-weight: normal;
@@ -104,12 +106,17 @@ b, strong, .strong {
             color: $brand-warning;
         }
 
-        h2 {
+        h1, h2 {
             color: white;
         }
 
         .dark {
             color: $font-color-dark;
+        }
+
+        .organization {
+            font-size: $font-size-21;
+            color: rgba(255, 255, 255, 0.4);
         }
     }
 
@@ -120,6 +127,10 @@ b, strong, .strong {
         a {
             color: $brand-warning;
         }
+    }
+
+    &.container-wrapper-gray-lighter {
+        background-color: rgba($gray-lighter, 0.5);
     }
 
     &.e {
@@ -187,7 +198,7 @@ b, strong, .strong {
         width: $menu-icon-size;
         height: $menu-icon-size;
         line-height: $menu-icon-size*0.95;
-        background-color: $brand-primary-darker; //rgba(0,0,0,0.2);
+        background-color: $brand-primary-darkest; //rgba(0,0,0,0.2);
         color: $gray-lighter; //$brand-primary;
         text-align: center;
         // transition: opacity $duration-normal ease-out;

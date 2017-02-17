@@ -37,12 +37,12 @@
 
     &.noty_container_type_warning {
         background-color: $brand-warning;
-        color: rgba(255,255,255,0.7);
+        color: rgba(0,0,0,0.7);
     }
 
     &.noty_container_type_success {
         background-color: $brand-success;
-        color: rgba(255,255,255,0.7);
+        color: rgba(0,0,0,0.7);
     }
 
     .noty_message {

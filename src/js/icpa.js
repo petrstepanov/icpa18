@@ -1,4 +1,20 @@
-// The module pattern
+var Utils = (function(){
+
+    var isString = function(variable){
+        return (typeof variable === 'string' || variable instanceof String);
+    };
+
+    var isFunction = function(variable){
+        var getType = {};
+        return variable && getType.toString.call(variable) === '[object Function]';
+    };
+
+    return {
+        isString: isString,
+        isFunction: isFunction
+    };
+})();
+
 var UiController = (function($) {
 
     // Private variable that is true during the animations
@@ -6,11 +22,6 @@ var UiController = (function($) {
 
     var log = function(string){
         console.log(string);
-    };
-
-    var isFunction = function(functionToCheck) {
-        var getType = {};
-        return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
     };
 
     var openMenu = function(){
@@ -41,7 +52,7 @@ var UiController = (function($) {
                         menuAnimationInProgress = false;
                         log('closing menu... done');
                         // Execute callback if passed
-                        if (isFunction(callback)){
+                        if (Utils.isFunction(callback)){
                             setTimeout(function(){
                                 callback();
                             }, 10);
@@ -63,13 +74,24 @@ var UiController = (function($) {
 
     var closeLoginModal = function(callback){
         // If callback passed execute it on modal close
-        if (isFunction(callback)){
+        if (Utils.isFunction(callback)){
             $('#loginModal').on('hidden.bs.modal', function () {
                 callback();
             });
         }
         // First close the login modal
         $('#loginModal').modal('hide');
+    };
+
+    var closeRegisterModal = function(callback){
+        // If callback passed execute it on modal close
+        if (Utils.isFunction(callback)){
+            $('#registerModal').on('hidden.bs.modal', function () {
+                callback();
+            });
+        }
+        // First close the login modal
+        $('#registerModal').modal('hide');
     };
 
     var initMenuToggle = function(){
@@ -141,7 +163,8 @@ var UiController = (function($) {
     return {
         init: init,
         closeLoginModalAndOpenForgotPassword: closeLoginModalAndOpenForgotPassword,
-        closeLoginModal: closeLoginModal
+        closeLoginModal: closeLoginModal,
+        closeRegisterModal: closeRegisterModal
     };
 })(jQuery);
 
@@ -150,36 +173,36 @@ var NotificationCenter = (function($, noty){
     var themeName = 'someOtherTheme';
 
     var alert = function(text, type){
+        if (Utils.isString(text) && Utils.isString(type)){
+            // Remove Wordpress error prefix
+            text = text.replace("<strong>ERROR</strong>: ", "");
 
-        // Remove Wordpress error prefix
-        text = text.replace("<strong>ERROR</strong>: ", "");
-
-        var n = noty({
-            text:           text,
-            type:           type,
-            dismissQueue:   true,
-            layout:         'topLeft',
-            theme:          themeName,
-            closeWith:      ['click'],
-            maxVisible:     10,
-            template:       '<p class="noty_type">' + type + '</p><p class="noty_message"><span class="noty_text"></span></p>',
-            timeout:        5000,
-            animation: {
-                open:   'animated fadeInUp',
-                close:  'animated fadeOutUp',
-                easing: 'swing',
-                speed:  300
-            },
-            callback: {
-                onShow: function(){
-                    $('.someOtherTheme:last-child').find('[href$="lostpassword"]').attr("href", "#").click(function(event){
-                        event.preventDefault();
-                        UiController.closeLoginModalAndOpenForgotPassword();
-                    });
+            var n = noty({
+                text:           text,
+                type:           type,
+                dismissQueue:   true,
+                layout:         'topLeft',
+                theme:          themeName,
+                closeWith:      ['click'],
+                maxVisible:     10,
+                template:       '<p class="noty_type">' + type + '</p><p class="noty_message"><span class="noty_text"></span></p>',
+                timeout:        5000,
+                animation: {
+                    open:   'animated fadeInUp',
+                    close:  'animated fadeOutUp',
+                    easing: 'swing',
+                    speed:  300
+                },
+                callback: {
+                    onShow: function(){
+                        $('.someOtherTheme:last-child').find('[href$="lostpassword"]').attr("href", "#").click(function(event){
+                            event.preventDefault();
+                            UiController.closeLoginModalAndOpenForgotPassword();
+                        });
+                    }
                 }
-            }
-        });
-        console.log('html: ' + n.options.id);
+            });
+        }
     };
 
     return {

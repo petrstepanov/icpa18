@@ -7,8 +7,8 @@ function login_user(){
 	 */
 
 	// Get variables
-	$user_login = $_POST['user_login'];
-	$user_password = $_POST['user_password'];
+	$user_login = trim( $_POST['user_login'] );
+	$user_password = trim( $_POST['user_password'] );
 
 	// Verify the AJAX request, to prevent requests from third-party sites or systems
 	// https://codex.wordpress.org/Function_Reference/check_ajax_referer
@@ -18,7 +18,7 @@ function login_user(){
 		die();
 	}
 
-	// Validate POST parameter values. Actually Wordpress will do it itself in case if we don't
+	// Validate POST parameter values. Actually Wordpress will do it itself in case if we don't (check that)
 	if (empty($user_login)){
 		$responce = array('error' => true, 'message'=> __('Please fill out the <strong>Username or Email</strong> field', 'understrap'));
 		echo json_encode($responce);
@@ -73,8 +73,8 @@ if ( ! function_exists( 'login_user_scripts' ) ) {
 		$the_theme = wp_get_theme();
 		wp_enqueue_script( 'ajax-login-user', get_template_directory_uri() . '/src/js/login-user.js', array( 'jquery' ), $the_theme->get( 'Version' ), true );
 
-		// Declare javascript variable 'ajaxurl' with namespace 'ajaxnamespace' to be used with the 'ajax-login-user' script
-		wp_localize_script('ajax-login-user', 'namespace', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'redirecturl' => home_url('/account')));
+		// Declare javascript variable 'ajaxurl' with namespace 'loginnamespace' to be used with the 'ajax-login-user' script
+		wp_localize_script('ajax-login-user', 'loginnamespace', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'redirecturl' => home_url('/account')));
 	}
 } // endif function_exists( 'login_user_scripts' ).
 

@@ -8,7 +8,6 @@
  */
 
 get_header('icpa');
-$container = get_theme_mod( 'understrap_container_type' );
 ?>
 
 <div class="jumbotron jumbotron-fluid icpa-18">
@@ -30,9 +29,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		</div>
 		<?php if (is_user_logged_in()){ ?>
 			<div class="mb-3">
-				<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#registerModal">
-					Open your Account Page
-				</button>
+				<a class="btn btn-warning" href="<?php echo home_url('/account'); ?>">Open your Account Page</a>
 			</div>
 		<?php } else { ?>
 			<?php if (get_option('users_can_register')){ ?>
