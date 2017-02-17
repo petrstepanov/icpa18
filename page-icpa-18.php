@@ -20,20 +20,20 @@ get_header('icpa');
 				<h1 class="display-1 display-responsive mb-0">18th International Conference on Positron Annihilation</h1>
 			</div>
 		</div>
-		<div class="row mb-3 mb-md-4 mb-lg-5">
+		<div class="row mb-3 mb-md-4">
 			<div class="col-12 col-md-10 col-lg-9">
 				<hr class="mt-4 mb-5" />
-				<p>We’re throwing our biggest ever event in the US to mark the ICPA-18. You’ll hear talks on top notch material research topics, say hello to colleagues in person with plenty of time to relax, have a drink and meet like-minded people.</p>
-				<p>The event will be held in <strong>Orlando</strong>, "The City Beautiful", Florida, USA in <strong>October 2018</strong>.</p>
+				<p>We are honored to host 18th ICPA conference in US. Register to attend talks on popular material research topics and say hello to colleagues in person. Apart of science you will have plenty of time to relax, have a drink and meet like-minded people.</p>
+				<p>The event will be held in <strong>Orlando</strong>, "The City Beautiful", Florida in <strong>October 2018</strong>.</p>
 			</div>
 		</div>
 		<?php if (is_user_logged_in()){ ?>
-			<div class="mb-3">
+			<div class="mb-3 pt-lg-1">
 				<a class="btn btn-warning" href="<?php echo home_url('/account'); ?>">Open your Account Page</a>
 			</div>
 		<?php } else { ?>
 			<?php if (get_option('users_can_register')){ ?>
-				<div class="mb-3">
+				<div class="mb-3 pt-lg-1">
 					<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#registerModal">
 						Register for ICPA-18
 					</button>
@@ -52,8 +52,8 @@ get_header('icpa');
 </div>
 
 <div class="container-wrapper container-wrapper-primary-darker e">
-	<div class="container">
-		<div class="row">
+	<div class="container py-3 py-md-4">
+		<div class="row py-2">
 			<div class="col-lg-9">
 				<p>The aim of this conference is to provide a platform for the positron researchers from all over the world to present their latest research results, communicate new ideas with colleagues face to face, and find partners for future international and domestic cooperation. </p>
 				<p>The conference proceedings will be published in <a href="http://www.scientific.net/MSF">Materials Science Forum</a> and every submitted paper will be peer reviewed. The official language of the conference will be English.</p>
@@ -227,8 +227,8 @@ get_header('icpa');
 </div>
 
 <div class="container-wrapper container-wrapper-primary-darker mt-5">
-	<div class="container">
-		<div class="row justify-content-between">
+	<div class="container py-3 py-md-4">
+		<div class="row justify-content-between py-2">
 			<div class="col-md-6">
 				<h2>Admission Fees</h2>
 				<hr class="mb-3 mt-4" />
@@ -283,21 +283,21 @@ get_header('icpa');
 					</tbody>
 				</table>
 				<?php if (is_user_logged_in()){ ?>
-					<div class="responsive-top-margin mb-4 mb-sm-5 mb-md-0">
-						<a class=class="btn btn-warning" href="#">
+					<div class="responsive-top-margin mb-4 pt-2 mb-sm-5 mb-md-0">
+						<a class="btn btn-warning" href="#">
 							Open your Account Page
-						</button>
+						</a>
 					</div>
 				<?php } else { ?>
 					<?php if (get_option('users_can_register')){ ?>
-						<div class="responsive-top-margin mb-4 mb-sm-5 mb-md-0">
+						<div class="responsive-top-margin mb-4 pt-2 mb-sm-5 mb-md-0">
 							<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#registerModal">
 								Register for ICPA-18
 							</button>
 						</div>
 					<?php } else { ?>
 						<div class="mt-2 mt-md-4">
-							<p class="red"><strong>Registration opens Nov 2017</strong></p>
+							<p class="text-white"><strong>Registration opens Nov 2017</strong></p>
 						</div>
 					<?php } ?>
 				<?php } ?>

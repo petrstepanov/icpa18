@@ -75,10 +75,6 @@ b, strong, .strong {
 }
 
 .container-wrapper {
-    .container {
-        padding-top: $jumbotron-padding;
-        padding-bottom: $jumbotron-padding;
-    }
 
     // margin-bottom: $jumbotron-padding;
 
@@ -87,19 +83,16 @@ b, strong, .strong {
         font-family: $font-family-sans-serif;
     }
 
-    @include media-breakpoint-up(sm) {
-        .container {
-            padding-top: ($jumbotron-padding * 2);
-            padding-bottom: ($jumbotron-padding * 2);
-        }
-    }
-
     &.container-wrapper-primary-darker {
         background-color: $brand-primary-darker;
         color: white;
 
         a {
             color: $brand-warning;
+
+            &.btn.btn-warning {
+                color: $font-color;
+            }
         }
 
         .btn-link {

@@ -7091,24 +7091,17 @@ b, strong, .strong {
     color: rgba(255, 255, 255, 0.4);
     font-family: "noto_sansregular", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
 
-.container-wrapper .container {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem; }
-
 .container-wrapper .grey {
   color: rgba(255, 255, 255, 0.2);
   font-family: "noto_sansregular", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
-
-@media (min-width: 576px) {
-  .container-wrapper .container {
-    padding-top: 3rem;
-    padding-bottom: 3rem; } }
 
 .container-wrapper.container-wrapper-primary-darker {
   background-color: #415a77;
   color: white; }
   .container-wrapper.container-wrapper-primary-darker a {
     color: #f5d989; }
+    .container-wrapper.container-wrapper-primary-darker a.btn.btn-warning {
+      color: #294556; }
   .container-wrapper.container-wrapper-primary-darker .btn-link {
     color: #f5d989; }
   .container-wrapper.container-wrapper-primary-darker h1, .container-wrapper.container-wrapper-primary-darker h2 {

@@ -9,7 +9,7 @@
 
 ?>
 
- <div class="container-wrapper container-wrapper-primary-darkest footer">
+ <div class="container-wrapper container-wrapper-primary-darkest footer py-3 py-md-4">
  	<div class="container">
  		<div class="row justify-content-between align-items-center">
  			<div class="col-9 col-lg-10">
