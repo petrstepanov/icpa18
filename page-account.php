@@ -406,25 +406,25 @@ get_header('icpa');
 		                    </div>
 		                </div>
 						<div class="form-group row">
-							<label for="first_name" class="col-12 col-lg-3 col-form-label">First name</label>
-							<div class="col-12 col-lg-9">
+							<label for="first_name" class="col-md-3">First name</label>
+							<div class="col-md-9">
 								<input class="form-control" type="text" name="first_name" id="first_name" />
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="last_name" class="col-12 col-lg-3 col-form-label">Last name</label>
-							<div class="col-12 col-lg-9">
+							<label for="last_name" class="col-md-3">Last name</label>
+							<div class="col-md-9">
 								<input class="form-control" type="text" name="last_name" id="last_name" />
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="description" class="col-12 col-lg-3 col-form-label">Organization</label>
-							<div class="col-12 col-lg-9">
+							<label for="description" class="col-md-3">Organization</label>
+							<div class="col-md-9">
 								<input class="form-control" type="text" name="description" id="description" />
 							</div>
 						</div>
 						<div class="form-group row mt-4">
-                            <div class="col-12 col-lg-9 offset-lg-3">
+                            <div class="col-md-9 offset-md-3">
                                 <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
                                     <div class="btn-group" role="group" aria-label="First group">
                                         <a href="#" class="btn btn-link pl-0 js--reset-password-button"><?php _e( 'Reset password', 'understrap' ); ?></a>

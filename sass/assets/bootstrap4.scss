@@ -84,8 +84,14 @@ h4, .h4 {
 }
 
 .form-group {
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(sm) {
         margin-bottom: 0.8rem;
+    }
+}
+
+.form-control {
+    &:disabled, &[readonly] {
+        border-color: $input-bg-disabled;
     }
 }
 
@@ -195,7 +201,7 @@ h4, .h4 {
 .media {
     [class^=icon]{
         font-size: 2.5em;
-        margin-top: 0.1em;        
+        margin-top: 0.1em;
     }
 }
 
