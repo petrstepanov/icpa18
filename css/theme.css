@@ -7137,6 +7137,22 @@ b, strong, .strong {
       .container-wrapper.e .container:before {
         content: ""; } }
 
+.container-wrapper .nav-tabs {
+  border-bottom: 0; }
+  .container-wrapper .nav-tabs .nav-link {
+    border-width: 0;
+    margin-right: 6rem;
+    border-radius: 0;
+    color: white; }
+    .container-wrapper .nav-tabs .nav-link.active {
+      background-color: inherit;
+      border-bottom: 0.25rem solid #67ead0; }
+  .container-wrapper .nav-tabs .nav-item {
+    margin-bottom: 0; }
+
+.container-wrapper .nav-link {
+  padding: 1.1rem 0rem; }
+
 .media.media-committee {
   color: #999999;
   font-size: 0.75rem; }
