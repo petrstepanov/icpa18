@@ -3,13 +3,13 @@
 @import "understrap/understrap";    // <--------- Loads the UnderStrap defaults. Just a few classes to incorporate BS in WP
 
 //Optional files - If you dont use the corresponding scripts/fonts comment em out
-// @import "assets/font-awesome";      // <--------- Font Awesome Icon font
+// @import "assets/font-awesome";   // <--------- Font Awesome Icon font
 @import "assets/underscores";       // <--------- Underscores media styles
 
 
 // Any additional imported files //
 @import "theme/theme";              // <--------- Thats where you can add your own design. Thats your part!
-@import "theme/contact-form7";      // contact form 7 - Bootatrap 4 support
+// @import "theme/contact-form7";   // contact form 7 - Bootatrap 4 support
 
 @import "theme/animate";
 @import "theme/noty";

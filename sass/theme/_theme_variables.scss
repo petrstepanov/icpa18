@@ -100,7 +100,7 @@ $link-hover-decoration: none;
   font-style: normal;
 }
 
-[class^="icomoon-"], [class*=" icomoon-"] {
+[class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: none;
@@ -115,8 +115,11 @@ $link-hover-decoration: none;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icomoon-menu:before {
+.icon-info:before {
   content: "\e900";
+}
+.icon-menu:before {
+  content: "\e901";
 }
 
 $font-size-9:   0.5625em; //9/16rem;
@@ -127,6 +130,16 @@ $font-size-28:  1.7500em; //28/16rem;
 $font-size-37:  2.3125em; //37/16rem;
 $font-size-50:  3.1250em; //50/16rem;
 $font-size-67:  4.1875em; //67/16rem;
+
+.font-size-9 { font-size: $font-size-9; }
+.font-size-12{ font-size: $font-size-12; }
+.font-size-16{ font-size: $font-size-16; }
+.font-size-21{ font-size: $font-size-21; }
+.font-size-28{ font-size: $font-size-28; }
+.font-size-37{ font-size: $font-size-37; }
+.font-size-50{ font-size: $font-size-50; }
+.font-size-67{ font-size: $font-size-67; }
+
 
 $display1-size: 3rem;   // default: 6rem;
 $display2-size: 2.5rem; // default: 5.5rem;

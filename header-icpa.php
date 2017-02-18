@@ -30,7 +30,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 	<div class="container">
 		<div class="row">
 			<div class="col-12 relative">
-				<a href="#" class="js--open-menu-button open-menu-button"><span class="icomoon-menu"></span></a>
+				<a href="#" class="js--open-menu-button open-menu-button"><span class="icon-menu"></span></a>
 			</div>
 		</div>
 

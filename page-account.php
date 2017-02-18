@@ -48,7 +48,18 @@ get_header('icpa');
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-9">
-				<p class="mb-0"><small class="text-danger"><strong>Your account status is ‘Pending’. <br />We need to double check your information before we approve you as a participant.</strong></small></p>
+				<div class="media text-danger">
+					<span class="icon-info d-flex align-self-center mr-2"></span>
+					<div class="media-body ml-1">
+						<p class="mb-0">
+							<small>
+								<strong>
+									Your account status is ‘Pending’. <br />We need to double check your information before we approve you as a participant.
+								</strong>
+							</small>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -384,6 +395,7 @@ get_header('icpa');
 				</div>
 				<div class="tab-pane fade mt-5" id="payment" role="tabpanel">
 					<p>Soon to come</p>
+					<div style="height: 20rem"></div>
 				</div>
 				<div class="tab-pane fade mt-5" id="profile" role="tabpanel">
 					<form>
