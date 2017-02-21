@@ -1,6 +1,6 @@
 <!-- Log In Modal -->
 <?php if (!is_user_logged_in()){ // https://developer.wordpress.org/reference/functions/is_user_logged_in/ ?>
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
