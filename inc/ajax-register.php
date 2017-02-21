@@ -121,6 +121,18 @@ function register_user(){
 		die();
 	}
 
+    // Add user status field and set it to "new".
+    // User status can be "new", "modified", "approved"
+    // https://codex.wordpress.org/Function_Reference/add_user_meta
+    $user_meta = add_user_meta( $user_id, "status", "new", true );
+
+    // Check if Wordperss returned an error during the registration
+    if ($user_meta == false){
+        $responce = array('error' => true, 'message'=> 'Something went wrong while updating user information. Please try again.');
+        echo json_encode($responce);
+        die();
+    }
+
 	// Send out custom user notification
 	my_wp_new_user_notification( $password, $user_id );
 	// wp_new_user_notification( $user_id );

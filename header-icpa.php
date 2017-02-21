@@ -51,10 +51,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 					<?php } else { ?>
 						<?php $current_user = wp_get_current_user(); ?>
 						<div class="section-account">
-							<p class="username mt-0">
+							<p class="username mt-0 js--display-name">
 								<?php echo $current_user->display_name; ?>
 							</p>
-							<p class="organization">
+							<p class="organization js--organization">
 								<i><?php echo $current_user->description; ?></i>
 							</p>
 							<div class="btn-toolbar mt-4 justify-content-between" role="toolbar" aria-label="Toolbar with button groups">

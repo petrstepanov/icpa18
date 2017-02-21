@@ -83,6 +83,16 @@ require get_template_directory() . '/inc/ajax-login.php';
 require get_template_directory() . '/inc/ajax-register.php';
 
 /**
+ * Ajax user contribution fields.
+ */
+require get_template_directory() . '/inc/ajax-user-account-contribution.php';
+
+/**
+ * Ajax user profile fields.
+ */
+require get_template_directory() . '/inc/ajax-user-account-profile.php';
+
+/**
  * ChromePHP https://github.com/ccampbell/chromephp
  */
 // require get_template_directory() . '/inc/chrome-php.php';

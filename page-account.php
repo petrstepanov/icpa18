@@ -23,11 +23,11 @@ get_header('icpa');
 	<div class="container">
 		<div class="row pt-3">
 			<div class="col-12">
-				<h1 class="display-1 display-responsive">
+				<h1 class="display-1 display-responsive js--display-name">
 					<?php echo $current_user->display_name; ?>
 				</h1>
 				<p class="organization">
-					<i><?php echo $current_user->description; ?></i>
+					<i class="js--organization"><?php echo $current_user->description; ?></i>
 				</p>
 				<ul class="nav nav-tabs p-0 pt-3" role="tablist">
 					<li class="nav-item">
@@ -44,17 +44,34 @@ get_header('icpa');
 		</div>
 	</div>
 </div>
+<?php
+	// Show warning if User not filled the Contribution Details yet (status is 'new')
+	$status = get_user_meta($current_user->id, 'status', true);
+	if ('new' == $status){
+		$status_message = "Please submit your Contribution Details. <br />We need to double check your information before we approve you as a participant.";
+		$status_classname = "text-danger";
+	}
+	elseif ('pending' == $status){
+		$status_message = "Your Contribution Details are submitted and our administrators will check if it looks good. <br />We will send you an email soon!";
+		$status_classname = "text-muted";
+	}
+	elseif ('approved' == $status){
+		$status_message = "Congratulations! Your account is approved.<br />Payment information is avaliable.";
+		$status_classname = "text-primary";
+	}
+?>
+
 <div class="container-wrapper container-wrapper-gray-lighter py-4">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-9">
-				<div class="media text-danger">
+				<div class="media <?php echo $status_classname; ?>" id="user-feedback-container">
 					<span class="icon-info d-flex align-self-center mr-2"></span>
 					<div class="media-body ml-1">
 						<p class="mb-0">
 							<small>
 								<strong>
-									Your account status is ‘Pending’. <br />We need to double check your information before we approve you as a participant.
+									<?php echo $status_message; ?>
 								</strong>
 							</small>
 						</p>
@@ -64,14 +81,15 @@ get_header('icpa');
 		</div>
 	</div>
 </div>
+
 <div class="container pb-4">
 	<div class="row">
 		<div class="col-lg-9">
 			<div class="tab-content">
 				<div class="tab-pane fade show active mt-5" id="contribution" role="tabpanel">
-					<form>
-						<div class="form-group row">
-		                    <label for="input-email" class="col-md-3 col-form-label">Title</label>
+					<form id="ajax_user_contribution_form" action="<?php echo home_url('/'); ?>" method="POST">
+						<!-- <div class="form-group row">
+		                    <label for="input-title" class="col-md-3 col-form-label">Title</label>
 		                    <div class="col-md-9">
 		                        <div class="btn-group btn-group-input" data-toggle="buttons">
 		                            <label class="btn btn-primary active">
@@ -88,317 +106,113 @@ get_header('icpa');
 		                            </label>
 		                        </div>
 		                    </div>
-		                </div>		                <div class="form-group row">
-		                    <label for="input-email" class="col-md-3 col-form-label">Participant type</label>
+		                </div> -->
+		                <div class="form-group row">
+		                    <label for="input-participant-type" class="col-md-3 col-form-label">Participant type</label>
 		                    <div class="col-md-9">
 		                        <div class="btn-group btn-group-input" data-toggle="buttons">
-		                            <label class="btn btn-primary active">
-		                                <input type="radio" name="input-participant-type" value="regular" id="input-participant-type-regular" autocomplete="off" checked> Regular
-		                            </label>
-		                            <label class="btn btn-primary">
-		                                <input type="radio" name="input-participant-type" value="student" id="input-participant-type-student" autocomplete="off"> Student
-		                            </label>
-		                            <label class="btn btn-primary">
-		                                <input type="radio" name="input-participant-type" value="accompany" id="input-participant-type-accompany" autocomplete="off"> Accompany
-		                            </label>
+									<?php
+										$participant_types = get_participant_type_list();
+										$meta_participant_type = get_user_meta($current_user->id, 'participant_type', true);
+										foreach ($participant_types as $participant_type){
+											if ($participant_type == $meta_participant_type){
+												echo "<label class='btn btn-primary active'>"; // add 'active' for selected
+					                            echo 	"<input type='radio' name='input-participant-type' value='" . $participant_type . "' autocomplete='off' checked>" . ucfirst($participant_type);  // add 'checked' for selected
+												echo "</label>";
+											} else {
+												echo "<label class='btn btn-primary'>";
+					                            echo 	"<input type='radio' name='input-participant-type' value='" . $participant_type . "' autocomplete='off'>" . ucfirst($participant_type);
+												echo "</label>";
+											}
+										}
+									?>
 		                        </div>
 		                    </div>
 		                </div>
 		                <div class="form-group row">
 		                    <label for="input-country" class="col-md-3 col-form-label">Country</label>
 		                    <div class="col-md-9">
-		                        <select class="custom-select">
-		                        	<option value="AF">Afghanistan</option>
-		                        	<option value="AX">Åland Islands</option>
-		                        	<option value="AL">Albania</option>
-		                        	<option value="DZ">Algeria</option>
-		                        	<option value="AS">American Samoa</option>
-		                        	<option value="AD">Andorra</option>
-		                        	<option value="AO">Angola</option>
-		                        	<option value="AI">Anguilla</option>
-		                        	<option value="AQ">Antarctica</option>
-		                        	<option value="AG">Antigua and Barbuda</option>
-		                        	<option value="AR">Argentina</option>
-		                        	<option value="AM">Armenia</option>
-		                        	<option value="AW">Aruba</option>
-		                        	<option value="AU">Australia</option>
-		                        	<option value="AT">Austria</option>
-		                        	<option value="AZ">Azerbaijan</option>
-		                        	<option value="BS">Bahamas</option>
-		                        	<option value="BH">Bahrain</option>
-		                        	<option value="BD">Bangladesh</option>
-		                        	<option value="BB">Barbados</option>
-		                        	<option value="BY">Belarus</option>
-		                        	<option value="BE">Belgium</option>
-		                        	<option value="BZ">Belize</option>
-		                        	<option value="BJ">Benin</option>
-		                        	<option value="BM">Bermuda</option>
-		                        	<option value="BT">Bhutan</option>
-		                        	<option value="BO">Bolivia, Plurinational State of</option>
-		                        	<option value="BQ">Bonaire, Sint Eustatius and Saba</option>
-		                        	<option value="BA">Bosnia and Herzegovina</option>
-		                        	<option value="BW">Botswana</option>
-		                        	<option value="BV">Bouvet Island</option>
-		                        	<option value="BR">Brazil</option>
-		                        	<option value="IO">British Indian Ocean Territory</option>
-		                        	<option value="BN">Brunei Darussalam</option>
-		                        	<option value="BG">Bulgaria</option>
-		                        	<option value="BF">Burkina Faso</option>
-		                        	<option value="BI">Burundi</option>
-		                        	<option value="KH">Cambodia</option>
-		                        	<option value="CM">Cameroon</option>
-		                        	<option value="CA">Canada</option>
-		                        	<option value="CV">Cape Verde</option>
-		                        	<option value="KY">Cayman Islands</option>
-		                        	<option value="CF">Central African Republic</option>
-		                        	<option value="TD">Chad</option>
-		                        	<option value="CL">Chile</option>
-		                        	<option value="CN">China</option>
-		                        	<option value="CX">Christmas Island</option>
-		                        	<option value="CC">Cocos (Keeling) Islands</option>
-		                        	<option value="CO">Colombia</option>
-		                        	<option value="KM">Comoros</option>
-		                        	<option value="CG">Congo</option>
-		                        	<option value="CD">Congo, the Democratic Republic of the</option>
-		                        	<option value="CK">Cook Islands</option>
-		                        	<option value="CR">Costa Rica</option>
-		                        	<option value="CI">Côte d'Ivoire</option>
-		                        	<option value="HR">Croatia</option>
-		                        	<option value="CU">Cuba</option>
-		                        	<option value="CW">Curaçao</option>
-		                        	<option value="CY">Cyprus</option>
-		                        	<option value="CZ">Czech Republic</option>
-		                        	<option value="DK">Denmark</option>
-		                        	<option value="DJ">Djibouti</option>
-		                        	<option value="DM">Dominica</option>
-		                        	<option value="DO">Dominican Republic</option>
-		                        	<option value="EC">Ecuador</option>
-		                        	<option value="EG">Egypt</option>
-		                        	<option value="SV">El Salvador</option>
-		                        	<option value="GQ">Equatorial Guinea</option>
-		                        	<option value="ER">Eritrea</option>
-		                        	<option value="EE">Estonia</option>
-		                        	<option value="ET">Ethiopia</option>
-		                        	<option value="FK">Falkland Islands (Malvinas)</option>
-		                        	<option value="FO">Faroe Islands</option>
-		                        	<option value="FJ">Fiji</option>
-		                        	<option value="FI">Finland</option>
-		                        	<option value="FR">France</option>
-		                        	<option value="GF">French Guiana</option>
-		                        	<option value="PF">French Polynesia</option>
-		                        	<option value="TF">French Southern Territories</option>
-		                        	<option value="GA">Gabon</option>
-		                        	<option value="GM">Gambia</option>
-		                        	<option value="GE">Georgia</option>
-		                        	<option value="DE">Germany</option>
-		                        	<option value="GH">Ghana</option>
-		                        	<option value="GI">Gibraltar</option>
-		                        	<option value="GR">Greece</option>
-		                        	<option value="GL">Greenland</option>
-		                        	<option value="GD">Grenada</option>
-		                        	<option value="GP">Guadeloupe</option>
-		                        	<option value="GU">Guam</option>
-		                        	<option value="GT">Guatemala</option>
-		                        	<option value="GG">Guernsey</option>
-		                        	<option value="GN">Guinea</option>
-		                        	<option value="GW">Guinea-Bissau</option>
-		                        	<option value="GY">Guyana</option>
-		                        	<option value="HT">Haiti</option>
-		                        	<option value="HM">Heard Island and McDonald Islands</option>
-		                        	<option value="VA">Holy See (Vatican City State)</option>
-		                        	<option value="HN">Honduras</option>
-		                        	<option value="HK">Hong Kong</option>
-		                        	<option value="HU">Hungary</option>
-		                        	<option value="IS">Iceland</option>
-		                        	<option value="IN">India</option>
-		                        	<option value="ID">Indonesia</option>
-		                        	<option value="IR">Iran, Islamic Republic of</option>
-		                        	<option value="IQ">Iraq</option>
-		                        	<option value="IE">Ireland</option>
-		                        	<option value="IM">Isle of Man</option>
-		                        	<option value="IL">Israel</option>
-		                        	<option value="IT">Italy</option>
-		                        	<option value="JM">Jamaica</option>
-		                        	<option value="JP">Japan</option>
-		                        	<option value="JE">Jersey</option>
-		                        	<option value="JO">Jordan</option>
-		                        	<option value="KZ">Kazakhstan</option>
-		                        	<option value="KE">Kenya</option>
-		                        	<option value="KI">Kiribati</option>
-		                        	<option value="KP">Korea, Democratic People's Republic of</option>
-		                        	<option value="KR">Korea, Republic of</option>
-		                        	<option value="KW">Kuwait</option>
-		                        	<option value="KG">Kyrgyzstan</option>
-		                        	<option value="LA">Lao People's Democratic Republic</option>
-		                        	<option value="LV">Latvia</option>
-		                        	<option value="LB">Lebanon</option>
-		                        	<option value="LS">Lesotho</option>
-		                        	<option value="LR">Liberia</option>
-		                        	<option value="LY">Libya</option>
-		                        	<option value="LI">Liechtenstein</option>
-		                        	<option value="LT">Lithuania</option>
-		                        	<option value="LU">Luxembourg</option>
-		                        	<option value="MO">Macao</option>
-		                        	<option value="MK">Macedonia, the former Yugoslav Republic of</option>
-		                        	<option value="MG">Madagascar</option>
-		                        	<option value="MW">Malawi</option>
-		                        	<option value="MY">Malaysia</option>
-		                        	<option value="MV">Maldives</option>
-		                        	<option value="ML">Mali</option>
-		                        	<option value="MT">Malta</option>
-		                        	<option value="MH">Marshall Islands</option>
-		                        	<option value="MQ">Martinique</option>
-		                        	<option value="MR">Mauritania</option>
-		                        	<option value="MU">Mauritius</option>
-		                        	<option value="YT">Mayotte</option>
-		                        	<option value="MX">Mexico</option>
-		                        	<option value="FM">Micronesia, Federated States of</option>
-		                        	<option value="MD">Moldova, Republic of</option>
-		                        	<option value="MC">Monaco</option>
-		                        	<option value="MN">Mongolia</option>
-		                        	<option value="ME">Montenegro</option>
-		                        	<option value="MS">Montserrat</option>
-		                        	<option value="MA">Morocco</option>
-		                        	<option value="MZ">Mozambique</option>
-		                        	<option value="MM">Myanmar</option>
-		                        	<option value="NA">Namibia</option>
-		                        	<option value="NR">Nauru</option>
-		                        	<option value="NP">Nepal</option>
-		                        	<option value="NL">Netherlands</option>
-		                        	<option value="NC">New Caledonia</option>
-		                        	<option value="NZ">New Zealand</option>
-		                        	<option value="NI">Nicaragua</option>
-		                        	<option value="NE">Niger</option>
-		                        	<option value="NG">Nigeria</option>
-		                        	<option value="NU">Niue</option>
-		                        	<option value="NF">Norfolk Island</option>
-		                        	<option value="MP">Northern Mariana Islands</option>
-		                        	<option value="NO">Norway</option>
-		                        	<option value="OM">Oman</option>
-		                        	<option value="PK">Pakistan</option>
-		                        	<option value="PW">Palau</option>
-		                        	<option value="PS">Palestinian Territory, Occupied</option>
-		                        	<option value="PA">Panama</option>
-		                        	<option value="PG">Papua New Guinea</option>
-		                        	<option value="PY">Paraguay</option>
-		                        	<option value="PE">Peru</option>
-		                        	<option value="PH">Philippines</option>
-		                        	<option value="PN">Pitcairn</option>
-		                        	<option value="PL">Poland</option>
-		                        	<option value="PT">Portugal</option>
-		                        	<option value="PR">Puerto Rico</option>
-		                        	<option value="QA">Qatar</option>
-		                        	<option value="RE">Réunion</option>
-		                        	<option value="RO">Romania</option>
-		                        	<option value="RU">Russian Federation</option>
-		                        	<option value="RW">Rwanda</option>
-		                        	<option value="BL">Saint Barthélemy</option>
-		                        	<option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
-		                        	<option value="KN">Saint Kitts and Nevis</option>
-		                        	<option value="LC">Saint Lucia</option>
-		                        	<option value="MF">Saint Martin (French part)</option>
-		                        	<option value="PM">Saint Pierre and Miquelon</option>
-		                        	<option value="VC">Saint Vincent and the Grenadines</option>
-		                        	<option value="WS">Samoa</option>
-		                        	<option value="SM">San Marino</option>
-		                        	<option value="ST">Sao Tome and Principe</option>
-		                        	<option value="SA">Saudi Arabia</option>
-		                        	<option value="SN">Senegal</option>
-		                        	<option value="RS">Serbia</option>
-		                        	<option value="SC">Seychelles</option>
-		                        	<option value="SL">Sierra Leone</option>
-		                        	<option value="SG">Singapore</option>
-		                        	<option value="SX">Sint Maarten (Dutch part)</option>
-		                        	<option value="SK">Slovakia</option>
-		                        	<option value="SI">Slovenia</option>
-		                        	<option value="SB">Solomon Islands</option>
-		                        	<option value="SO">Somalia</option>
-		                        	<option value="ZA">South Africa</option>
-		                        	<option value="GS">South Georgia and the South Sandwich Islands</option>
-		                        	<option value="SS">South Sudan</option>
-		                        	<option value="ES">Spain</option>
-		                        	<option value="LK">Sri Lanka</option>
-		                        	<option value="SD">Sudan</option>
-		                        	<option value="SR">Suriname</option>
-		                        	<option value="SJ">Svalbard and Jan Mayen</option>
-		                        	<option value="SZ">Swaziland</option>
-		                        	<option value="SE">Sweden</option>
-		                        	<option value="CH">Switzerland</option>
-		                        	<option value="SY">Syrian Arab Republic</option>
-		                        	<option value="TW">Taiwan, Province of China</option>
-		                        	<option value="TJ">Tajikistan</option>
-		                        	<option value="TZ">Tanzania, United Republic of</option>
-		                        	<option value="TH">Thailand</option>
-		                        	<option value="TL">Timor-Leste</option>
-		                        	<option value="TG">Togo</option>
-		                        	<option value="TK">Tokelau</option>
-		                        	<option value="TO">Tonga</option>
-		                        	<option value="TT">Trinidad and Tobago</option>
-		                        	<option value="TN">Tunisia</option>
-		                        	<option value="TR">Turkey</option>
-		                        	<option value="TM">Turkmenistan</option>
-		                        	<option value="TC">Turks and Caicos Islands</option>
-		                        	<option value="TV">Tuvalu</option>
-		                        	<option value="UG">Uganda</option>
-		                        	<option value="UA">Ukraine</option>
-		                        	<option value="AE">United Arab Emirates</option>
-		                        	<option value="GB">United Kingdom</option>
-		                        	<option value="US">United States</option>
-		                        	<option value="UM">United States Minor Outlying Islands</option>
-		                        	<option value="UY">Uruguay</option>
-		                        	<option value="UZ">Uzbekistan</option>
-		                        	<option value="VU">Vanuatu</option>
-		                        	<option value="VE">Venezuela, Bolivarian Republic of</option>
-		                        	<option value="VN">Viet Nam</option>
-		                        	<option value="VG">Virgin Islands, British</option>
-		                        	<option value="VI">Virgin Islands, U.S.</option>
-		                        	<option value="WF">Wallis and Futuna</option>
-		                        	<option value="EH">Western Sahara</option>
-		                        	<option value="YE">Yemen</option>
-		                        	<option value="ZM">Zambia</option>
-		                        	<option value="ZW">Zimbabwe</option>
+		                        <select class="custom-select" id="input-country" name="input-country" >
+									<option disabled selected value=""></option>
+									<?php
+										$countries = get_country_list();
+										$meta_country = get_user_meta($current_user->id, 'country', true);
+										foreach ($countries as $country){
+											if ($country == $meta_country){
+												echo "<option value='" . $country . "' selected>" . $country . "</option>";
+											} else {
+												echo "<option value='" . $country . "'>" . $country . "</option>";
+											}
+										}
+									?>
 		                        </select>
 		                    </div>
 		                </div>
 		                <div class="form-group row">
-		                    <label for="input-email" class="col-md-3 col-form-label">Contribution</label>
+		                    <label for="input-contribution" class="col-md-3 col-form-label">Contribution</label>
 		                    <div class="col-md-9">
 		                        <div class="btn-group btn-group-input" data-toggle="buttons">
-		                            <label class="btn btn-primary active">
-		                                <input type="radio" name="input-contribution" value="presentation" id="input-contribution-presentation" autocomplete="off" checked> Presentation
+									<?php
+										$contribution_types = get_contribution_type_list();
+										$meta_contribution_type = get_user_meta($current_user->id, 'contribution', true);
+										foreach ($contribution_types as $contribution_type){
+											if ($contribution_type == $meta_contribution_type){
+												echo "<label class='btn btn-primary active'>"; // add 'active' for selected
+												echo 	"<input type='radio' name='input-contribution-type' value='" . $contribution_type . "' autocomplete='off' checked>" . ucfirst($contribution_type);  // add 'checked' for selected
+												echo "</label>";
+											} else {
+												echo "<label class='btn btn-primary'>";
+												echo 	"<input type='radio' name='input-contribution-type' value='" . $contribution_type . "' autocomplete='off'>" . ucfirst($contribution_type);
+												echo "</label>";
+											}
+										}
+									?>
+		                            <!-- <label class="btn btn-primary active">
+		                                <input type="radio" name="input-contribution" value="presentation" autocomplete="off" checked> Presentation
 		                            </label>
 		                            <label class="btn btn-primary">
-		                                <input type="radio" name="input-contribution" value="poster" id="input-contribution-talk" autocomplete="off"> Poster
+		                                <input type="radio" name="input-contribution" value="poster" autocomplete="off"> Poster
 		                            </label>
 		                            <label class="btn btn-primary">
-		                                <input type="radio" name="input-contribution" value="none" id="input-contribution-none" autocomplete="off"> None
-		                            </label>
+		                                <input type="radio" name="input-contribution" value="none" autocomplete="off"> None
+		                            </label> -->
 		                        </div>
 		                    </div>
 		                </div>
 		                <div class="form-group row">
 		                    <label for="input-title" class="col-md-3 col-form-label">Title</label>
 		                    <div class="col-md-9">
-		                        <input class="form-control" type="text" id="input-title">
+								<?php
+									$meta_title = get_user_meta($current_user->id, 'title', true);
+		                        	echo "<input class='form-control' type='text' name='input-title' id='input-title' value='" . $meta_title . "'>";
+								?>
 		                    </div>
 		                </div>
 		                <div class="form-group row">
 		                    <label for="input-comments" class="col-md-3 col-form-label">Comments</label>
 		                    <div class="col-md-9">
-		                        <textarea class="form-control" id="input-comments" rows="3"></textarea>
+								<textarea class="form-control" name="input-comments" id="input-comments" rows="3"><?php
+									$meta_comments = trim(get_user_meta($current_user->id, 'comments', true));
+		                        	echo esc_textarea($meta_comments);
+								?></textarea>
 		                    </div>
 		                </div>
 						<div class="py-3 text-right">
 							<input type="submit" class="btn btn-warning" value="Update Information">
 						</div>
+						<!-- BEGIN: Hidden Wordpress fields to correctly handle AJAX request -->
+						<?php wp_nonce_field('ajax-contribution-nonce', 'contribution-security' ); // https://codex.wordpress.org/Function_Reference/wp_nonce_field ?>
+                        <input type="hidden" name="action" value="user_account_contribution"/>
+						<!-- END: Hidden Wordpress fields to correctly handle AJAX request -->
 					</form>
 				</div>
 				<div class="tab-pane fade mt-5" id="payment" role="tabpanel">
-					<p>Soon to come</p>
+					<p>Payment options will be avaliable when our administrator verifies and approves your account.</p>
+					<p>We will inform you via email.</p>
 					<div style="height: 20rem"></div>
 				</div>
 				<div class="tab-pane fade mt-5" id="profile" role="tabpanel">
-					<form>
+					<form id="ajax_user_profile_form" action="<?php echo home_url('/'); ?>" method="POST">
 		                <div class="form-group row">
 		                    <label for="input-email" class="col-md-3 col-form-label">Email</label>
 		                    <div class="col-md-9">
@@ -408,19 +222,19 @@ get_header('icpa');
 						<div class="form-group row">
 							<label for="first_name" class="col-md-3">First name</label>
 							<div class="col-md-9">
-								<input class="form-control" type="text" name="first_name" id="first_name" />
+								<input class="form-control" type="text" value="<?php echo $current_user->first_name; ?>" name="first_name" id="first_name" />
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="last_name" class="col-md-3">Last name</label>
 							<div class="col-md-9">
-								<input class="form-control" type="text" name="last_name" id="last_name" />
+								<input class="form-control" type="text" value="<?php echo $current_user->last_name; ?>" name="last_name" id="last_name" />
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="description" class="col-md-3">Organization</label>
 							<div class="col-md-9">
-								<input class="form-control" type="text" name="description" id="description" />
+								<input class="form-control" type="text" name="description" value="<?php echo $current_user->description; ?>" id="description" />
 							</div>
 						</div>
 						<div class="form-group row mt-4">
@@ -435,6 +249,10 @@ get_header('icpa');
                                 </div>
                             </div>
                         </div>
+						<!-- BEGIN: Hidden Wordpress fields to correctly handle AJAX request -->
+						<?php wp_nonce_field('ajax-profile-nonce', 'profile-security' ); // https://codex.wordpress.org/Function_Reference/wp_nonce_field ?>
+                        <input type="hidden" name="action" value="user_account_profile"/>
+						<!-- END: Hidden Wordpress fields to correctly handle AJAX request -->
 					</form>
 				</div>
 			</div>

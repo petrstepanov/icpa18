@@ -84,14 +84,15 @@ var UiController = (function($) {
     };
 
     var closeRegisterModal = function(callback){
-        // If callback passed execute it on modal close
-        if (Utils.isFunction(callback)){
-            $('#registerModal').on('hidden.bs.modal', function () {
-                callback();
-            });
-        }
         // First close the login modal
         $('#registerModal').modal('hide');
+
+        setTimeout(function(){
+            // If callback passed execute it on modal close
+            if (Utils.isFunction(callback)){
+                callback();
+            }
+        }, 500);
     };
 
     var initMenuToggle = function(){
