@@ -195,14 +195,17 @@ var UiController = (function ($) {
   var initShowTabOnHash = function () {
     // Javascript to enable link to tab
     var hash = window.location.hash
-    if (hash && $('.nav-tabs a[href="' + hash + '"]').length > 0) {
-      var id = hash.substring(1)
-      // If a tab with specific hash exists
-      $('.tab-pane[id=' + id + ']').addClass('show active')
+    if (hash) {
+      $('[data-toggle="tab"][href="' + hash + '"]').tab('show')
+      // Disable anchor "jump" when loading a page
+      setTimeout(function () { window.scrollTo(0, 0) }, 1)
     } else {
-      // Show first tab in a row
-      $('.tab-pane:first-child').addClass('show active')
+      $('[data-toggle="tab"]:first').tab('show')
     }
+    // Now enable fading animation (after we showed the tab we need)
+    // Because fading on the first load looks ugly and flickrs
+    $('[role="tabpanel"]:not(.active)').addClass('fade')
+    $('[role="tabpanel"][class="active"]').addClass('show fade')
 
     // Update hash when clicking on a tab
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -217,7 +220,7 @@ var UiController = (function ($) {
     initLoginDialogOpen()
     initForgotPasswordDialogOpen()
     initShowModalOnHash()
-    // initShowTabOnHash()
+    initShowTabOnHash()
   }
 
     // Public API
@@ -274,7 +277,7 @@ var NotificationCenter = (function ($, noty) {
   }
 })(jQuery, noty)
 
-UiController.initShowTabOnHash()
+// UiController.initShowTabOnHash()
 
 jQuery(document).ready(function () {
   UiController.init()

@@ -29,9 +29,9 @@ get_header('icpa');
         <p class="organization">
           <i class="js--organization"><?php echo $current_user->description; ?></i>
         </p>
-        <ul class="nav nav-tabs p-0 pt-3" role="tablist">
+        <ul class="nav nav-tabs p-0 pt-3" id="myTab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#contribution" role="tab">Contribution Details</a>
+            <a class="nav-link" data-toggle="tab" href="#contribution" role="tab">Contribution Details</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#payment" role="tab">Payment Options</a>
@@ -45,7 +45,7 @@ get_header('icpa');
   </div>
 </div>
 <?php require get_template_directory() . "/inc/user-account-status.php"; ?>
-<div class="container-wrapper container-wrapper-gray-lighter <?php echo $status_classname; ?> py-4">
+<div class="container-wrapper <?php echo $status_classname; ?> py-4">
   <div class="container">
     <div class="row">
       <div class="col-lg-9">
@@ -70,7 +70,7 @@ get_header('icpa');
   <div class="row">
     <div class="col-lg-9">
       <div class="tab-content">
-        <div class="tab-pane fade mt-5" id="contribution" role="tabpanel">
+        <div class="tab-pane mt-5" id="contribution" role="tabpanel">
           <form id="ajax_user_contribution_form" action="<?php echo home_url('/'); ?>" method="POST">
             <div class="form-group row">
                 <label for="input-participant-type" class="col-md-3 col-form-label">Participant type</label>
@@ -159,12 +159,12 @@ get_header('icpa');
             <!-- END: Hidden Wordpress fields to correctly handle AJAX request -->
           </form>
         </div>
-        <div class="tab-pane fade mt-5" id="payment" role="tabpanel">
+        <div class="tab-pane mt-5" id="payment" role="tabpanel">
           <p>Payment options will be avaliable when our administrator verifies and approves your account.</p>
           <p>We will inform you via email.</p>
           <div style="height: 20rem"></div>
         </div>
-        <div class="tab-pane fade mt-5" id="profile" role="tabpanel">
+        <div class="tab-pane mt-5" id="profile" role="tabpanel">
           <form id="ajax_user_profile_form" action="<?php echo home_url('/'); ?>" method="POST">
             <div class="form-group row">
                 <label for="input-email" class="col-md-3 col-form-label">Email</label>
