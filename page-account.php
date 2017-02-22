@@ -70,7 +70,7 @@ get_header('icpa');
   <div class="row">
     <div class="col-lg-9">
       <div class="tab-content">
-        <div class="tab-pane fade show active mt-5" id="contribution" role="tabpanel">
+        <div class="tab-pane fade mt-5" id="contribution" role="tabpanel">
           <form id="ajax_user_contribution_form" action="<?php echo home_url('/'); ?>" method="POST">
             <div class="form-group row">
                 <label for="input-participant-type" class="col-md-3 col-form-label">Participant type</label>
@@ -194,7 +194,7 @@ get_header('icpa');
               <div class="col-md-9 offset-md-3">
                 <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
                   <div class="btn-group" role="group" aria-label="First group">
-                    <a href="#" class="btn btn-link pl-0 js--reset-password-button"><?php _e( 'Reset password', 'understrap' ); ?></a>
+                    <a href="#" class="btn btn-link pl-0 js--reset-password-button"><?php _e( 'Change password', 'understrap' ); ?></a>
                   </div>
                   <div class="btn-group" role="group" aria-label="Second group">
                     <input type="submit" class="btn btn-warning" value="<?php _e( 'Update Information', 'understrap' ); ?>">

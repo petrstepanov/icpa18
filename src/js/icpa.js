@@ -8,9 +8,37 @@ var Utils = (function () {
     return variable && getType.toString.call(variable) === '[object Function]'
   }
 
+  var removeHash = function () {
+    // If browser supports history.pushState http://caniuse.com/#search=pushstate
+    if (window.history.pushState) {
+      window.history.pushState('', document.title, window.location.pathname + window.location.search)
+    // If not - remove the hash but keep the '#' symbol
+    } else {
+      window.location.hash = ''
+    }
+  }
+
+  var setHashWithoutPageJump = function (hash) {
+    // If browser supports history.pushState http://caniuse.com/#search=pushstate
+    if (window.history.pushState) {
+      window.history.pushState(null, null, hash)
+    // If not - remove id from the element, do hash replace and set the id back
+    } else {
+      var id = hash.substring(1)
+      var el = document.getElementById(id)
+      if (el) el.removeAttribute('id')
+      window.location.hash = hash
+      setTimeout(function () {
+        if (el) el.setAttribute('id', id)
+      }, 50)
+    }
+  }
+
   return {
     isString: isString,
-    isFunction: isFunction
+    isFunction: isFunction,
+    removeHash: removeHash,
+    setHashWithoutPageJump: setHashWithoutPageJump
   }
 })()
 
@@ -146,7 +174,41 @@ var UiController = (function ($) {
   }
 
   var initShowModalOnHash = function () {
-    $(window.location.hash).modal('show')
+    // If page loaded with hash - show correspondent modal
+    var hash = window.location.hash
+    if (hash) {
+      $('[id="' + hash + '"][role="dialog"]').modal('show')
+    }
+    // Update hash when clicking on a tab
+    // $('.nav-tabs a').on('shown.bs.tab', function (e) {
+    //   window.location.hash = e.target.hash
+    // })
+    $('[role="dialog"]').on('shown.bs.modal', function (e) {
+      Utils.setHashWithoutPageJump('#' + e.target.id)
+    })
+    // Clear hash when dialog closed
+    $('[role="dialog"]').on('hidden.bs.modal', function (e) {
+      Utils.removeHash()
+    })
+  }
+
+  var initShowTabOnHash = function () {
+    // Javascript to enable link to tab
+    var hash = window.location.hash
+    if (hash && $('.nav-tabs a[href="' + hash + '"]').length > 0) {
+      var id = hash.substring(1)
+      // If a tab with specific hash exists
+      $('.tab-pane[id=' + id + ']').addClass('show active')
+    } else {
+      // Show first tab in a row
+      $('.tab-pane:first-child').addClass('show active')
+    }
+
+    // Update hash when clicking on a tab
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      Utils.setHashWithoutPageJump(e.target.hash)
+    })
+    // TODO: show tab on hash update
   }
 
   var init = function () {
@@ -155,6 +217,7 @@ var UiController = (function ($) {
     initLoginDialogOpen()
     initForgotPasswordDialogOpen()
     initShowModalOnHash()
+    // initShowTabOnHash()
   }
 
     // Public API
@@ -163,7 +226,8 @@ var UiController = (function ($) {
 //    closeLoginModalAndOpenForgotPassword: closeLoginModalAndOpenForgotPassword,
 // closeRegisterModal: closeRegisterModal
     closeModal: closeModal,
-    openModal: openModal
+    openModal: openModal,
+    initShowTabOnHash: initShowTabOnHash
   }
 })(jQuery)
 
@@ -209,6 +273,8 @@ var NotificationCenter = (function ($, noty) {
     alert: alert
   }
 })(jQuery, noty)
+
+UiController.initShowTabOnHash()
 
 jQuery(document).ready(function () {
   UiController.init()
