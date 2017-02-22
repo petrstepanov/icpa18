@@ -46,20 +46,20 @@ function user_account_profile(){
 	}
 
 	// Update user meta data
-    $current_user = wp_get_current_user();
-    if ($current_user->id == 0){
-        $responce = array('error' => true, 'message'=> __('Please log in to your account first', 'understrap'));
-		echo json_encode($responce);
-		die();
-    }
+  $current_user = wp_get_current_user();
+  if ($current_user->id == 0){
+      $responce = array('error' => true, 'message'=> __('Please log in to your account first', 'understrap'));
+  echo json_encode($responce);
+  die();
+  }
 
     // Prepare array of user data
-	$user_data = array(
-        'ID'					=> $current_user->ID,
-        'first_name'			=> $first_name,
-        'last_name'				=> $last_name,
-        'description'			=> $description
-    );
+  $user_data = array(
+    'ID'					=> $current_user->ID,
+    'first_name'			=> $first_name,
+    'last_name'				=> $last_name,
+    'description'			=> $description
+  );
 
 	// Insert new user instance into database
 	$user_id = wp_update_user( $user_data );

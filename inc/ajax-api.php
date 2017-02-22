@@ -1,6 +1,6 @@
 <?php
 
-function login_user(){
+function get_user(){
 
 	/**
 	 * Process AJAX user login request.
@@ -59,7 +59,7 @@ function login_user(){
 // Make sure your form has hidden element with 'action' attribute set to the above Wordpress wp_ajax_nopriv_'hook_suffix'
 // <input type="hidden" name="action" value="hook_suffix"/>
 
-add_action('wp_ajax_nopriv_login_user', 'login_user');
+add_action('wp_ajax_nopriv_login_user', 'get_user');
 
 
 // Enqueue login AJAX script

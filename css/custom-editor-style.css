@@ -616,6 +616,12 @@ mark,
 .blockquote-reverse .blockquote-footer::after {
   content: "\00A0 \2014"; }
 
+.text-black-transparent {
+  color: rgba(0, 0, 0, 0.7) !important; }
+
+a.text-black-transparent:focus, a.text-black-transparent:hover {
+  color: rgba(0, 0, 0, 0.7) !important; }
+
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: "cgothicbold", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
 
@@ -6520,16 +6526,11 @@ b, strong, .strong {
         .header .menu-glass-panel .menu .section-account .organization {
           font-size: 0.75em;
           font-style: italic; }
-      .header .menu-glass-panel .menu .section-danger, .header .menu-glass-panel .menu .section-success {
+      .header .menu-glass-panel .menu .section-status {
         margin-left: -4rem;
         margin-right: -4rem;
         padding: 1.85rem 4rem;
-        background-color: #db5461;
-        color: white;
         font-size: 0.75em; }
-      .header .menu-glass-panel .menu .section-success {
-        background-color: #67ead0;
-        color: #107561; }
       .header .menu-glass-panel .menu .section-navigation {
         font-family: "cgothicbold", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         font-size: 1.75em; }

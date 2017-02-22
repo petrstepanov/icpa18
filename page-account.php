@@ -44,28 +44,12 @@ get_header('icpa');
     </div>
   </div>
 </div>
-<?php
-  // Show warning if User not filled the Contribution Details yet (status is 'new')
-  $status = get_user_meta($current_user->id, 'status', true);
-  if ('new' == $status){
-    $status_message = "Please submit your Contribution Details. <br />We need to double check your information before we approve you as a participant.";
-    $status_classname = "text-danger";
-  }
-  elseif ('pending' == $status){
-    $status_message = "Your Contribution Details are submitted and our administrators will check if it looks good. <br />We will send you an email soon!";
-    $status_classname = "text-muted";
-  }
-  elseif ('approved' == $status){
-    $status_message = "Congratulations! Your account is approved.<br />Payment information is avaliable.";
-    $status_classname = "text-primary";
-  }
-?>
-
-<div class="container-wrapper container-wrapper-gray-lighter py-4">
+<?php require get_template_directory() . "/inc/user-account-status.php"; ?>
+<div class="container-wrapper container-wrapper-gray-lighter <?php echo $status_classname; ?> py-4">
   <div class="container">
     <div class="row">
       <div class="col-lg-9">
-        <div class="media <?php echo $status_classname; ?>" id="user-feedback-container">
+        <div class="media" id="user-feedback-container">
           <span class="icon-info d-flex align-self-center mr-2"></span>
           <div class="media-body ml-1">
             <p class="mb-0">
@@ -189,19 +173,19 @@ get_header('icpa');
                 </div>
             </div>
             <div class="form-group row">
-              <label for="first_name" class="col-md-3">First name</label>
+              <label for="first_name" class="col-md-3 col-form-label">First name</label>
               <div class="col-md-9">
                 <input class="form-control" type="text" value="<?php echo $current_user->first_name; ?>" name="first_name" id="first_name" />
               </div>
             </div>
             <div class="form-group row">
-              <label for="last_name" class="col-md-3">Last name</label>
+              <label for="last_name" class="col-md-3 col-form-label">Last name</label>
               <div class="col-md-9">
                 <input class="form-control" type="text" value="<?php echo $current_user->last_name; ?>" name="last_name" id="last_name" />
               </div>
             </div>
             <div class="form-group row">
-              <label for="description" class="col-md-3">Organization</label>
+              <label for="description" class="col-md-3 col-form-label">Organization</label>
               <div class="col-md-9">
                 <input class="form-control" type="text" name="description" value="<?php echo $current_user->description; ?>" id="description" />
               </div>

@@ -294,18 +294,11 @@ b, strong, .strong {
                 }
             }
 
-            .section-danger, .section-success{
+            .section-status {
                 margin-left: -$menu-padding;
                 margin-right: -$menu-padding;
                 padding: 1.85rem $menu-padding;
-                background-color: $brand-danger;
-                color: white;
                 font-size: $font-size-12;
-            }
-
-            .section-success {
-                background-color: $brand-success;
-                color: darken($brand-success, 40%);
             }
 
             .section-navigation {

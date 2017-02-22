@@ -27,7 +27,7 @@ textarea {
 @import "../../src/sass/bootstrap4/reboot";
 @import "../../src/sass/bootstrap4/type";
 
-// }
+@include text-emphasis-variant('.text-black-transparent', rgba(0,0,0,0.7));
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     // &.display-1, &.display-2, &.display-3, &.display-4 {
