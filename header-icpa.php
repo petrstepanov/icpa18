@@ -76,8 +76,14 @@ $container = get_theme_mod( 'understrap_container_type' );
               <a href="<?php echo home_url('/'); ?>">Announcement</a>
             </li>
             <li class="my-4">
-              <a href="#">News</a>
+              <a href="#">Registration fees</a>
             </li>
+            <!-- <li class="my-4">
+              <a href="#">Accomodation</a>
+            </li>
+            <li class="my-4">
+              <a href="#">Conference program</a>
+            </li> -->
           </ul>
         </div>
       </nav>

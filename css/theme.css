@@ -616,11 +616,11 @@ mark,
 .blockquote-reverse .blockquote-footer::after {
   content: "\00A0 \2014"; }
 
-.text-black-transparent {
-  color: rgba(0, 0, 0, 0.7) !important; }
+.text-success-darker {
+  color: #24e1bb !important; }
 
-a.text-black-transparent:focus, a.text-black-transparent:hover {
-  color: rgba(0, 0, 0, 0.7) !important; }
+a.text-success-darker:focus, a.text-success-darker:hover {
+  color: #19b899 !important; }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: "cgothicbold", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
@@ -6421,7 +6421,7 @@ b, strong, .strong {
     color: white; }
     .container-wrapper .nav-tabs .nav-link.active {
       background-color: inherit;
-      border-bottom: 0.25rem solid #67ead0; }
+      border-bottom: 0.25rem solid #db5461; }
   .container-wrapper .nav-tabs .nav-item {
     margin-bottom: 0; }
 
