@@ -18,8 +18,7 @@
       } else {
                 // If success responce - close registration modal
         NotificationCenter.alert(data.message, 'success')
-        $('#user-feedback-container').removeClass('text-danger').addClass('text-muted')
-        $('#user-feedback-container strong').html('Your Contribution Details are submitted and our administrators will check if it looks good. <br />We will send you an email soon!')
+        $('#user-feedback-container strong').html('Your Contribution Details are submitted and our administrators need to validate them. <br />We will send you an email soon!')
       }
     })
 
