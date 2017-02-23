@@ -65,7 +65,6 @@ get_header('icpa');
     </div>
   </div>
 </div>
-
 <div class="container pb-4">
   <div class="row">
     <div class="col-lg-9">
@@ -160,6 +159,23 @@ get_header('icpa');
           </form>
         </div>
         <div class="tab-pane mt-5" id="payment" role="tabpanel">
+          <form>
+            <div class="form-group row">
+              <div class="col-10">
+                <label class="custom-input">
+                  <input type="checkbox" name="payment-extras" value="banquet" checked disabled/>
+                  <span class="icons">
+                    <svg class="icon-unchecked svg-icon checkbox"><use xlink:href="#checkbox"></use></svg>
+                    <svg class="icon-checked svg-icon checkbox-checked"><use xlink:href="#checkbox-checked"></use></svg>
+                    <svg class="icon-checked-disabled svg-icon checkbox-checked-disabled"><use xlink:href="#checkbox-checked-disabled"></use></svg>
+                  </span>
+                  <span>Student Admission</span><span class="badge badge-default">REQUIRED</span>
+                </label>
+              </div>
+              <div class="col-2">
+              </div>
+            </div>
+          </form>
           <p>Payment options will be avaliable when our administrator verifies and approves your account.</p>
           <p>We will inform you via email.</p>
           <div style="height: 20rem"></div>

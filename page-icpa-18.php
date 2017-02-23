@@ -23,7 +23,7 @@ get_header('icpa');
     <div class="row mb-3 mb-md-4">
       <div class="col-12 col-md-10 col-lg-9">
         <hr class="mt-4 mb-5" />
-        <p>We are honored to host 18th ICPA conference in US. Register to attend talks on popular material research topics and say hello to colleagues in person. Apart of science you will have plenty of time to relax, have a drink and meet like-minded people.</p>
+        <p>We are honored to host 18th ICPA conference in US. Register to attend talks on positron annihilation spectroscopy topics and say hello to colleagues in person. Apart of science you will have plenty of time to relax, have a drink and meet like-minded people.</p>
         <p>The event will be held in <strong>Orlando</strong>, "The City Beautiful", Florida in <strong>October 2018</strong>.</p>
       </div>
     </div>
@@ -44,7 +44,7 @@ get_header('icpa');
         </div>
       <?php } else { ?>
         <div class="mt-0 mt-md-4">
-          <p class="lead"><strong>Registration opens Nov 2017</strong></p>
+          <p class="lead text-warning"><strong>Registration opens Nov 2017</strong></p>
         </div>
       <?php } ?>
     <?php } ?>
@@ -297,7 +297,7 @@ get_header('icpa');
             </div>
           <?php } else { ?>
             <div class="mt-2 mt-md-4">
-              <p class="text-white"><strong>Registration opens Nov 2017</strong></p>
+              <p class="text-warning"><strong>Registration opens Nov 2017</strong></p>
             </div>
           <?php } ?>
         <?php } ?>

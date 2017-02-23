@@ -391,3 +391,16 @@ dl, dt {
     bottom: 0;
     overflow-y: auto;
 }
+
+// SVG Icons
+
+.svg-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+// Custom form Inputs

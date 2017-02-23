@@ -157,7 +157,8 @@ gulp.task('scripts', function() {
 
         // Custom Scripts
         basePaths.dev + 'js/jquery.noty.packaged.js',
-        basePaths.dev + 'js/icpa.js'        
+        basePaths.dev + 'js/svgxuse.js',
+        basePaths.dev + 'js/icpa.js'
     ];
   gulp.src(scripts)
     .pipe(concat('theme.min.js'))
@@ -215,6 +216,10 @@ gulp.task('copy-assets', ['clean-source'], function() {
 
 // Copy Tether JS files
     gulp.src(basePaths.node + 'tether/dist/js/*.js')
+        .pipe(gulp.dest(basePaths.dev + '/js'));
+
+// Copy SVGXUse
+    gulp.src(basePaths.node + 'svgxuse/svgxuse.js')
         .pipe(gulp.dest(basePaths.dev + '/js'));
 
 // Petr Stepanov: we don't really need tether css files according to Bootstrap docs
