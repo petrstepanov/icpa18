@@ -5,7 +5,8 @@
     display: none;
   }
 
-  [type='checkbox'] {
+  [type='checkbox'],
+  [type='radio'] {
     position: absolute;
     clip: rect(0,0,0,0);
     pointer-events: none;
@@ -52,17 +53,38 @@
 }
 
 // Styling
+
+$icon-size: 2rem;
+$icon-margin: 1.75rem;
+
+$icon-size-large: 4.375rem;
+
 .custom-input {
   align-items: center;
   display: flex;
 
   .icons {
     line-height: 0;
-    margin-right: 1.75rem;
-    
+    margin-right: $icon-margin;
+
     [class^='icon-'] {
-      width: 2em;
-      height: 2em;
+      width: $icon-size;
+      height: $icon-size;
+    }
+
+    &.large {
+      [class^='icon-'] {
+        width: $icon-size-large;
+        height: $icon-size-large;
+      }
     }
   }
+}
+
+.custom-input-margin {
+  margin-left: $icon-size + $icon-margin;
+}
+
+.custom-input-margin-large {
+  margin-left: $icon-size-large + $icon-margin;
 }

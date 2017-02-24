@@ -50,7 +50,9 @@ get_header('icpa');
     <div class="row">
       <div class="col-lg-9">
         <div class="media" id="user-feedback-container">
-          <span class="icon-info d-flex align-self-center mr-2"></span>
+          <span class="d-flex align-self-center mr-2">
+            <svg class="svg-icon info"><use xlink:href="#info"></use></svg>
+          </span>
           <div class="media-body ml-1">
             <p class="mb-0">
               <small>
@@ -159,26 +161,116 @@ get_header('icpa');
           </form>
         </div>
         <div class="tab-pane mt-5" id="payment" role="tabpanel">
-          <form>
-            <div class="form-group row">
-              <div class="col-10">
-                <label class="custom-input">
-                  <input type="checkbox" name="payment-extras" value="banquet" checked disabled/>
-                  <span class="icons">
-                    <svg class="icon-unchecked svg-icon checkbox"><use xlink:href="#checkbox"></use></svg>
-                    <svg class="icon-checked svg-icon checkbox-checked"><use xlink:href="#checkbox-checked"></use></svg>
-                    <svg class="icon-checked-disabled svg-icon checkbox-checked-disabled"><use xlink:href="#checkbox-checked-disabled"></use></svg>
-                  </span>
-                  <span>Student Admission</span><span class="badge badge-default">REQUIRED</span>
-                </label>
+          <?php if ('approved' == $status){ ?>
+            <form>
+              <h3 class="mb-4">Step 1. <span class="light">Select your Payment Options<span></h3>
+              <div class="row">
+                <div class="col-10">
+                  <label class="custom-input col-form-label">
+                    <input type="checkbox" name="payment-extras" value="banquet" checked disabled/>
+                    <span class="icons">
+                      <svg class="icon-unchecked svg-icon checkbox"><use xlink:href="#checkbox"></use></svg>
+                      <svg class="icon-checked svg-icon checkbox-checked"><use xlink:href="#checkbox-checked"></use></svg>
+                      <svg class="icon-checked-disabled svg-icon checkbox-checked-disabled"><use xlink:href="#checkbox-checked-disabled"></use></svg>
+                    </span>
+                    <span>Student Admission</span><span class="ml-3 badge badge-default">REQUIRED</span>
+                  </label>
+                </div>
+                <div class="col-2">
+                  $250
+                </div>
               </div>
-              <div class="col-2">
+              <div class="row">
+                <div class="col-10">
+                  <label class="custom-input col-form-label">
+                    <input type="checkbox" name="payment-extras" value="banquet" checked />
+                    <span class="icons">
+                      <svg class="icon-unchecked svg-icon checkbox"><use xlink:href="#checkbox"></use></svg>
+                      <svg class="icon-checked svg-icon checkbox-checked"><use xlink:href="#checkbox-checked"></use></svg>
+                      <svg class="icon-checked-disabled svg-icon checkbox-checked-disabled"><use xlink:href="#checkbox-checked-disabled"></use></svg>
+                    </span>
+                    <span>Banquet fee</span>
+                  </label>
+                </div>
+                <div class="col-2">
+                  $35
+                </div>
               </div>
-            </div>
-          </form>
-          <p>Payment options will be avaliable when our administrator verifies and approves your account.</p>
-          <p>We will inform you via email.</p>
-          <div style="height: 20rem"></div>
+              <div class="row">
+                <div class="col-10">
+                  <label class="custom-input col-form-label">
+                    <input type="checkbox" name="payment-extras" value="banquet" checked />
+                    <span class="icons">
+                      <svg class="icon-unchecked svg-icon checkbox"><use xlink:href="#checkbox"></use></svg>
+                      <svg class="icon-checked svg-icon checkbox-checked"><use xlink:href="#checkbox-checked"></use></svg>
+                      <svg class="icon-checked-disabled svg-icon checkbox-checked-disabled"><use xlink:href="#checkbox-checked-disabled"></use></svg>
+                    </span>
+                    <span>Disneyland excursion</span>
+                  </label>
+                </div>
+                <div class="col-2">
+                  $85
+                </div>
+              </div>
+              <hr class="gray-lightest custom-input-margin mt-3 mb-2 mb-md-3" />
+              <div class="row pt-1 mb-5">
+                <div class="col-10">
+                  <span class="font-size-21 custom-input-margin">Total amount</span>
+                </div>
+                <div class="col-2">
+                  <span class="font-size-21">$370</span>
+                </div>
+              </div>
+              <h3 class="mb-4">Step 2. <span class="light">Choose the Payment Method<span></h3>
+              <div class="row">
+                <div class="col-12 col-sm-7">
+                  <label class="custom-input mb-2 mb-md-3">
+                    <input type="radio" name="payment-method" value="card" checked />
+                    <span class="icons large">
+                      <svg class="icon-unchecked svg-icon credit-card"><use xlink:href="#credit-card"></use></svg>
+                      <svg class="icon-checked svg-icon credit-card-selected"><use xlink:href="#credit-card-selected"></use></svg>
+                    </span>
+                    <div><p class="my-0"><strong>Credit or debit card</strong><br/><small class="text-black-opaque">Online via flywire.com towards BGSU</small></p></div>
+                  </label>
+                </div>
+                <div class="col-12 col-sm-5 text-right">
+                  <a href="#" rel="nofollow" class="btn btn-warning">Pay at flywire.com</a>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-sm">
+                  <label class="custom-input mb-2 mb-md-3">
+                    <input type="radio" name="payment-method" value="transfer" />
+                    <span class="icons large">
+                      <svg class="icon-unchecked svg-icon money-transfer"><use xlink:href="#money-transfer"></use></svg>
+                      <svg class="icon-checked svg-icon money-transfer-selected"><use xlink:href="#money-transfer-selected"></use></svg>
+                    </span>
+                    <div><p class="my-0"><strong>Money transfer</strong><br/><small class="text-black-opaque">Online via flywire.com towards BGSU</small></p></div>
+                  </label>
+                </div>
+              </div>
+            </form>
+            <form id="receipt-upload-form">
+              <h3 class="mb-4 pt-1">Step 3. <span class="light">Upload the Receipt<span></h3>
+              <div class="row">
+                <div class="col-sm">
+                  <div class="form-control pt-5 pb-5">
+                    <p class="strong text-center mt-0">Drop file here or click to upload</p>
+                    <p class="opacity-60 small text-center mb-0">Files larger than 5 MB not supported</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row pt-4 mb-5">
+                <div class="col-sm text-right">
+                  <input type="submit" class="btn btn-warning" value="Upload Receipt" />
+                </div>
+              </div>
+            </form>
+          <?php } else { ?>
+            <p>Payment options will be avaliable when our administrator verifies and approves your account.</p>
+            <p>We will inform you via email.</p>
+            <div style="height: 20rem"></div>
+          <?php } ?>
         </div>
         <div class="tab-pane mt-5" id="profile" role="tabpanel">
           <form id="ajax_user_profile_form" action="<?php echo home_url('/'); ?>" method="POST">

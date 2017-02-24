@@ -27,12 +27,21 @@ textarea {
 @import "../../src/sass/bootstrap4/reboot";
 @import "../../src/sass/bootstrap4/type";
 
+hr {
+  &.gray-lightest {
+    border-top-color: $gray-lightest;
+  }
+}
+
 @include text-emphasis-variant('.text-black-opaque', rgba(0, 0, 0, .5));
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     // &.display-1, &.display-2, &.display-3, &.display-4 {
-        font-family: $font-family-display;
+        font-family: $font-family-display-bold;
     // }
+    .light {
+        font-family: $font-family-display;
+    }
 }
 
 a {
@@ -193,13 +202,18 @@ h4, .h4 {
 @import "../../src/sass/bootstrap4/breadcrumb";
 @import "../../src/sass/bootstrap4/pagination";
 @import "../../src/sass/bootstrap4/badge";
+
+.badge {
+  letter-spacing: 0.07rem;
+}
+
 @import "../../src/sass/bootstrap4/jumbotron";
 @import "../../src/sass/bootstrap4/alert";
 @import "../../src/sass/bootstrap4/progress";
 @import "../../src/sass/bootstrap4/media";
 
 .media {
-    [class^=icon]{
+    .svg-icon {
         font-size: 2.5em;
         margin-top: 0.1em;
     }

@@ -16,6 +16,7 @@ $navbar-border-radius:             0px;
 
 // Colors
 $gray-lighter:          rgba(224, 225, 221, 1);
+$gray-lightest:         rgba($gray-lighter, 0.5);
 
 $brand-primary:         rgba(119, 141, 169, 1);
 $brand-success:         rgba(103, 234, 234, 1); //rgba(103, 234, 208, 1);
@@ -26,7 +27,7 @@ $brand-inverse:         darken($gray-lighter, 30%);
 
 $brand-primary-darker:  rgba(65, 90, 119, 1); //rgba(65, 90, 119, 1);
 $brand-primary-darkest: rgba(55, 76, 100, 1); //rgba(65, 90, 119, 1);
-$font-color:            rgba(41, 69, 86, 1); //rgba(65, 90, 119, 1);
+$font-color:            darken($brand-primary, 25%); //rgba(65, 90, 119, 1); //rgba(65, 90, 119, 1);
 $font-color-dark:       rgba(24, 39, 51, 1); //rgba(65, 90, 119, 1);
 
 // Body
@@ -37,6 +38,13 @@ $body-color:    $font-color;
 // Links
 
 $link-hover-decoration: none;
+
+// Badges
+
+$badge-color:       $brand-primary-darker;
+$badge-default-bg:  $gray-lightest;
+$badge-padding-y:   0.3rem;
+$badge-padding-x:   0.5rem;
 
 // Fonts
 
@@ -78,12 +86,25 @@ $link-hover-decoration: none;
 
 @font-face {
     font-family: 'cgothicbold';
-    src: url('../fonts/cgothic_bold_mac-webfont.eot');
-    src: url('../fonts/cgothic_bold_mac-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/cgothic_bold_mac-webfont.woff2') format('woff2'),
-         url('../fonts/cgothic_bold_mac-webfont.woff') format('woff'),
-         url('../fonts/cgothic_bold_mac-webfont.ttf') format('truetype'),
-         url('../fonts/cgothic_bold_mac-webfont.svg#cgothicbold') format('svg');
+    src: url('../fonts/cgothic_bold-webfont.eot');
+    src: url('../fonts/cgothic_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/cgothic_bold-webfont.woff2') format('woff2'),
+         url('../fonts/cgothic_bold-webfont.woff') format('woff'),
+         url('../fonts/cgothic_bold-webfont.ttf') format('truetype'),
+         url('../fonts/cgothic_bold-webfont.svg#cgothicbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'cgothic';
+    src: url('../fonts/cgothic-webfont.eot');
+    src: url('../fonts/cgothic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/cgothic-webfont.woff2') format('woff2'),
+         url('../fonts/cgothic-webfont.woff') format('woff'),
+         url('../fonts/cgothic-webfont.ttf') format('truetype'),
+         url('../fonts/cgothic-webfont.svg#cgothicbook') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -114,7 +135,7 @@ $link-hover-decoration: none;
 //   -webkit-font-smoothing: antialiased;
 //   -moz-osx-font-smoothing: grayscale;
 // }
-// 
+//
 // .icon-info:before {
 //   content: "\e900";
 // }
@@ -149,7 +170,8 @@ $display4-size: 1.75em; // default: 3.5rem;
 $font-family-sans-serif: 'noto_sansregular', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 $font-family-sans-serif-bold: 'noto_sansbold', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 $font-family-sans-serif-italic: 'noto_sansitalic', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-$font-family-display: 'cgothicbold', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-display-bold: 'cgothicbold', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-display: 'cgothic', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
 $headings-color: $font-color;
 $hr-border-color: $font-color; // rgba($black,.1) !default;
@@ -194,12 +216,13 @@ $duration-slow:   600ms;
 
 // Forms
 
-$input-bg:                      rgba($gray-lighter, 0.6);
-$input-border-color:            rgba($gray-lighter, 0.6);
+$input-bg:                      $gray-lightest;
+$input-color:                   $brand-primary-darker;
+$input-border-color:            $gray-lightest;
 $input-border-radius:           0.375rem;
 $input-padding-y:               0.6rem;
 $form-group-margin-bottom:      $spacer*1.2;
-$custom-select-bg:              rgba($gray-lighter, 0.6);
+$custom-select-bg:              $gray-lightest;
 $custom-select-border-color:    #eff0ee; //rgba($gray-lighter, 0.6);
 // Mixins
 
