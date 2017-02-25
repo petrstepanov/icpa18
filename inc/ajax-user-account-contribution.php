@@ -116,7 +116,7 @@ add_action( 'wp_enqueue_scripts', 'user_account_contribution_scripts' );
 // Display extra fields in Wordpress admin panel
 
 function get_user_meta_keys(){
-    return array("status", "participant_type", "country", "contribution", "title", "comments", "amenities");
+    return array("status", "participant_type", "country", "contribution", "title", "comments", "amenities", "payment_method");
 }
 
 function my_show_extra_profile_fields( $user ) {

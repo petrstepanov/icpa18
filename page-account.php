@@ -203,7 +203,11 @@ get_header('icpa');
                 $amenitiesNames = $amenitiesList->getAmenitiesNames();
                 foreach($amenitiesNames as $amenityName){
               ?>
-                <div class="row align-items-center">
+                <?php if (strpos($meta_amenities, $amenityName) !== false){ ?>
+                  <div class="row align-items-center">
+                <?php } else { ?>
+                  <div class="row align-items-center strikeThrough">
+                <?php } ?>
                   <div class="col-10">
                     <label class="custom-input col-form-label">
                       <?php if (strpos($meta_amenities, $amenityName) !== false){ ?>
@@ -230,10 +234,10 @@ get_header('icpa');
                   <span class="font-size-21 custom-input-margin">Total amount</span>
                 </div>
                 <div class="col-2">
-                  <span class="font-size-21">$<?php
+                  <span class="font-size-21">$<span id="js--total-price"><?php
                       $meta_amenities = get_user_meta($current_user->id, 'amenities', true);
                       echo $paymentCalculator->getTotalPrice($meta_participant_type, $meta_amenities);
-                    ?></span>
+                    ?></span></span>
                 </div>
               </div>
               <h3 class="mb-4">Step 2. <span class="light">Choose the Payment Method<span></h3>
@@ -264,8 +268,12 @@ get_header('icpa');
                   </label>
                 </div>
               </div>
+              <!-- BEGIN: Hidden Wordpress fields to correctly handle AJAX request -->
+              <?php wp_nonce_field('ajax-payment-nonce', 'payment-security' ); // https://codex.wordpress.org/Function_Reference/wp_nonce_field ?>
+              <input type="hidden" name="action" value="user_account_payment"/>
+              <!-- END: Hidden Wordpress fields to correctly handle AJAX request -->
             </form>
-            <form id="receipt-upload-form">
+            <form id="ajax_user_receipt_form" action="<?php echo home_url('/'); ?>" method="POST">
               <h3 class="mb-4 pt-1">Step 3. <span class="light">Upload the Receipt<span></h3>
               <div class="row">
                 <div class="col-sm">
@@ -280,6 +288,10 @@ get_header('icpa');
                   <input type="submit" class="btn btn-warning" value="Upload Receipt" />
                 </div>
               </div>
+              <!-- BEGIN: Hidden Wordpress fields to correctly handle AJAX request -->
+              <?php wp_nonce_field('ajax-receipt-nonce', 'receipt-security' ); // https://codex.wordpress.org/Function_Reference/wp_nonce_field ?>
+              <input type="hidden" name="action" value="user_account_receipt"/>
+              <!-- END: Hidden Wordpress fields to correctly handle AJAX request -->
             </form>
           <?php } else { ?>
             <p>Payment options will be avaliable when our administrator verifies and approves your account.</p>

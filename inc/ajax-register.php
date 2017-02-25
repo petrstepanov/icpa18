@@ -144,6 +144,16 @@ function register_user(){
       die();
   }
 
+  // Add user payment_type field and set it to "card".
+  $user_meta = add_user_meta( $user_id, "payment_method", "card", true );
+
+  // Check if Wordperss returned an error during the registration
+  if ($user_meta == false){
+      $responce = array('error' => true, 'message'=> 'Something went wrong while updating user information. Please try again.');
+      echo json_encode($responce);
+      die();
+  }
+
 	// Send out custom user notification
 	my_wp_new_user_notification( $password, $user_id );
 	// wp_new_user_notification( $user_id );
