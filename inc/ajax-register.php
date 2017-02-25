@@ -26,23 +26,23 @@ function my_wp_new_user_notification( $password, $user_id, $deprecated = null, $
 
 	// Notify user
 
-    $switched_locale = switch_to_locale( get_user_locale( $user ) );
+  $switched_locale = switch_to_locale( get_user_locale( $user ) );
 
 	$message = sprintf(__('Hi %s'), $user->first_name) . "!\r\n\r\n";
 	$message .= __('Thanks for registering for the ICPA-18! Below please find your credentials:') . "\r\n\r\n";
 
-    $message .= sprintf(__('Email: %s'), $user->user_login) . "\r\n";
-    $message .= sprintf(__('Password: %s'), $password) . "\r\n\r\n";
+  $message .= sprintf(__('Email: %s'), $user->user_login) . "\r\n";
+  $message .= sprintf(__('Password: %s'), $password) . "\r\n\r\n";
 
-	$message .= __('Please log in to your account ') . network_site_url("/") . __(' and submit your contribution information. Once you are done, we will approve your account and provide the payment information.') . "\r\n\r\n";
+	$message .= __('Please log in to your account ') . network_site_url("/#login") . __(' and submit your contribution information. Once you are done, we will approve your account and provide the payment information.') . "\r\n\r\n";
 
 	$message .= "--\r\n\r\n" . __('Best wishes from ICPA-18 team');
 
-    wp_mail($user->user_email, __('Your ICPA-18 credentials'), $message);
+  wp_mail($user->user_email, __('Your ICPA-18 credentials'), $message);
 
-    if ( $switched_locale ) {
-        restore_previous_locale();
-    }
+  if ( $switched_locale ) {
+    restore_previous_locale();
+  }
 }
 
 function register_user(){
@@ -121,24 +121,35 @@ function register_user(){
 		die();
 	}
 
-    // Add user status field and set it to "new".
-    // User status can be "new", "modified", "approved"
-    // https://codex.wordpress.org/Function_Reference/add_user_meta
-    $user_meta = add_user_meta( $user_id, "status", "new", true );
+  // Add user status field and set it to "new".
+  // User status can be "new", "modified", "approved"
+  // https://codex.wordpress.org/Function_Reference/add_user_meta
+  $user_meta = add_user_meta( $user_id, "status", "new", true );
 
-    // Check if Wordperss returned an error during the registration
-    if ($user_meta == false){
-        $responce = array('error' => true, 'message'=> 'Something went wrong while updating user information. Please try again.');
-        echo json_encode($responce);
-        die();
-    }
+  // Check if Wordperss returned an error during the registration
+  if ($user_meta == false){
+      $responce = array('error' => true, 'message'=> 'Something went wrong while updating user information. Please try again.');
+      echo json_encode($responce);
+      die();
+  }
+
+  // Add user amenities fields and set it to "have all amenities included".
+  $amenitiesList = new AmenitiesList();
+  $user_meta = add_user_meta( $user_id, "amenities", implode(", ", $amenitiesList->getAmenitiesNames()), true );
+
+  // Check if Wordperss returned an error during the registration
+  if ($user_meta == false){
+      $responce = array('error' => true, 'message'=> 'Something went wrong while updating user information. Please try again.');
+      echo json_encode($responce);
+      die();
+  }
 
 	// Send out custom user notification
 	my_wp_new_user_notification( $password, $user_id );
 	// wp_new_user_notification( $user_id );
 
 	// Successful responce
-	$responce = array('error' => false, 'message'=> __('Resistration is complete! Please check your email <strong>') . $email . __('</strong> for further instructions', 'understrap'));
+	$responce = array('error' => false, 'message'=> __('Registration is complete! Please check your email <strong>') . $email . __('</strong> for further instructions', 'understrap'));
 	echo json_encode($responce);
 	die();
 }

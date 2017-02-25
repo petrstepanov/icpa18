@@ -88,9 +88,21 @@ require get_template_directory() . '/inc/ajax-register.php';
 require get_template_directory() . '/inc/ajax-user-account-contribution.php';
 
 /**
+ * Ajax user payment form.
+ */
+require get_template_directory() . '/inc/ajax-user-account-payment.php';
+
+/**
  * Ajax user profile fields.
  */
 require get_template_directory() . '/inc/ajax-user-account-profile.php';
+
+/**
+ * Payment classes.
+ */
+require get_template_directory() . '/inc/classes/amenity.php';
+require get_template_directory() . '/inc/classes/amenities-list.php';
+require get_template_directory() . '/inc/classes/payment-calculator.php';
 
 /**
  * ChromePHP https://github.com/ccampbell/chromephp

@@ -1,6 +1,6 @@
 <?php
 
-function user_account_profile(){
+function user_account_payment(){
 
 	/**
 	 * Process AJAX edit profile request.
@@ -77,16 +77,16 @@ function user_account_profile(){
 	die();
 }
 
-add_action('wp_ajax_user_account_profile', 'user_account_profile');
+add_action('wp_ajax_user_account_payment', 'user_account_payment');
 
 
 // Enqueue AJAX script
 
-if ( ! function_exists( 'user_account_profile_scripts' ) ) {
+if ( ! function_exists( 'user_account_payment_scripts' ) ) {
 	/**
 	 * Load theme's JavaScript sources.
 	 */
-	function user_account_profile_scripts() {
+	function user_account_payment_scripts() {
 		// Get the theme data
 		$the_theme = wp_get_theme();
 		wp_enqueue_script( 'ajax-user-account-profile', get_template_directory_uri() . '/src/js/user-account-profile.js', array( 'jquery' ), $the_theme->get( 'Version' ), true );
@@ -96,6 +96,6 @@ if ( ! function_exists( 'user_account_profile_scripts' ) ) {
 	}
 } // endif function_exists( 'register_user_scripts' ).
 
-add_action( 'wp_enqueue_scripts', 'user_account_profile_scripts' );
+add_action( 'wp_enqueue_scripts', 'user_account_payment_scripts' );
 
 ?>

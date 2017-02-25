@@ -140,7 +140,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                 </div>
               </div>
             </div>
-            <?php require get_template_directory() . "/inc/user-account-status.php"; ?>
+            <?php // require get_template_directory() . "/inc/user-account-status.php"; ?>
             <!-- <div class="section-status <?php echo $status_classname; ?>">
               <p class="mb-0"><i><?php echo $status_message; ?></i></p>
             </div> -->

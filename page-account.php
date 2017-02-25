@@ -44,7 +44,22 @@ get_header('icpa');
     </div>
   </div>
 </div>
-<?php require get_template_directory() . "/inc/user-account-status.php"; ?>
+<?php
+  // Show warning if User not filled the Contribution Details yet (status is 'new')
+  $status = get_user_meta($current_user->id, 'status', true);
+  if ('new' == $status){
+    $status_message = "Please submit your Contribution Details. <br />We need to double check your information before we approve you as a participant.";
+    $status_classname = "bg-warning text-black-opaque";
+  }
+  elseif ('pending' == $status){
+    $status_message = "Your Contribution Details are submitted and our administrators need to validate them. <br />We will send you an email soon!";
+    $status_classname = "bg-warning text-black-opaque";
+  }
+  elseif ('approved' == $status){
+    $status_message = "Congratulations! Your account is approved.<br />Payment information is avaliable.";
+    $status_classname = "bg-success text-black-opaque";
+  }
+?>
 <div class="container-wrapper <?php echo $status_classname; ?> py-4">
   <div class="container">
     <div class="row">
@@ -141,7 +156,7 @@ get_header('icpa');
               <div class="col-md-9">
                 <?php
                   $meta_title = get_user_meta($current_user->id, 'title', true);
-                              echo "<input class='form-control' type='text' name='input-title' id='input-title' value='" . $meta_title . "'>";
+                  echo "<input class='form-control' type='text' name='input-title' id='input-title' value='" . $meta_title . "'>";
                 ?>
               </div>
             </div>
@@ -161,10 +176,12 @@ get_header('icpa');
           </form>
         </div>
         <div class="tab-pane mt-5" id="payment" role="tabpanel">
-          <?php if ('approved' == $status){ ?>
-            <form>
+          <?php
+            $paymentCalculator = new PaymentCalculator();
+            if ('approved' == $status){ ?>
+            <form id="ajax_user_payment_form">
               <h3 class="mb-4">Step 1. <span class="light">Select your Payment Options<span></h3>
-              <div class="row">
+              <div class="row align-items-center">
                 <div class="col-10">
                   <label class="custom-input col-form-label">
                     <input type="checkbox" name="payment-extras" value="banquet" checked disabled/>
@@ -173,52 +190,50 @@ get_header('icpa');
                       <svg class="icon-checked svg-icon checkbox-checked"><use xlink:href="#checkbox-checked"></use></svg>
                       <svg class="icon-checked-disabled svg-icon checkbox-checked-disabled"><use xlink:href="#checkbox-checked-disabled"></use></svg>
                     </span>
-                    <span>Student Admission</span><span class="ml-3 badge badge-default">REQUIRED</span>
+                    <span><?php echo ucfirst($meta_participant_type); ?> admission</span><span class="ml-3 badge badge-default">REQUIRED</span>
                   </label>
                 </div>
                 <div class="col-2">
-                  $250
+                  $<?php echo $paymentCalculator->getAdmissionPrice($meta_participant_type); ?>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-10">
-                  <label class="custom-input col-form-label">
-                    <input type="checkbox" name="payment-extras" value="banquet" checked />
-                    <span class="icons">
-                      <svg class="icon-unchecked svg-icon checkbox"><use xlink:href="#checkbox"></use></svg>
-                      <svg class="icon-checked svg-icon checkbox-checked"><use xlink:href="#checkbox-checked"></use></svg>
-                      <svg class="icon-checked-disabled svg-icon checkbox-checked-disabled"><use xlink:href="#checkbox-checked-disabled"></use></svg>
-                    </span>
-                    <span>Banquet fee</span>
-                  </label>
+              <?php
+                $meta_amenities = get_user_meta($current_user->id, 'amenities', true);
+                $amenitiesList = new AmenitiesList();
+                $amenitiesNames = $amenitiesList->getAmenitiesNames();
+                foreach($amenitiesNames as $amenityName){
+              ?>
+                <div class="row align-items-center">
+                  <div class="col-10">
+                    <label class="custom-input col-form-label">
+                      <?php if (strpos($meta_amenities, $amenityName) !== false){ ?>
+                        <input type="checkbox" name="amenities[]" value="<?php echo $amenityName; ?>" checked />
+                      <?php } else { ?>
+                        <input type="checkbox" name="amenities[]" value="<?php echo $amenityName; ?>" />
+                      <?php } ?>
+                      <span class="icons">
+                        <svg class="icon-unchecked svg-icon checkbox"><use xlink:href="#checkbox"></use></svg>
+                        <svg class="icon-checked svg-icon checkbox-checked"><use xlink:href="#checkbox-checked"></use></svg>
+                        <svg class="icon-checked-disabled svg-icon checkbox-checked-disabled"><use xlink:href="#checkbox-checked-disabled"></use></svg>
+                      </span>
+                      <span><?php echo $amenitiesList->getAmenityDescription($amenityName); ?></span>
+                    </label>
+                  </div>
+                  <div class="col-2">
+                    $<?php echo $amenitiesList->getAmenityPrice($amenityName); ?>
+                  </div>
                 </div>
-                <div class="col-2">
-                  $35
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-10">
-                  <label class="custom-input col-form-label">
-                    <input type="checkbox" name="payment-extras" value="banquet" checked />
-                    <span class="icons">
-                      <svg class="icon-unchecked svg-icon checkbox"><use xlink:href="#checkbox"></use></svg>
-                      <svg class="icon-checked svg-icon checkbox-checked"><use xlink:href="#checkbox-checked"></use></svg>
-                      <svg class="icon-checked-disabled svg-icon checkbox-checked-disabled"><use xlink:href="#checkbox-checked-disabled"></use></svg>
-                    </span>
-                    <span>Disneyland excursion</span>
-                  </label>
-                </div>
-                <div class="col-2">
-                  $85
-                </div>
-              </div>
+              <?php } ?>
               <hr class="gray-lightest custom-input-margin mt-3 mb-2 mb-md-3" />
               <div class="row pt-1 mb-5">
                 <div class="col-10">
                   <span class="font-size-21 custom-input-margin">Total amount</span>
                 </div>
                 <div class="col-2">
-                  <span class="font-size-21">$370</span>
+                  <span class="font-size-21">$<?php
+                      $meta_amenities = get_user_meta($current_user->id, 'amenities', true);
+                      echo $paymentCalculator->getTotalPrice($meta_participant_type, $meta_amenities);
+                    ?></span>
                 </div>
               </div>
               <h3 class="mb-4">Step 2. <span class="light">Choose the Payment Method<span></h3>

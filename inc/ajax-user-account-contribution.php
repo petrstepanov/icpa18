@@ -71,19 +71,19 @@ function user_account_contribution(){
 	}
 
 	// Update user meta data
-    $current_user = wp_get_current_user();
-    if ($current_user->ID == 0){
-        $responce = array('error' => true, 'message'=> __('Please log in to your account first', 'understrap'));
-		echo json_encode($responce);
-		die();
-    }
+  $current_user = wp_get_current_user();
+  if ($current_user->ID == 0){
+      $responce = array('error' => true, 'message'=> __('Please log in to your account first', 'understrap'));
+	echo json_encode($responce);
+	die();
+  }
 
-    update_user_meta( $current_user->ID, 'participant_type', $participant_type );
-    update_user_meta( $current_user->ID, 'country', $country );
-    update_user_meta( $current_user->ID, 'contribution', $contribution_type );
-    update_user_meta( $current_user->ID, 'title', $title );
-    update_user_meta( $current_user->ID, 'comments', $comments );
-    update_user_meta( $current_user->ID, 'status', 'pending' );
+  update_user_meta( $current_user->ID, 'participant_type', $participant_type );
+  update_user_meta( $current_user->ID, 'country', $country );
+  update_user_meta( $current_user->ID, 'contribution', $contribution_type );
+  update_user_meta( $current_user->ID, 'title', $title );
+  update_user_meta( $current_user->ID, 'comments', $comments );
+  update_user_meta( $current_user->ID, 'status', 'pending' );
 
 	// Successful responce
 	$responce = array('error' => false, 'message'=> __('Contribution information saved! You will receive an email when we approve your account.', 'understrap'));
@@ -116,7 +116,7 @@ add_action( 'wp_enqueue_scripts', 'user_account_contribution_scripts' );
 // Display extra fields in Wordpress admin panel
 
 function get_user_meta_keys(){
-    return array("status", "participant_type", "country", "contribution", "title", "comments");
+    return array("status", "participant_type", "country", "contribution", "title", "comments", "amenities");
 }
 
 function my_show_extra_profile_fields( $user ) {
@@ -127,7 +127,7 @@ function my_show_extra_profile_fields( $user ) {
     foreach ($meta_keys as $meta_key){
         // $meta_value = get_the_author_meta( $meta_key, $user->id );
 	    $meta_value = get_user_meta($user->id, $meta_key, true);
-        $meta_value = esc_attr( $meta_value );
+      $meta_value = esc_attr( $meta_value );
         ?>
             <tr>
                 <th><label for="meta-<?php echo $meta_key; ?>"><?php echo ucfirst(str_replace('_', ' ', $meta_key)); ?></label></th>
