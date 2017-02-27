@@ -88,3 +88,9 @@ $icon-size-large: 4.375rem;
 .custom-input-margin-large {
   margin-left: $icon-size-large + $icon-margin;
 }
+
+.custom-input-margin-large-sm {
+  @include media-breakpoint-up(sm){
+    margin-left: $icon-size-large + $icon-margin;
+  }
+}

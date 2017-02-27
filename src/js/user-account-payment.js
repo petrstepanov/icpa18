@@ -14,6 +14,22 @@
     $('#ajax_user_payment_form').submit()
   })
 
+  // Collapse Functionality
+  $('.js--card').change(function () {
+    if ($(this).is(':checked')) {
+      $('#collapse-money-transfer').collapse('hide')
+      $('#collapse-card').collapse('show')
+    }
+  })
+
+  $('.js--money-transfer').change(function () {
+    if ($(this).is(':checked')) {
+      $('#collapse-money-transfer').collapse('show')
+      $('#collapse-card').collapse('hide')
+    }
+  })
+
+
   $('#ajax_user_payment_form').submit(function (event) {
     // Stop regular form submission
     event.preventDefault()

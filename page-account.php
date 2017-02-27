@@ -241,10 +241,15 @@ get_header('icpa');
                 </div>
               </div>
               <h3 class="mb-4">Step 2. <span class="light">Choose the Payment Method<span></h3>
+              <?php
+                $meta_payment_method = get_user_meta($current_user->id, 'payment_method', true);
+                $show_card = ( strcmp('card', $meta_payment_method) == 0 ) ? TRUE : FALSE;
+                $show_transfer = ( strcmp('transfer', $meta_payment_method) == 0 ) ? TRUE : FALSE;
+              ?>
               <div class="row">
                 <div class="col-12 col-sm-7">
                   <label class="custom-input mb-2 mb-md-3">
-                    <input type="radio" name="payment-method" value="card" checked />
+                    <input type="radio" name="payment-method" value="card" <?php echo ($show_card) ? "checked" : ""; ?> class="js--card"/>
                     <span class="icons large">
                       <svg class="icon-unchecked svg-icon credit-card"><use xlink:href="#credit-card"></use></svg>
                       <svg class="icon-checked svg-icon credit-card-selected"><use xlink:href="#credit-card-selected"></use></svg>
@@ -253,19 +258,39 @@ get_header('icpa');
                   </label>
                 </div>
                 <div class="col-12 col-sm-5 text-right">
-                  <a href="#" rel="nofollow" class="btn btn-warning">Pay at flywire.com</a>
+                  <div class="collapse fade  <?php echo ($show_card) ? "show" : ""; ?>" id="collapse-card">
+                    <a href="#" rel="nofollow" class="btn btn-warning">Pay at flywire.com</a>
+                  </div>
                 </div>
               </div>
-              <div class="row mb-4">
+              <div class="row mb-1">
                 <div class="col-sm">
                   <label class="custom-input mb-2 mb-md-3">
-                    <input type="radio" name="payment-method" value="transfer" />
+                    <input type="radio" name="payment-method" value="transfer" <?php echo ($show_transfer) ? "checked" : ""; ?> class="js--money-transfer"/>
                     <span class="icons large">
                       <svg class="icon-unchecked svg-icon money-transfer"><use xlink:href="#money-transfer"></use></svg>
                       <svg class="icon-checked svg-icon money-transfer-selected"><use xlink:href="#money-transfer-selected"></use></svg>
                     </span>
-                    <div><p class="my-0"><strong>Money transfer</strong><br/><small class="text-black-opaque">Online via flywire.com towards BGSU</small></p></div>
+                    <div><p class="my-0"><strong>Money transfer</strong><br/><small class="text-black-opaque">To PNC Bank in USA</small></p></div>
                   </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="custom-input-margin-large-sm collapse <?php echo ($show_transfer) ? "show" : ""; ?>" id="collapse-money-transfer">
+                  <div class="col-12">
+                    <dl class="row">
+                      <dt class="col-sm-5">Beneficiary name:</dt>
+                      <dd class="col-sm-7">Department of Physics and Astronomy</dd>
+                      <dt class="col-sm-5">Account number:</dt>
+                      <dd class="col-sm-7">4279598482</dd>
+                      <dt class="col-sm-5">Routing Number:</dt>
+                      <dd class="col-sm-7">041000124</dd>
+                      <dt class="col-sm-5">Bank name:</dt>
+                      <dd class="col-sm-7">PNC Bank</dd>
+                      <dt class="col-sm-5">Bank address:</dt>
+                      <dd class="col-sm-7">735 S Main St, Bowling Green, OH 43402</dd>
+                    </dl>
+                  </div>
                 </div>
               </div>
               <!-- BEGIN: Hidden Wordpress fields to correctly handle AJAX request -->
@@ -273,7 +298,7 @@ get_header('icpa');
               <input type="hidden" name="action" value="user_account_payment"/>
               <!-- END: Hidden Wordpress fields to correctly handle AJAX request -->
             </form>
-            <form id="ajax_user_receipt_form" action="<?php echo home_url('/'); ?>" method="POST">
+            <form id="ajax_user_receipt_form" action="<?php echo home_url('/'); ?>" class="mt-4" method="POST">
               <h3 class="mb-4 pt-1">Step 3. <span class="light">Upload the Receipt<span></h3>
               <div class="row">
                 <div class="col-sm">
