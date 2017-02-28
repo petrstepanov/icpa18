@@ -298,26 +298,41 @@ get_header('icpa');
               <input type="hidden" name="action" value="user_account_payment"/>
               <!-- END: Hidden Wordpress fields to correctly handle AJAX request -->
             </form>
-            <form id="ajax_user_receipt_form" action="<?php echo home_url('/'); ?>" class="mt-4" method="POST">
-              <h3 class="mb-4 pt-1">Step 3. <span class="light">Upload the Receipt<span></h3>
-              <div class="row">
-                <div class="col-sm">
-                  <div class="form-control pt-5 pb-5">
-                    <p class="strong text-center mt-0">Drop file here or click to upload</p>
-                    <p class="opacity-60 small text-center mb-0">Files larger than 5 MB not supported</p>
+            <h3 class="mb-4 mt-4 pt-1">Step 3. <span class="light">Upload the Receipt<span></h3>
+            <div class="row">
+              <div class="col-sm">
+                <form id="ajax_user_upload_form" action="<?php echo home_url('/'); ?>" class="mb-5 dropzone" method="POST">
+                  <div class="dz-message pt-4 pb-3" data-dz-message>
+                    <p class="strong text-center pt-2">Drop file here or click to upload</p>
+                    <p class="text-black-opaque small text-center">Files larger than 5 MB not supported</p>
                   </div>
+                  <!-- BEGIN: Hidden Wordpress fields to correctly handle AJAX request -->
+                  <?php wp_nonce_field('ajax-upload-nonce', 'upload-security' ); // https://codex.wordpress.org/Function_Reference/wp_nonce_field ?>
+                  <input type="hidden" name="action" value="user_account_upload"/>
+                  <!-- END: Hidden Wordpress fields to correctly handle AJAX request -->
+                </form>
+              </div>
+            </div>
+
+            <!-- <div class="row">
+              <div class="col-sm">
+                <div class="form-control pt-5 pb-5" id="dropzone-receipt">
+                  <p class="strong text-center mt-0">Drop file here or click to upload</p>
+                  <p class="opacity-60 small text-center mb-0">Files larger than 5 MB not supported</p>
                 </div>
               </div>
-              <div class="row pt-4 mb-5">
-                <div class="col-sm text-right">
-                  <input type="submit" class="btn btn-warning" value="Upload Receipt" />
-                </div>
+            </div> -->
+            <!-- <div class="row">
+              <div class="col-sm">
+                <input type="file" name="file" />
               </div>
-              <!-- BEGIN: Hidden Wordpress fields to correctly handle AJAX request -->
-              <?php wp_nonce_field('ajax-receipt-nonce', 'receipt-security' ); // https://codex.wordpress.org/Function_Reference/wp_nonce_field ?>
-              <input type="hidden" name="action" value="user_account_receipt"/>
-              <!-- END: Hidden Wordpress fields to correctly handle AJAX request -->
-            </form>
+            </div> -->
+            <!-- <div class="row pt-4 mb-5">
+              <div class="col-sm text-right">
+                <input type="submit" class="btn btn-warning" value="Upload Receipt" />
+              </div>
+            </div> -->
+
           <?php } else { ?>
             <p>Payment options will be avaliable when our administrator verifies and approves your account.</p>
             <p>We will inform you via email.</p>

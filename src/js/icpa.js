@@ -279,6 +279,8 @@ var NotificationCenter = (function ($, noty) {
 
 // UiController.initShowTabOnHash()
 
+Dropzone.autoDiscover = false;
+
 jQuery(document).ready(function () {
   UiController.init()
 })

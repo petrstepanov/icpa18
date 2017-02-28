@@ -157,6 +157,7 @@ gulp.task('scripts', function() {
 
         // Custom Scripts
         basePaths.dev + 'js/jquery.noty.packaged.js',
+        basePaths.dev + 'js/dropzone.js',
         basePaths.dev + 'js/svgxuse.js',
         basePaths.dev + 'js/icpa.js'
     ];
@@ -180,7 +181,10 @@ gulp.task('clean-source', function () {
 // Copy all needed dependency assets files from bower_component assets to themes /js, /scss and /fonts folder. Run this task after bower install or bower update
 
 ////////////////// All Bootstrap SASS  Assets /////////////////////////
-gulp.task('copy-assets', ['clean-source'], function() {
+//gulp.task('copy-assets', ['clean-source'], function() {
+
+// Petr Stepanov - I dont want to do clean-source because I store my personal js files there
+  gulp.task('copy-assets', function() {
 
 ////////////////// All Bootstrap 4 Assets /////////////////////////
 // Copy all Bootstrap JS files
@@ -229,6 +233,10 @@ gulp.task('copy-assets', ['clean-source'], function() {
 
 // Copy Noty JS files
     gulp.src(basePaths.node + 'noty/js/noty/packaged/jquery.noty.packaged.js')
+        .pipe(gulp.dest(basePaths.dev + '/js'));
+
+// Copy Noty JS files
+    gulp.src(basePaths.node + 'dropzone/dist/dropzone.js')
         .pipe(gulp.dest(basePaths.dev + '/js'));
 
 // Copy Animate.CSS files

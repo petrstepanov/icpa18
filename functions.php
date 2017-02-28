@@ -93,6 +93,11 @@ require get_template_directory() . '/inc/ajax-user-account-contribution.php';
 require get_template_directory() . '/inc/ajax-user-account-payment.php';
 
 /**
+ * Ajax user receipt upload form.
+ */
+require get_template_directory() . '/inc/ajax-user-account-upload.php';
+
+/**
  * Ajax user profile fields.
  */
 require get_template_directory() . '/inc/ajax-user-account-profile.php';
