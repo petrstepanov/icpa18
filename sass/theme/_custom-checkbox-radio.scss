@@ -17,12 +17,13 @@
 
     &:disabled {
       & + .icons .icon-unchecked {
-        display: none;
+        // display: none;
+        opacity: 0.5;
       }
 
-      & + .icons .icon-unchecked-disabled {
-        display: inline;
-      }
+      // & + .icons .icon-unchecked-disabled {
+      //   display: inline;
+      // }
     }
 
 
@@ -37,16 +38,17 @@
 
       &:disabled {
         & + .icons .icon-checked {
-          display: none;
+          // display: none;
+          opacity: 0.5;
         }
 
-        & + .icons .icon-unchecked-disabled {
-          display: none;
-        }
-
-        & + .icons .icon-checked-disabled {
-          display: inline;
-        }
+        // & + .icons .icon-unchecked-disabled {
+        //   display: none;
+        // }
+        //
+        // & + .icons .icon-checked-disabled {
+        //   display: inline;
+        // }
       }
     }
   }

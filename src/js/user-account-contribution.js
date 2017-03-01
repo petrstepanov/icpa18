@@ -16,9 +16,12 @@
       if (data.error === true) {
         NotificationCenter.alert(data.message, 'error')
       } else {
-                // If success responce - close registration modal
+        // If success responce - close registration modal
         NotificationCenter.alert(data.message, 'success')
-        $('#user-feedback-container strong').html('Your Contribution Details are submitted and our administrators need to validate them. <br />We will send you an email soon!')
+        // Hide payment forms (payment and receipt)
+        $('#ajax_user_payment_forms').hide()
+        // Show payment notification
+        $('#ajax_user_payment_form_hidden_notification').show()
       }
     })
 

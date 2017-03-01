@@ -50,7 +50,11 @@ function user_account_payment(){
 	die();
   }
 
-  update_user_meta( $current_user->ID, 'amenities', implode(", ", $amenities) );
+  if (sizeof($amenities)>0){
+    update_user_meta( $current_user->ID, 'amenities', implode(", ", $amenities) );
+  } else {
+    update_user_meta( $current_user->ID, 'amenities', "" );
+  }
   update_user_meta( $current_user->ID, 'payment_method', $payment_method );
 
   // Successful responce - send back total price

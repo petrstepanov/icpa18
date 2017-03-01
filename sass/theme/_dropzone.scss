@@ -21,10 +21,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-.dropzone, .dropzone * {
+.dropzone, .fake-dropzone, .dropzone * {
   box-sizing: border-box;
 }
-.dropzone {
+.dropzone, .fake-dropzone {
   border-radius: $input-border-radius;
   background-color: $gray-lightest;
   position: relative;
@@ -40,6 +40,11 @@
   }
 
   .dz-preview {
+
+    [type="submit"] {
+      line-height: 1 !important;
+      display: inline !important;
+    }
 
     &.media .svg-icon.file {
       font-size: 4rem;

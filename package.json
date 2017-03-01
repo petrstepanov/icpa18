@@ -49,5 +49,15 @@
     "svgxuse": "^1.2.1",
     "undescores-for-npm": "^1.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "semistandard": {
+      "globals": [
+        "NotificationCenter",
+        "removeNamespace",
+        "uploadNamespace",
+        "loginNamespace",
+        "Dropzone",
+        "jQuery"
+      ]
+    }
 }

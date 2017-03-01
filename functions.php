@@ -93,6 +93,11 @@ require get_template_directory() . '/inc/ajax-user-account-contribution.php';
 require get_template_directory() . '/inc/ajax-user-account-payment.php';
 
 /**
+ * Ajax user receipt remove form.
+ */
+require get_template_directory() . '/inc/ajax-user-account-remove.php';
+
+/**
  * Ajax user receipt upload form.
  */
 require get_template_directory() . '/inc/ajax-user-account-upload.php';
@@ -108,6 +113,7 @@ require get_template_directory() . '/inc/ajax-user-account-profile.php';
 require get_template_directory() . '/inc/classes/amenity.php';
 require get_template_directory() . '/inc/classes/amenities-list.php';
 require get_template_directory() . '/inc/classes/payment-calculator.php';
+require get_template_directory() . '/inc/classes/user-storage.php';
 
 /**
  * ChromePHP https://github.com/ccampbell/chromephp
