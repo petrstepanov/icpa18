@@ -108,9 +108,14 @@ require get_template_directory() . '/inc/ajax-user-account-upload.php';
 require get_template_directory() . '/inc/ajax-user-account-profile.php';
 
 /**
- * Ajax user profile fields.
+ * Change email encoding.
  */
 require get_template_directory() . '/inc/email.php';
+
+/**
+ * Change email encoding.
+ */
+require get_template_directory() . '/inc/admin-validate-user.php';
 
 /**
  * Payment classes.

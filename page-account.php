@@ -381,7 +381,7 @@ get_header('icpa');
   }
   // Show correspondent notification
   echo "<script>";
-  echo "jQuery(document).ready(function () { NotificationCenter.alert('" . $status_message . "', '" . $status_type . "')})";
+  echo "var onloadNotification = {message: '" . $status_message . "', type: '" . $status_type . "'}";
   echo "</script>";
 ?>
 

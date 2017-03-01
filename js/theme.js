@@ -9534,8 +9534,11 @@ var NotificationCenter = (function ($, noty) {
 
 // UiController.initShowTabOnHash()
 
-Dropzone.autoDiscover = false;
+Dropzone.autoDiscover = false
 
 jQuery(document).ready(function () {
   UiController.init()
+  if (onloadNotification) {
+    NotificationCenter.alert(onloadNotification.message, onloadNotification.type)
+  }
 })

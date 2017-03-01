@@ -1,5 +1,5 @@
 (function ($, Dropzone) {
-  if ($('#ajax_user_upload_form').length > 0){
+  if ($('#ajax_user_upload_form').length > 0) {
     var myDropzoneTemplate = '<div class="media py-4 px-4 dz-preview dz-file-preview">' +
                                '<div class="d-flex mr-3">' +
                                  '<svg class="svg-icon file"><use xlink:href="#file"></use></svg>' +

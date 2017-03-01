@@ -57,7 +57,9 @@
         "uploadNamespace",
         "loginNamespace",
         "Dropzone",
-        "jQuery"
+        "jQuery",
+        "noty",
+        "onloadNotification"
       ]
     }
 }

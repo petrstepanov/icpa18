@@ -1,36 +1,47 @@
 <?php
 
-function set_email_content_type(){
-  return "text/html";
-}
-
 function my_wp_new_user_notification( $password, $user_id, $deprecated = null, $notify = '' ) {
   $user = get_userdata( $user_id );
+  $admin = get_userdata(1);
+  $email_resources_uri = get_template_directory_uri() . "/emails/";
 
   // Notify admin
-    // if ( 'user' !== $notify ) {
-    //     $switched_locale = switch_to_locale( get_locale() );
-    //     $message  = __( 'New user registration on ICPA-18 website:' ) . "\r\n\r\n";
-  //   $message .= sprintf( __( 'First name:    %s' ), $user->first_name ) . "\r\n\r\n";
-  //   $message .= sprintf( __( 'Last name:     %s' ), $user->last_name ) . "\r\n\r\n";
-  //   $message .= sprintf( __( 'Organization:  %s' ), $user->description ) . "\r\n\r\n";
-    //     $message .= sprintf( __( 'Email: %s' ), $user->user_email ) . "\r\n";
-  //
-    //     @wp_mail( get_option( 'admin_email' ), __( 'New ICPA-18 User Registration' ), $message );
-  //
-    //     if ( $switched_locale ) {
-    //         restore_previous_locale();
-    //     }
-    // }
-  //
-    // // `$deprecated was pre-4.3 `$plaintext_pass`. An empty `$plaintext_pass` didn't sent a user notification.
-    // if ( 'admin' === $notify || ( empty( $deprecated ) && empty( $notify ) ) ) {
-    //     return;
-    // }
+
+  $switched_locale = switch_to_locale( get_locale() );
+
+  $title_admin = __('New user registration on ICPA-18 website');
+
+  $message_admin = __('Somebody just registered for the ICPA-18! Account details are following.') . "<br /><br />";
+  $message_admin .= sprintf( __( 'First name: %s' ), $user->first_name ) . "<br />";
+  $message_admin .= sprintf( __( 'Last name: %s' ), $user->last_name ) . "<br />";
+  $message_admin .= sprintf( __( 'Organization:  %s' ), $user->description ) . "<br />";
+  $message_admin .= sprintf( __( 'Email: %s' ), $user->user_email ) . "<br /><br />";
+
+  $variables_admin = array(
+    title         => $title_admin,
+    hidden_text   => ($user->first_name) . ($user->last_name) . "(" . $user->description . ")",
+    site_url      => network_site_url(),
+    resources_url => $email_resources_uri,
+    first_name    => $admin->first_name,
+    body_html     => $message_admin,
+    contact_email => get_option( 'admin_email' )
+  );
+
+  $template_admin = file_get_contents($email_resources_uri . "template.html");
+  foreach($variables_admin as $key => $value) {
+    $template_admin = str_replace('{{ ' . $key . ' }}', $value, $template_admin);
+  }
+
+  add_filter('wp_mail_content_type','set_email_content_type');
+  wp_mail(get_option( 'admin_email' ), $title_admin, $template_admin);
+  remove_filter('wp_mail_content_type','set_email_content_type');
+
+  if ( $switched_locale ) {
+    restore_previous_locale();
+  }
 
   // Notify user
 
-  $email_resources_uri = get_template_directory_uri() . "/emails/";
   $switched_locale = switch_to_locale( get_user_locale( $user ) );
 
   $title = __('Welcome to ICPA-18');
@@ -41,7 +52,7 @@ function my_wp_new_user_notification( $password, $user_id, $deprecated = null, $
   $message .= __('Please log in to your account ') . network_site_url("/#login") . __(' and submit your contribution information. When you are done, we will check and approve your account. Payment information will be reflected in your account upon approval.') . "<br /><br />";
 
   $variables = array(
-    title         => title,
+    title         => $title,
     hidden_text   => __('Thanks for registering. Your user account credentials are following.'),
     site_url      => network_site_url(),
     resources_url => $email_resources_uri,
