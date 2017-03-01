@@ -21,12 +21,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-.dropzone, .fake-dropzone, .dropzone * {
+.dropzone,
+.fake-dropzone,
+.dropzone * {
   box-sizing: border-box;
 }
-.dropzone, .fake-dropzone {
-  border-radius: $input-border-radius;
+
+.dropzone,
+.fake-dropzone {
   background-color: $gray-lightest;
+  border-radius: $input-border-radius;
+  min-height: 9.76rem;
   position: relative;
 
   &.dz-started {
@@ -41,9 +46,9 @@
 
   .dz-preview {
 
-    [type="submit"] {
-      line-height: 1 !important;
-      display: inline !important;
+    [type='submit'] {
+      display: inline;
+      line-height: 1;
     }
 
     &.media .svg-icon.file {
@@ -51,39 +56,27 @@
     }
 
     .dz-progress {
-      height: 2px;
       border-radius: 1px;
-      .dz-upload {
-      }
+      height: 2px;
     }
 
     .dz-error-message {
-      color: red;
+      color: $brand-danger;
       display: none;
     }
+
     &.dz-error {
-      .dz-error-message, .dz-error-mark {
+      .dz-error-message,
+      .dz-error-mark {
         display: block;
       }
     }
-    // &.dz-success {
-    //   .dz-success-mark {
-    //     display: block;
-    //   }
-    // }
 
-    .dz-error-mark, .dz-success-mark {
-      // position: absolute;
+    .dz-error-mark,
+    .dz-success-mark {
       display: none;
-      // left: 30px;
-      // top: 30px;
-      width: 1rem;
       height: 1rem;
-      // left: 50%;
-      // margin-left: -(54px/2);
+      width: 1rem;
     }
-
-
   }
-
 }
