@@ -177,7 +177,8 @@ var UiController = (function ($) {
     // If page loaded with hash - show correspondent modal
     var hash = window.location.hash
     if (hash) {
-      $('[id="' + hash + '"][role="dialog"]').modal('show')
+      var id = hash.substring(1)
+      $('[id="' + id + '"][role="dialog"]').modal('show')
     }
     // Update hash when clicking on a tab
     // $('.nav-tabs a').on('shown.bs.tab', function (e) {

@@ -1,7 +1,11 @@
 <?php
 
+function set_email_content_type(){
+  return "text/html";
+}
+
 function my_wp_new_user_notification( $password, $user_id, $deprecated = null, $notify = '' ) {
-    $user = get_userdata( $user_id );
+  $user = get_userdata( $user_id );
 
   // Notify admin
     // if ( 'user' !== $notify ) {
@@ -26,19 +30,34 @@ function my_wp_new_user_notification( $password, $user_id, $deprecated = null, $
 
   // Notify user
 
+  $email_resources_uri = get_template_directory_uri() . "/emails/";
   $switched_locale = switch_to_locale( get_user_locale( $user ) );
 
-  $message = sprintf(__('Hi %s'), $user->first_name) . "!\r\n\r\n";
-  $message .= __('Thanks for registering for the ICPA-18! Below please find your credentials:') . "\r\n\r\n";
+  $title = __('Welcome to ICPA-18');
 
-  $message .= sprintf(__('Email: %s'), $user->user_login) . "\r\n";
-  $message .= sprintf(__('Password: %s'), $password) . "\r\n\r\n";
+  $message = __('Thanks for registering for the ICPA-18! Your user account credentials are following.') . "<br /><br />";
+  $message .= sprintf(__('Email: %s'), $user->user_login) . "<br />";
+  $message .= sprintf(__('Password: %s'), $password) . "<br /><br />";
+  $message .= __('Please log in to your account ') . network_site_url("/#login") . __(' and submit your contribution information. When you are done, we will check and approve your account. Payment information will be reflected in your account upon approval.') . "<br /><br />";
 
-  $message .= __('Please log in to your account ') . network_site_url("/#login") . __(' and submit your contribution information. Once you are done, we will approve your account and provide the payment information.') . "\r\n\r\n";
+  $variables = array(
+    title         => title,
+    hidden_text   => __('Thanks for registering. Your user account credentials are following.'),
+    site_url      => network_site_url(),
+    resources_url => $email_resources_uri,
+    first_name    => $user->first_name,
+    body_html     => $message,
+    contact_email => get_option( 'admin_email' )
+  );
 
-  $message .= "--\r\n\r\n" . __('Best wishes from ICPA-18 team');
+  $template = file_get_contents($email_resources_uri . "template.html");
+  foreach($variables as $key => $value) {
+    $template = str_replace('{{ ' . $key . ' }}', $value, $template);
+  }
 
-  wp_mail($user->user_email, __('Your ICPA-18 credentials'), $message);
+  add_filter('wp_mail_content_type','set_email_content_type');
+  wp_mail($user->user_email, $title, $template);
+  remove_filter('wp_mail_content_type','set_email_content_type');
 
   if ( $switched_locale ) {
     restore_previous_locale();
