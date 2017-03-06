@@ -9538,7 +9538,7 @@ Dropzone.autoDiscover = false
 
 jQuery(document).ready(function () {
   UiController.init()
-  if (onloadNotification) {
+  if (typeof onloadNotification !== 'undefined') {
     NotificationCenter.alert(onloadNotification.message, onloadNotification.type)
   }
 })

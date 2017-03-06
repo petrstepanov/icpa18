@@ -52,10 +52,12 @@
   "devDependencies": {},
   "semistandard": {
       "globals": [
+        "UiController",
         "NotificationCenter",
         "removeNamespace",
         "uploadNamespace",
         "loginNamespace",
+        "newpassnamespace",
         "Dropzone",
         "jQuery",
         "noty",
