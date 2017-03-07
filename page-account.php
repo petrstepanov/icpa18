@@ -373,8 +373,8 @@ get_header('icpa');
     $status_type = "warning";
   }
   elseif ('approved' == $status){
-    if ('false' == receipt){
-      $status_message = "Your account is approved. Payment information is avaliable <a href=\"#payment\">here</a>.";
+    if ('false' == $receipt){
+      $status_message = "Your account is approved. Payment information is avaliable.";
       $status_type = "information";
     } else {
       $status_message = "Thanks for your payment. You\'re all set!";

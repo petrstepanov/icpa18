@@ -28,6 +28,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 <?php require get_template_directory() . '/inc/svg-icon-defs.php'; ?>
 
+<?php
+  global $post;
+  $post_slug = $post->post_name;
+  $is_account = strcmp("account", $post_slug) == 0;
+?>
+
 <div class="header">
   <div class="container">
     <div class="row">
@@ -63,7 +69,7 @@ $container = get_theme_mod( 'understrap_container_type' );
               </p>
               <div class="btn-toolbar mt-4 justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group" role="group" aria-label="First group">
-                  <a href="<?php echo home_url('/account'); ?>" class="btn btn-warning btn-sm">Open Account</a>
+                  <a href="<?php echo home_url('/account'); ?>" class="btn btn-warning btn-sm <?php echo $is_account ? 'disabled' : ''; ?>">Open Account</a>
                 </div>
                 <div class="btn-group" role="group" aria-label="First group">
                   <a href="<?php echo wp_logout_url( home_url() ); ?>" class="btn btn-link btn-sm pr-0">Log Out</a>
@@ -82,12 +88,12 @@ $container = get_theme_mod( 'understrap_container_type' );
             <li class="my-4">
               <a href="#">Registration fees</a>
             </li>
-            <!-- <li class="my-4">
-              <a href="#">Accomodation</a>
+            <li class="my-4">
+              <a href="#">Directions</a>
             </li>
             <li class="my-4">
-              <a href="#">Conference program</a>
-            </li> -->
+              <a href="#">Accomodation</a>
+            </li>
           </ul>
         </div>
       </nav>
