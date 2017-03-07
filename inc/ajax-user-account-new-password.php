@@ -51,12 +51,6 @@ function new_password_user(){
   $password = trim( $_POST['password'] );
   $password2 = trim( $_POST['password2'] );
 
-  // Check if user is logged in
-  if ( !is_user_logged_in() ){
-    $responce = array('error' => true, 'message'=> __('Please log in to your account first', 'understrap'));
-    echo json_encode($responce);
-    die();
-  }
 
   // Verify the AJAX request, to prevent requests from third-party sites or systems
   // https://codex.wordpress.org/Function_Reference/check_ajax_referer
@@ -67,20 +61,8 @@ function new_password_user(){
   }
 
   // Validate password fields
-  if (is_empty( $old_password ) || is_empty( $password ) || is_empty( $password2 )){
+  if (empty( $old_password ) || empty( $password ) || empty( $password2 )){
     $responce = array('error' => true, 'message'=> __('Password cannot be empty', 'understrap'));
-    echo json_encode($responce);
-    die();
-  }
-
-  if (strlen($password) < 8){
-    $responce = array('error' => true, 'message'=> __('Password should be at least 8 characters long', 'understrap'));
-    echo json_encode($responce);
-    die();
-  }
-
-  if (strcmp($password, $password2) != 0){
-    $responce = array('error' => true, 'message'=> __('Passwords do not match', 'understrap'));
     echo json_encode($responce);
     die();
   }
@@ -93,9 +75,33 @@ function new_password_user(){
     die();
   }
 
+  // Check old password
+  // wp_check_password() checks the plaintext password against the encrypted Password https://codex.wordpress.org/Function_Reference/wp_check_password
+  if (!wp_check_password( $old_password, $user->data->user_pass, $user->ID)){
+    $responce = array('error' => true, 'message'=> __('Old password is incorrect', 'understrap'));
+    echo json_encode($responce);
+    die();
+  }
+
+  // Check password is more than 8 characters
+  if (strlen($password) < 8){
+    $responce = array('error' => true, 'message'=> __('Password should be at least 8 characters long', 'understrap'));
+    echo json_encode($responce);
+    die();
+  }
+
+  // Check passwords match
+  if (strcmp($password, $password2) != 0){
+    $responce = array('error' => true, 'message'=> __('Passwords do not match', 'understrap'));
+    echo json_encode($responce);
+    die();
+  }
+
   // Set new passowrd
   wp_set_password( $password, $user->ID );
 
+  // Prevent log out http://stackoverflow.com/questions/5706075/php-wordpress-password-change-logging-me-out
+  wp_set_auth_cookie( $user->ID, true);
   // Email new password to user
   my_wp_new_pass_notification( $password, $user->ID );
 
@@ -105,7 +111,7 @@ function new_password_user(){
   die();
 }
 
-add_action('wp_ajax_nopriv_new_password_user', 'new_password_user');
+add_action('wp_ajax_new_password_user', 'new_password_user');
 
 // Enqueue login AJAX script
 if ( ! function_exists( 'new_password_user_scripts' ) ) {
@@ -113,8 +119,9 @@ if ( ! function_exists( 'new_password_user_scripts' ) ) {
     // Get the theme data
     $the_theme = wp_get_theme();
     wp_enqueue_script( 'ajax-new-password-user', get_template_directory_uri() . '/src/js/user-account-new-password.js', array( 'jquery' ), $the_theme->get( 'Version' ), true );
+
     // Declare javascript variable 'ajaxurl' with namespace 'loginnamespace' to be used with the 'ajax-new-password-user' script
-    wp_localize_script('ajax-new-password-user', 'newpassnamespace', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'redirecturl' => home_url('/account')));
+    wp_localize_script('ajax-new-password-user', 'newpassnamespace', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ));
   }
 } // endif function_exists( 'new_password_user_scripts' ).
 

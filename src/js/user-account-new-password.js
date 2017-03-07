@@ -17,7 +17,7 @@
         NotificationCenter.alert(data.message, 'error')
       } else {
         // If success responce - close registration modal
-        UiController.closeModal('forgot-password', function () {
+        UiController.closeModal('new-password', function () {
           // And redirect to Account page
           NotificationCenter.alert(data.message, 'success')
         })

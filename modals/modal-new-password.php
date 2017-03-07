@@ -1,4 +1,4 @@
-<!-- Forgot Password Modal -->
+<!-- New Password Modal -->
 <div class="modal fade" id="new-password" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">

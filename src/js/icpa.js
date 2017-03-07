@@ -180,17 +180,14 @@ var UiController = (function ($) {
       var id = hash.substring(1)
       $('[id="' + id + '"][role="dialog"]').modal('show')
     }
-    // Update hash when clicking on a tab
-    // $('.nav-tabs a').on('shown.bs.tab', function (e) {
-    //   window.location.hash = e.target.hash
+    // // Update hash when clicking on a tab
+    // $('[role="dialog"]').on('shown.bs.modal', function (e) {
+    //   Utils.setHashWithoutPageJump('#' + e.target.id)
     // })
-    $('[role="dialog"]').on('shown.bs.modal', function (e) {
-      Utils.setHashWithoutPageJump('#' + e.target.id)
-    })
-    // Clear hash when dialog closed
-    $('[role="dialog"]').on('hidden.bs.modal', function (e) {
-      Utils.removeHash()
-    })
+    // // Clear hash when dialog closed
+    // $('[role="dialog"]').on('hidden.bs.modal', function (e) {
+    //   Utils.removeHash()
+    // })
   }
 
   var initShowTabOnHash = function () {
