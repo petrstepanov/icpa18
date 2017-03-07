@@ -231,17 +231,17 @@ get_header('icpa');
     <div class="row justify-content-between py-2">
       <div class="col-md-6">
         <h2>Admission Fees</h2>
-        <hr class="mb-3 mt-4" />
-        <table class="table no-border dark">
+        <!-- <hr class="mb-3 mt-4" /> -->
+        <table class="table no-border dark mt-4">
           <thead>
             <tr>
-              <th class="pl-0 pt-0 border-0">
+              <th class="pl-0 pt-1 border-0">
                 Participant
               </th>
-              <th class="pl-0 pt-0 border-0">
+              <th class="pl-0 pt-1 border-0">
                 Early Registration
               </th>
-              <th class="pl-0 pt-0 border-0">
+              <th class="pl-0 pt-1 border-0">
                 After July 1, 2018
               </th>
             </tr>

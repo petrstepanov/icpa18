@@ -1,87 +1,9 @@
-// Functionality
-
-.custom-input {
-  .icons [class^='icon-'] {
-    display: none;
-  }
-
-  [type='checkbox'],
-  [type='radio'] {
-    position: absolute;
-    clip: rect(0,0,0,0);
-    pointer-events: none;
-
-    & + .icons .icon-unchecked {
-      display: inline;
-    }
-
-    &:disabled {
-      & + .icons .icon-unchecked {
-        // display: none;
-        opacity: 0.5;
-      }
-
-      // & + .icons .icon-unchecked-disabled {
-      //   display: inline;
-      // }
-    }
-
-
-    &:checked {
-      & + .icons .icon-unchecked {
-        display: none;
-      }
-
-      & + .icons .icon-checked {
-        display: inline;
-      }
-
-      &:disabled {
-        & + .icons .icon-checked {
-          // display: none;
-          opacity: 0.5;
-        }
-
-        // & + .icons .icon-unchecked-disabled {
-        //   display: none;
-        // }
-        //
-        // & + .icons .icon-checked-disabled {
-        //   display: inline;
-        // }
-      }
-    }
-  }
-}
-
 // Styling
 
 $icon-size: 2rem;
 $icon-margin: 1.75rem;
 
 $icon-size-large: 4.375rem;
-
-.custom-input {
-  align-items: center;
-  display: flex;
-
-  .icons {
-    line-height: 0;
-    margin-right: $icon-margin;
-
-    [class^='icon-'] {
-      width: $icon-size;
-      height: $icon-size;
-    }
-
-    &.large {
-      [class^='icon-'] {
-        width: $icon-size-large;
-        height: $icon-size-large;
-      }
-    }
-  }
-}
 
 .custom-input-margin {
   margin-left: $icon-size + $icon-margin;
@@ -92,7 +14,77 @@ $icon-size-large: 4.375rem;
 }
 
 .custom-input-margin-large-sm {
-  @include media-breakpoint-up(sm){
+  @include media-breakpoint-up(sm) {
     margin-left: $icon-size-large + $icon-margin;
+  }
+}
+
+.custom-input {
+  // Design
+  align-items: center;
+  display: flex;
+
+  .icons {
+    line-height: 0;
+    margin-right: $icon-margin;
+
+    [class^='icon-'] {
+      height: $icon-size;
+      width: $icon-size;
+    }
+
+    &.large {
+      [class^='icon-'] {
+        height: $icon-size-large;
+        width: $icon-size-large;
+      }
+    }
+  }
+
+  // Functionality
+  .icons [class^='icon-'] {
+    display: none;
+  }
+
+  [type='checkbox'],
+  [type='radio'] {
+    clip: rect(0, 0, 0, 0);
+    pointer-events: none;
+    position: absolute;
+
+    & + .icons {
+      .icon-unchecked {
+        display: inline;
+      }
+    }
+
+    &:disabled {
+      & + .icons {
+        .icon-unchecked {
+          opacity: .5;
+        }
+      }
+    }
+
+    &:checked {
+      & + .icons {
+        .icon-unchecked {
+          display: none;
+        }
+
+        .icon-checked {
+          display: inline;
+        }
+      }
+
+      &:disabled {
+        & + .icons {
+          .icon-checked {
+            // display: none;
+            opacity: .5;
+          }
+        }
+      }
+    }
   }
 }
