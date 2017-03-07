@@ -104,6 +104,12 @@ h4, .h4 {
     }
 }
 
+.form-text {
+  font-size: $font-size-12;
+  margin-bottom: 0;
+  margin-top: 0.5rem';
+}
+
 @import "../../src/sass/bootstrap4/buttons";
 
 .btn {
