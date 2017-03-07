@@ -1,6 +1,6 @@
 <?php
 
-function my_wp_new_pass_notification( $password, $user_id ) {
+function my_wp_forgot_pass_notification( $password, $user_id ) {
   $user = get_userdata( $user_id );
   $email_resources_uri = get_template_directory_uri() . "/emails/";
 
@@ -45,7 +45,7 @@ function my_wp_new_pass_notification( $password, $user_id ) {
   }
 }
 
-function new_password_user(){
+function forgot_password_user(){
 
   /**
    * Process AJAX user login request.
@@ -56,7 +56,7 @@ function new_password_user(){
 
   // Verify the AJAX request, to prevent requests from third-party sites or systems
   // https://codex.wordpress.org/Function_Reference/check_ajax_referer
-  if (!check_ajax_referer( 'ajax-new-password-nonce', 'new-password-security', false)){
+  if (!check_ajax_referer( 'ajax-forgot-password-nonce', 'forgot-password-security', false)){
     $responce = array('error' => true, 'message'=> __('Session token has expired, please reload the page and try again', 'understrap'));
     echo json_encode($responce);
     die();
@@ -87,7 +87,7 @@ function new_password_user(){
   wp_set_password( $password, $user->ID );
 
   // Email new password to user
-  my_wp_new_pass_notification( $password, $user->ID );
+  my_wp_forgot_pass_notification( $password, $user->ID );
 
   // Successful responce
   $responce = array('error' => false, 'message'=> sprintf(__('New password sent! Please check your email <strong>%s</strong>', 'understrap'), $user_login));
@@ -95,19 +95,19 @@ function new_password_user(){
   die();
 }
 
-add_action('wp_ajax_nopriv_new_password_user', 'new_password_user');
+add_action('wp_ajax_nopriv_forgot_password_user', 'forgot_password_user');
 
 // Enqueue login AJAX script
-if ( ! function_exists( 'new_password_user_scripts' ) ) {
-  function new_password_user_scripts() {
+if ( ! function_exists( 'forgot_password_user_scripts' ) ) {
+  function forgot_password_user_scripts() {
     // Get the theme data
     $the_theme = wp_get_theme();
-    wp_enqueue_script( 'ajax-new-password-user', get_template_directory_uri() . '/src/js/new-password-user.js', array( 'jquery' ), $the_theme->get( 'Version' ), true );
-    // Declare javascript variable 'ajaxurl' with namespace 'loginnamespace' to be used with the 'ajax-new-password-user' script
-    wp_localize_script('ajax-new-password-user', 'newpassnamespace', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'redirecturl' => home_url('/account')));
+    wp_enqueue_script( 'ajax-forgot-password-user', get_template_directory_uri() . '/src/js/landing-forgot-password.js', array( 'jquery' ), $the_theme->get( 'Version' ), true );
+    // Declare javascript variable 'ajaxurl' with namespace 'loginnamespace' to be used with the 'ajax-forgot-password-user' script
+    wp_localize_script('ajax-forgot-password-user', 'forgotpassnamespace', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'redirecturl' => home_url('/account')));
   }
-} // endif function_exists( 'new_password_user_scripts' ).
+} // endif function_exists( 'forgot_password_user_scripts' ).
 
-add_action( 'wp_enqueue_scripts', 'new_password_user_scripts' );
+add_action( 'wp_enqueue_scripts', 'forgot_password_user_scripts' );
 
 ?>

@@ -71,7 +71,7 @@ if ( ! function_exists( 'login_user_scripts' ) ) {
 	function login_user_scripts() {
 		// Get the theme data
 		$the_theme = wp_get_theme();
-		wp_enqueue_script( 'ajax-login-user', get_template_directory_uri() . '/src/js/login-user.js', array( 'jquery' ), $the_theme->get( 'Version' ), true );
+		wp_enqueue_script( 'ajax-login-user', get_template_directory_uri() . '/src/js/landing-login-user.js', array( 'jquery' ), $the_theme->get( 'Version' ), true );
 
 		// Declare javascript variable 'ajaxurl' with namespace 'loginnamespace' to be used with the 'ajax-login-user' script
 		wp_localize_script('ajax-login-user', 'loginnamespace', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'redirecturl' => home_url('/account')));

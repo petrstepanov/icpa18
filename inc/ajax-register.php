@@ -226,7 +226,7 @@ if ( ! function_exists( 'register_user_scripts' ) ) {
   function register_user_scripts() {
     // Get the theme data
     $the_theme = wp_get_theme();
-    wp_enqueue_script( 'ajax-register-user', get_template_directory_uri() . '/src/js/register-user.js', array( 'jquery' ), $the_theme->get( 'Version' ), true );
+    wp_enqueue_script( 'ajax-register-user', get_template_directory_uri() . '/src/js/landing-register-user.js', array( 'jquery' ), $the_theme->get( 'Version' ), true );
 
     // Declare javascript variable 'ajaxurl' with namespace 'namespace' to be used with the 'ajax-register-user' script
     wp_localize_script('ajax-register-user', 'registernamespace', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));

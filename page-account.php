@@ -341,7 +341,9 @@ get_header('icpa');
               <div class="col-md-9 offset-md-3">
                 <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
                   <div class="btn-group" role="group" aria-label="First group">
-                    <a href="#" class="btn btn-link pl-0 js--reset-password-button"><?php _e( 'Change password', 'understrap' ); ?></a>
+                    <button type="button" class="btn btn-link px-0" data-toggle="modal" data-target="#new-password">
+                      <?php _e( 'Change password', 'understrap' ); ?>
+                    </button>
                   </div>
                   <div class="btn-group" role="group" aria-label="Second group">
                     <input type="submit" class="btn btn-warning" value="<?php _e( 'Update Information', 'understrap' ); ?>">
@@ -388,6 +390,8 @@ get_header('icpa');
 <?php
 
 define('__ROOT__', get_template_directory());
+
+require_once(__ROOT__.'/modals/modal-new-password.php');
 
 get_footer('icpa');
 

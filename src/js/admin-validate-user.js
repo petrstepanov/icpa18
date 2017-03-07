@@ -4,6 +4,8 @@
     if (val === 'pending') {
       $('input[name=meta-status]').val('approved')
       $(this).html('Undo')
+    } else {
+      $('input[name=meta-status]').val('pending')
     }
   })
 })(jQuery)

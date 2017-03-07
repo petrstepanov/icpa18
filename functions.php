@@ -110,7 +110,12 @@ require get_template_directory() . '/inc/ajax-user-account-profile.php';
 /**
  * Ajax new password.
  */
-require get_template_directory() . '/inc/ajax-new-password.php';
+require get_template_directory() . '/inc/ajax-user-account-new-password.php';
+
+/**
+ * Ajax forgot password.
+ */
+require get_template_directory() . '/inc/ajax-forgot-password.php';
 
 /**
  * Change email encoding.

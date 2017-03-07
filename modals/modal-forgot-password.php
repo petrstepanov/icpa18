@@ -9,7 +9,7 @@
         </button>
       </div>
     <div class="modal-body">
-      <form id="ajax_new_password_form" action="<?php echo home_url( '/' ); // https://developer.wordpress.org/reference/functions/site_url/ ?>" method="POST">
+      <form id="ajax_forgot_password_form" action="<?php echo home_url( '/' ); // https://developer.wordpress.org/reference/functions/site_url/ ?>" method="POST">
         <div class="form-group row">
           <label for="input-email" class="col-12 col-lg-3 col-form-label">Email</label>
           <div class="col-12 col-lg-9">
@@ -22,8 +22,8 @@
           </div>
         </div>
         <!-- BEGIN: Hidden Wordpress fields to correctly handle AJAX request -->
-        <?php wp_nonce_field('ajax-new-password-nonce', 'new-password-security' ); // https://codex.wordpress.org/Function_Reference/wp_nonce_field ?>
-        <input type="hidden" name="action" value="new_password_user"/>
+        <?php wp_nonce_field('ajax-forgot-password-nonce', 'forgot-password-security' ); // https://codex.wordpress.org/Function_Reference/wp_nonce_field ?>
+        <input type="hidden" name="action" value="forgot_password_user"/>
         <!-- END: Hidden Wordpress fields to correctly handle AJAX request -->
       </form>
     </div>
