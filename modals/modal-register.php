@@ -5,7 +5,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title">ICPA-18 Registration Form</h3>
+                    <h3 class="modal-title"><?php _e( 'ICPA-18 Registration Form', 'understrap' ); ?></h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -48,7 +48,7 @@
                             <!-- END: Hidden Wordpress fields to correctly handle AJAX request -->
                         </form>
                     <?php } else { ?>
-                        <p>Registration for ICPA-18 is closed</p>
+                        <p><?php _e( 'Registration for ICPA-18 is closed', 'understrap' ); ?></p>
                     <?php } ?>
                 </div>
             </div>

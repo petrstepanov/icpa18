@@ -41,9 +41,9 @@ function user_account_remove(){
 		die();
 	}
 
-  // If success remove - update 'receipt' field
+  // If success remove - set 'receipt' field to false
   $current_user = wp_get_current_user();
-  update_user_meta( $current_user->ID, 'receipt', 'true' );
+  update_user_meta( $current_user->ID, 'receipt', 'false' );
 
   $responce = array('error' => false, 'message'=> __('Your file successfully removed. Don\'t forget to upload the correct one', 'understrap'));
   echo json_encode($responce);

@@ -56,19 +56,31 @@ function my_show_extra_profile_fields( $user ) {
       $meta_value = esc_attr( $meta_value );
       // Show validate button for status field that is not 'new'
       $show_validate_btn = (strcmp("status", $meta_key)==0) && (strcmp("new", $meta_value)!=0);
-        ?>
-            <tr>
-                <th><label for="meta-<?php echo $meta_key; ?>"><?php echo ucfirst(str_replace('_', ' ', $meta_key)); ?></label></th>
-                <td <?php if (!$show_validate_btn) echo " colspan='2'"; ?>>
-                    <input type="text" name="meta-<?php echo $meta_key; ?>" id="meta-<?php echo $meta_key; ?>" value="<?php echo $meta_value; ?>" class="regular-text" />
-                </td>
-                <?php if ($show_validate_btn){ ?>
-                  <td>
-                      <button type="button" class="button js--validate-user-button">Validate</button>
-                  </td>
-                <?php } ?>
-            </tr>
-        <?php
+
+      if ($show_validate_btn){ ?>
+        <tr>
+          <th>
+            <label for="meta-<?php echo $meta_key; ?>"><?php echo ucfirst(str_replace('_', ' ', $meta_key)); ?></label>
+          </th>
+          <td>
+            <input type="text" name="meta-<?php echo $meta_key; ?>" id="meta-<?php echo $meta_key; ?>" value="<?php echo $meta_value; ?>" class="regular-text" />
+          </td>
+          <td width="200">
+            <button type="button" class="button js--validate-user-button"><?php
+              echo strcmp("pending", $meta_value)==0 ? 'Validate' : 'Undo';
+            ?></button>
+          </td>
+        </tr>
+      <?php } else { ?>
+        <tr>
+          <th>
+            <label for="meta-<?php echo $meta_key; ?>"><?php echo ucfirst(str_replace('_', ' ', $meta_key)); ?></label>
+          </th>
+          <td colspan="2">
+            <input type="text" name="meta-<?php echo $meta_key; ?>" id="meta-<?php echo $meta_key; ?>" value="<?php echo $meta_value; ?>" class="regular-text" />
+          </td>
+        </tr>
+      <?php }
     }
     echo '</table>';
 }

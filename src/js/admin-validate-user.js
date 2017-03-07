@@ -6,6 +6,7 @@
       $(this).html('Undo')
     } else {
       $('input[name=meta-status]').val('pending')
+      $(this).html('Validate')
     }
   })
 })(jQuery)

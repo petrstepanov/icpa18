@@ -3,9 +3,9 @@
   $('#ajax_user_payment_form input[type=checkbox]').change(function () {
     var $row = $(this).closest('.row')
     if ($(this).is(':checked')) {
-      $row.removeClass('strikeThrough')
+      $row.removeClass('strike-through')
     } else {
-      $row.addClass('strikeThrough')
+      $row.addClass('strike-through')
     }
   })
 

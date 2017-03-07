@@ -6,161 +6,119 @@
 // Just add your color code here, compile the theme.scss file to change this color everywhere
 
 // $font-family-sans-serif:Arial, sans-serif;
-// $brand-primary:         #7852B2; //#ff6d5a
+// $brand-primary:     #7852B2; //#ff6d5a
 
 
 // Basics of a navbar
-$navbar-height:                    60px;
-$navbar-margin-bottom:             0px;
-$navbar-border-radius:             0px;
+$navbar-height:          60px;
+$navbar-margin-bottom:   0;
+$navbar-border-radius:   0;
 
 // Colors
-$gray-lighter:          rgba(224, 225, 221, 1);
-$gray-lightest:         rgba($gray-lighter, 0.5);
+$gray-lighter:     rgba(224, 225, 221, 1);
+$gray-lightest:    rgba($gray-lighter, .5);
 
-$brand-primary:         rgba(119, 141, 169, 1);
-$brand-success:         rgba(103, 234, 208, 1);
-$brand-info:            rgba(245, 217, 137, 1);
-$brand-warning:         rgba(245, 217, 137, 1);
-$brand-danger:          rgba(219, 84, 97, 1);
-$brand-inverse:         darken($gray-lighter, 30%);
+$brand-primary:    rgba(119, 141, 169, 1);
+$brand-success:    rgba(103, 234, 208, 1);
+$brand-info:       rgba(245, 217, 137, 1);
+$brand-warning:    rgba(245, 217, 137, 1);
+$brand-danger:     rgba(219, 84, 97, 1);
+$brand-inverse:    darken($gray-lighter, 30%);
 
 $brand-primary-darker:  rgba(65, 90, 119, 1); //rgba(65, 90, 119, 1);
 $brand-primary-darkest: rgba(55, 76, 100, 1); //rgba(65, 90, 119, 1);
 $font-color:            darken($brand-primary, 25%); //rgba(65, 90, 119, 1); //rgba(65, 90, 119, 1);
 $font-color-dark:       rgba(24, 39, 51, 1); //rgba(65, 90, 119, 1);
 
-$white:                 #ffffff;
+$white: #fff;
+
 // Body
-
-$body-color:    $font-color;
-
+$body-color: $font-color;
 
 // Links
-
 $link-hover-decoration: none;
 
 // Badges
-
-$badge-color:       $brand-primary-darker;
-$badge-default-bg:  $gray-lightest;
-$badge-padding-y:   0.3rem;
-$badge-padding-x:   0.5rem;
+$badge-color:    $brand-primary-darker;
+$badge-default-bg: $gray-lightest;
+$badge-padding-y:  .3rem;
+$badge-padding-x:  .5rem;
 
 // Fonts
-
 @font-face {
-    font-family: 'noto_sansregular';
-    src: url('../fonts/NotoSans-Regular-webfont.eot');
-    src: url('../fonts/NotoSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/NotoSans-Regular-webfont.woff') format('woff'),
-         url('../fonts/NotoSans-Regular-webfont.ttf') format('truetype'),
-         url('../fonts/NotoSans-Regular-webfont.svg#noto_sansregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'noto_sansregular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/NotoSans-Regular-webfont.eot');
+  src: url('../fonts/NotoSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/NotoSans-Regular-webfont.woff') format('woff'),
+       url('../fonts/NotoSans-Regular-webfont.ttf') format('truetype'),
+       url('../fonts/NotoSans-Regular-webfont.svg#noto_sansregular') format('svg');
 }
 
 @font-face {
-    font-family: 'noto_sansbold';
-    src: url('../fonts/NotoSans-Bold-webfont.eot');
-    src: url('../fonts/NotoSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/NotoSans-Bold-webfont.woff') format('woff'),
-         url('../fonts/NotoSans-Bold-webfont.ttf') format('truetype'),
-         url('../fonts/NotoSans-Bold-webfont.svg#noto_sansbold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'noto_sansbold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/NotoSans-Bold-webfont.eot');
+  src: url('../fonts/NotoSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/NotoSans-Bold-webfont.woff') format('woff'),
+       url('../fonts/NotoSans-Bold-webfont.ttf') format('truetype'),
+       url('../fonts/NotoSans-Bold-webfont.svg#noto_sansbold') format('svg');
 }
 
 @font-face {
-    font-family: 'noto_sansitalic';
-    src: url('../fonts/NotoSans-Italic-webfont.eot');
-    src: url('../fonts/NotoSans-Italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/NotoSans-Italic-webfont.woff') format('woff'),
-         url('../fonts/NotoSans-Italic-webfont.ttf') format('truetype'),
-         url('../fonts/NotoSans-Italic-webfont.svg#noto_sansitalic') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'noto_sansitalic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/NotoSans-Italic-webfont.eot');
+  src: url('../fonts/NotoSans-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/NotoSans-Italic-webfont.woff') format('woff'),
+       url('../fonts/NotoSans-Italic-webfont.ttf') format('truetype'),
+       url('../fonts/NotoSans-Italic-webfont.svg#noto_sansitalic') format('svg');
 }
 
 @font-face {
-    font-family: 'cgothicbold';
-    src: url('../fonts/cgothic_bold-webfont.eot');
-    src: url('../fonts/cgothic_bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/cgothic_bold-webfont.woff2') format('woff2'),
-         url('../fonts/cgothic_bold-webfont.woff') format('woff'),
-         url('../fonts/cgothic_bold-webfont.ttf') format('truetype'),
-         url('../fonts/cgothic_bold-webfont.svg#cgothicbold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'cgothicbold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/cgothic_bold-webfont.eot');
+  src: url('../fonts/cgothic_bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/cgothic_bold-webfont.woff2') format('woff2'),
+       url('../fonts/cgothic_bold-webfont.woff') format('woff'),
+       url('../fonts/cgothic_bold-webfont.ttf') format('truetype'),
+       url('../fonts/cgothic_bold-webfont.svg#cgothicbold') format('svg');
 }
 
 @font-face {
-    font-family: 'cgothic';
-    src: url('../fonts/cgothic-webfont.eot');
-    src: url('../fonts/cgothic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/cgothic-webfont.woff2') format('woff2'),
-         url('../fonts/cgothic-webfont.woff') format('woff'),
-         url('../fonts/cgothic-webfont.ttf') format('truetype'),
-         url('../fonts/cgothic-webfont.svg#cgothicbook') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'cgothic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/cgothic-webfont.eot');
+  src: url('../fonts/cgothic-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/cgothic-webfont.woff2') format('woff2'),
+       url('../fonts/cgothic-webfont.woff') format('woff'),
+       url('../fonts/cgothic-webfont.ttf') format('truetype'),
+       url('../fonts/cgothic-webfont.svg#cgothicbook') format('svg');
 }
 
-// @font-face {
-//   font-family: 'icomoon';
-//   src:  url('../fonts/icomoon.eot?exw595');
-//   src:  url('../fonts/icomoon.eot?exw595#iefix') format('embedded-opentype'),
-//     url('../fonts/icomoon.ttf?exw595') format('truetype'),
-//     url('../fonts/icomoon.woff?exw595') format('woff'),
-//     url('../fonts/icomoon.svg?exw595#icomoon') format('svg');
-//   font-weight: normal;
-//   font-style: normal;
-// }
-//
-// [class^="icon-"], [class*=" icon-"] {
-//   /* use !important to prevent issues with browser extensions that change fonts */
-//   font-family: 'icomoon' !important;
-//   speak: none;
-//   font-style: normal;
-//   font-weight: normal;
-//   font-variant: normal;
-//   text-transform: none;
-//   line-height: 1;
-//
-//   /* Better Font Rendering =========== */
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-// }
-//
-// .icon-info:before {
-//   content: "\e900";
-// }
-// .icon-menu:before {
-//   content: "\e901";
-// }
+$font-size-9:  .5625em;    // 9/16rem;
+$font-size-12: .75em;      // 12/16rem;
+$font-size-16: 1em;        // 16/16rem;
+$font-size-21: 1.3125em;   // 21/16rem;
+$font-size-28: 1.75em;     // 28/16rem;
+$font-size-37: 2.3125em;   // 37/16rem;
+$font-size-50: 3.125em;    // 50/16rem;
+$font-size-67: 4.1875em;   // 67/16rem;
 
-$font-size-9:   0.5625em; //9/16rem;
-$font-size-12:  0.7500em; //12/16rem;
-$font-size-16:  1.0000em; //16/16rem;
-$font-size-21:  1.3125em; //21/16rem;
-$font-size-28:  1.7500em; //28/16rem;
-$font-size-37:  2.3125em; //37/16rem;
-$font-size-50:  3.1250em; //50/16rem;
-$font-size-67:  4.1875em; //67/16rem;
-
-.font-size-9 { font-size: $font-size-9; }
-.font-size-12{ font-size: $font-size-12; }
-.font-size-16{ font-size: $font-size-16; }
-.font-size-21{ font-size: $font-size-21; }
-.font-size-28{ font-size: $font-size-28; }
-.font-size-37{ font-size: $font-size-37; }
-.font-size-50{ font-size: $font-size-50; }
-.font-size-67{ font-size: $font-size-67; }
+.font-size-9  { font-size: $font-size-9;  }
+.font-size-12 { font-size: $font-size-12; }
+.font-size-16 { font-size: $font-size-16; }
+.font-size-21 { font-size: $font-size-21; }
+.font-size-28 { font-size: $font-size-28; }
+.font-size-37 { font-size: $font-size-37; }
+.font-size-50 { font-size: $font-size-50; }
+.font-size-67 { font-size: $font-size-67; }
 
 
 $display1-size: 3rem;   // default: 6rem;
@@ -168,103 +126,105 @@ $display2-size: 2.5rem; // default: 5.5rem;
 $display3-size: 2.25em; // default: 4.5rem;
 $display4-size: 1.75em; // default: 3.5rem;
 
-$font-family-sans-serif: 'noto_sansregular', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-$font-family-sans-serif-bold: 'noto_sansbold', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-$font-family-sans-serif-italic: 'noto_sansitalic', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-$font-family-display-bold: 'cgothicbold', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-$font-family-display: 'cgothic', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-sans-serif:        'noto_sansregular', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-family-sans-serif-bold:   'noto_sansbold', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-family-sans-serif-italic: 'noto_sansitalic', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-family-display-bold:      'cgothicbold', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-family-display:           'cgothic', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 
 $headings-color: $font-color;
 $hr-border-color: $font-color; // rgba($black,.1) !default;
 
 // Buttons
-
-$btn-padding-x:                  1.5rem;
-$btn-padding-y:                  .75rem;
-$btn-line-height:                1.25;
+$btn-padding-x: 1.5rem;
+$btn-padding-y: .75rem;
+$btn-line-height: 1.25;
 
 // Modals
-
-$modal-backdrop-bg:             $brand-primary-darker;
-$modal-backdrop-opacity:        0.8;
-$modal-inner-padding:           3rem 3.5rem 1.2rem 3.5rem;
-$modal-content-border-width:    0;
-$modal-header-border-width:     0;
-$modal-header-padding:          2rem 3.5rem 0 3.5rem;
-
+$modal-backdrop-bg: $brand-primary-darker;
+$modal-backdrop-opacity: .8;
+$modal-inner-padding: 3rem 3.5rem 1.2rem 3.5rem;
+$modal-content-border-width: 0;
+$modal-header-border-width: 0;
+$modal-header-padding: 2rem 3.5rem 0 3.5rem;
 
 // Jumbotron
-
-$jumbotron-padding:              1.5rem;
+$jumbotron-padding: 1.5rem;
 
 // Spacing
-
-$spacer:   1.6rem;
+$spacer: 1.6rem;
 $border-width: 2px;
 
 // Right menu
-
 $menu-icon-size: 3.5rem;
 $menu-width: 85%;
 $menu-width-md: 25rem;
 $menu-padding: 4rem;
 
 // Speed
-
-$duration-fast:   200ms;
+$duration-fast: 200ms;
 $duration-normal: 400ms;
-$duration-slow:   600ms;
+$duration-slow: 600ms;
 
 // Forms
+$input-bg: $gray-lightest;
+$input-color: $brand-primary-darker;
+$input-border-color: $gray-lightest;
+$input-border-radius: .375rem;
+$input-padding-y: .6rem;
+$form-group-margin-bottom: $spacer * 1.2;
+$custom-select-bg: $gray-lightest;
+$custom-select-border-color: #eff0ee;
 
-$input-bg:                      $gray-lightest;
-$input-color:                   $brand-primary-darker;
-$input-border-color:            $gray-lightest;
-$input-border-radius:           0.375rem;
-$input-padding-y:               0.6rem;
-$form-group-margin-bottom:      $spacer*1.2;
-$custom-select-bg:              $gray-lightest;
-$custom-select-border-color:    #eff0ee; //rgba($gray-lighter, 0.6);
 // Mixins
-
 @mixin transform($transforms) {
-	-webkit-transform: $transforms;
-	-moz-transform: $transforms;
-	-ms-transform: $transforms;
-	transform: $transforms;
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -ms-transform: $transforms;
+  transform: $transforms;
 }
 
 @mixin translate ($x, $y) {
-   @include transform(translate($x, $y));
+  @include transform(translate($x, $y));
 }
 
 @mixin transition($transition...) {
-    -moz-transition:    $transition;
-    -o-transition:      $transition;
-    -webkit-transition: $transition;
-    transition:         $transition;
+  -moz-transition:    $transition;
+  -o-transition:      $transition;
+  -webkit-transition: $transition;
+  transition:         $transition;
 }
 @mixin transition-property($property...) {
-    -moz-transition-property:    $property;
-    -o-transition-property:      $property;
-    -webkit-transition-property: $property;
-    transition-property:         $property;
+  -moz-transition-property:    $property;
+  -o-transition-property:      $property;
+  -webkit-transition-property: $property;
+  transition-property:         $property;
 }
 @mixin transition-duration($duration...) {
-    -moz-transition-property:    $duration;
-    -o-transition-property:      $duration;
-    -webkit-transition-property: $duration;
-    transition-property:         $duration;
+  -moz-transition-property:    $duration;
+  -o-transition-property:      $duration;
+  -webkit-transition-property: $duration;
+  transition-property:         $duration;
 }
 @mixin transition-timing-function($timing...) {
-    -moz-transition-timing-function:    $timing;
-    -o-transition-timing-function:      $timing;
-    -webkit-transition-timing-function: $timing;
-    transition-timing-function:         $timing;
+  -moz-transition-timing-function:    $timing;
+  -o-transition-timing-function:      $timing;
+  -webkit-transition-timing-function: $timing;
+  transition-timing-function:         $timing;
 }
 @mixin transition-delay($delay...) {
-    -moz-transition-delay:    $delay;
-    -o-transition-delay:      $delay;
-    -webkit-transition-delay: $delay;
-    transition-delay:         $delay;
+  -moz-transition-delay:    $delay;
+  -o-transition-delay:      $delay;
+  -webkit-transition-delay: $delay;
+  transition-delay:         $delay;
+}
+
+@mixin font-smoothing($value: antialiased) {
+  @if $value == antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  } @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
 }

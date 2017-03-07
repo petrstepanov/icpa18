@@ -284,7 +284,7 @@ get_header('icpa');
         </table>
         <?php if (is_user_logged_in()){ ?>
           <div class="responsive-top-margin mb-4 pt-2 mb-sm-5 mb-md-0">
-            <a class="btn btn-warning" href="#">
+            <a class="btn btn-warning" href="<?php echo home_url('/account'); ?>">
               Open your Account Page
             </a>
           </div>

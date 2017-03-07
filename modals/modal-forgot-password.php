@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">Forgot Your Password?</h3>
+        <h3 class="modal-title"><?php _e( 'Forgot Your Password?', 'understrap' ); ?></h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -11,7 +11,7 @@
     <div class="modal-body">
       <form id="ajax_forgot_password_form" action="<?php echo home_url( '/' ); // https://developer.wordpress.org/reference/functions/site_url/ ?>" method="POST">
         <div class="form-group row">
-          <label for="input-email" class="col-12 col-lg-3 col-form-label">Email</label>
+          <label for="input-email" class="col-12 col-lg-3 col-form-label"><?php _e( 'Email', 'understrap' ); ?></label>
           <div class="col-12 col-lg-9">
             <input class="form-control" type="email" name="user_login" id="user_login">
           </div>

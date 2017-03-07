@@ -21,7 +21,7 @@
           <div class="col-12 col-lg-8">
             <input class="form-control" type="password" name="password" id="password">
             <p class="form-text text-muted">
-              Your password must be at least 8 characters long.
+              <?php _e( 'Your password must be at least 8 characters long', 'understrap' ); ?>
             </p>
           </div>
         </div>
