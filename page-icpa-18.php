@@ -65,12 +65,18 @@ get_header('icpa');
 <div class="container">
   <div class="row">
     <div class="col-12">
+
       <h2 class="mt-4 mt-md-5 mt-lg-5 mt-xl-5">Conference Topics</h2>
 
       <ul class="row mt-3 spaced">
-        <li class="col-md-6">Positron/positronium physics</li>
-        <li class="col-md-6">Progress of Antimatter physics</li>
+        <li class="col-md-6">Positron and positronium physics</li>
+        <li class="col-md-6">Positron and positronium chemistry</li>
+        <li class="col-md-6">Positron and positronium interaction with atoms and molecules</li>
         <li class="col-md-6">Theoretical calculation of positron states</li>
+        <li class="col-md-6">Theoretical aspects of positron and prositronium and related physics</li>
+        <li class="col-md-6">Positron high energy physics and recent development in antimatter</li>
+        <li class="col-md-6">Recent development in antimatter</li>
+        <li class="col-md-6">Polarized positrons</li>
         <li class="col-md-6">Nanomaterials</li>
         <li class="col-md-6">Polymers and porous materials</li>
         <li class="col-md-6">Metals and alloys</li>
@@ -78,6 +84,109 @@ get_header('icpa');
         <li class="col-md-6">Surface and interface</li>
         <li class="col-md-6">PET and related medical applications</li>
         <li class="col-md-6">New progress in experimental techniques</li>
+        <li class="col-md-6">Gamma induced positron spectroscopy</li>
+        <li class="col-md-6">Complimentary techniques to positron annihilation</li>
+      </ul>
+
+      <h2 class="mt-4 mt-md-5">Conference co-chairs</h2>
+
+      <ul class="row list-unstyled">
+        <li class="media mt-3 mt-md-4 col-md-6 media-committee">
+          <img class="d-flex mr-3" src="<?php echo get_template_directory_uri(); ?>/img/cochairs/farida-selim.jpg" alt="Faria Selim">
+          <div class="media-body">
+            <h5>Faria Selim</h5>
+            Bowling Green State University<span class="hidden-md-up">,</span><br class="hidden-sm-down"> Bowling Green, USA
+          </div>
+        </li>
+        <li class="media mt-3 mt-md-4 col-md-6 media-committee">
+          <img class="d-flex mr-3" src="<?php echo get_template_directory_uri(); ?>/img/cochairs/alex-weiss.jpg" alt="Alex Weiss">
+          <div class="media-body">
+            <h5>Alex Weiss</h5>
+            The University of Texas at Arlington<span class="hidden-md-up">,</span><br class="hidden-sm-down"> Arlington, USA
+          </div>
+        </li>
+      </ul>
+
+      <h2 class="mt-4 mt-md-5">North America Organizing Committee</h2>
+
+      <ul class="row list-unstyled">
+        <li class="media mt-3 mt-md-4 col-md-6 col-lg-4 media-committee">
+          <img class="d-flex mr-3" src="<?php echo get_template_directory_uri(); ?>/img/user.jpg">
+          <div class="media-body">
+            <h5>James Danielson</h5>
+            University of California San Diego<span class="hidden-md-up">,</span><br class="hidden-sm-down"> San Diego, USA
+          </div>
+        </li>
+        <li class="media mt-3 mt-md-4 col-md-6 col-lg-4 media-committee">
+          <img class="d-flex mr-3" src="<?php echo get_template_directory_uri(); ?>/img/user.jpg">
+          <div class="media-body">
+            <h5>Joe Grames</h5>
+            Jefferson Lab<span class="hidden-md-up">,</span><br class="hidden-sm-down"> Newport News, USA
+          </div>
+        </li>
+        <li class="media mt-3 mt-md-4 col-md-6 col-lg-4 media-committee">
+          <img class="d-flex mr-3" src="<?php echo get_template_directory_uri(); ?>/img/user.jpg">
+          <div class="media-body">
+            <h5>Ayman Hawari</h5>
+            North Carolina State University<span class="hidden-md-up">,</span><br class="hidden-sm-down"> North Carolina, USA
+          </div>
+        </li>
+        <li class="media mt-3 mt-md-4 col-md-6 col-lg-4 media-committee">
+          <img class="d-flex mr-3" src="<?php echo get_template_directory_uri(); ?>/img/user.jpg">
+          <div class="media-body">
+            <h5>Jerry Jean</h5>
+            University of Missouri<span class="hidden-md-up">,</span><br class="hidden-sm-down"> Columbia, USA
+          </div>
+        </li>
+        <li class="media mt-3 mt-md-4 col-md-6 col-lg-4 media-committee">
+          <img class="d-flex mr-3" src="<?php echo get_template_directory_uri(); ?>/img/user.jpg">
+          <div class="media-body">
+            <h5>Ali R. Koymen</h5>
+            University of Texas at Arlington<span class="hidden-md-up">,</span><br class="hidden-sm-down"> Arlington, USA
+          </div>
+        </li>
+        <li class="media mt-3 mt-md-4 col-md-6 col-lg-4 media-committee">
+          <img class="d-flex mr-3" src="<?php echo get_template_directory_uri(); ?>/img/user.jpg">
+          <div class="media-body">
+            <h5>Kelvin Lynn</h5>
+            Washington State University<span class="hidden-md-up">,</span><br class="hidden-sm-down"> Pullman, USA
+          </div>
+        </li>
+        <li class="media mt-3 mt-md-4 col-md-6 col-lg-4 media-committee">
+          <img class="d-flex mr-3" src="<?php echo get_template_directory_uri(); ?>/img/user.jpg">
+          <div class="media-body">
+            <h5>Peter Mascher</h5>
+            McMaster University<span class="hidden-md-up">,</span><br class="hidden-sm-down"> Hamilton, Canada
+          </div>
+        </li>
+        <li class="media mt-3 mt-md-4 col-md-6 col-lg-4 media-committee">
+          <img class="d-flex mr-3" src="<?php echo get_template_directory_uri(); ?>/img/user.jpg">
+          <div class="media-body">
+            <h5>Peter Simpson</h5>
+            University of Western Onatrio<span class="hidden-md-up">,</span><br class="hidden-sm-down"> London, Canada
+          </div>
+        </li>
+        <li class="media mt-3 mt-md-4 col-md-6 col-lg-4 media-committee">
+          <img class="d-flex mr-3" src="<?php echo get_template_directory_uri(); ?>/img/user.jpg">
+          <div class="media-body">
+            <h5>J. David Van Horn</h5>
+            University of Missouri<span class="hidden-md-up">,</span><br class="hidden-sm-down"> Columbia, USA
+          </div>
+        </li>
+        <li class="media mt-3 mt-md-4 col-md-6 col-lg-4 media-committee">
+          <img class="d-flex mr-3" src="<?php echo get_template_directory_uri(); ?>/img/user.jpg">
+          <div class="media-body">
+            <h5>Eric Vouter</h5>
+            Jefferson Lab<span class="hidden-md-up">,</span><br class="hidden-sm-down"> Newport News, USA
+          </div>
+        </li>
+        <li class="media mt-3 mt-md-4 col-md-6 col-lg-4 media-committee">
+          <img class="d-flex mr-3" src="<?php echo get_template_directory_uri(); ?>/img/user.jpg">
+          <div class="media-body">
+            <h5>Renwu Zhang</h5>
+            California State University<span class="hidden-md-up">,</span><br class="hidden-sm-down"> San Bernardino, USA
+          </div>
+        </li>
       </ul>
 
       <h2 class="mt-4 mt-md-5">International Advisory Committee</h2>
@@ -87,7 +196,7 @@ get_header('icpa');
           <img class="d-flex mr-3" src="<?php echo get_template_directory_uri(); ?>/img/committee/peter-mascher.jpg" alt="Peter Mascher">
           <div class="media-body">
             <h5>Peter Mascher</h5>
-            McMaster University<span class="hidden-md-up">,</span><br class="hidden-sm-down"> Ontario, Canada
+            McMaster University<span class="hidden-md-up">,</span><br class="hidden-sm-down"> Hamilton, Canada
           </div>
         </li>
         <li class="media mt-3 mt-md-4 col-md-6 col-lg-4 media-committee">
